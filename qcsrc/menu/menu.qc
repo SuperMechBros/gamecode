@@ -10,7 +10,6 @@
 
 #include "xonotic/commandbutton.qh"
 #include "xonotic/mainwindow.qh"
-#include "xonotic/serverlist.qh"
 #include "xonotic/slider_resolution.qh"
 
 .string cvarName;
@@ -87,8 +86,6 @@ void m_init()
 	static_init();
 	static_init_late();
 	static_init_precache();
-
-	RegisterSLCategories();
 
 	float ddsload = cvar("r_texture_dds_load");
 	float texcomp = cvar("gl_texturecompression");

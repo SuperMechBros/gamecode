@@ -1,8 +1,10 @@
 #pragma once
 
 #include "tab.qh"
-CLASS(XonoticProfileTab, XonoticTab)
+CLASS(XonoticProfileTab, XonoticDialog)
 	METHOD(XonoticProfileTab, fill, void(entity));
+	ATTRIB(XonoticProfileTab, title, string, _("Profile"));
+	ATTRIB(XonoticProfileTab, tooltip, string, _("Personalize your character and name"));
 	METHOD(XonoticProfileTab, draw, void(entity));
 	ATTRIB(XonoticProfileTab, intendedWidth, float, 0.9);
 	ATTRIB(XonoticProfileTab, rows, float, 23);

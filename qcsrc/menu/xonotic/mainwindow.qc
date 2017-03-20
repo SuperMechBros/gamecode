@@ -32,17 +32,10 @@
 #include "dialog_settings_user_languagewarning.qh"
 #include "dialog_settings_game_hudconfirm.qh"
 #include "dialog_singleplayer_winner.qh"
-#include "dialog_multiplayer_join_serverinfo.qh"
-#include "dialog_multiplayer_media_demo_startconfirm.qh"
-#include "dialog_multiplayer_media_demo_timeconfirm.qh"
-#include "dialog_multiplayer_media_screenshot_viewer.qh"
-#include "dialog_multiplayer_create_mapinfo.qh"
-#include "dialog_multiplayer_create_mutators.qh"
 #include "dialog_sandboxtools.qh"
 #include "dialog_monstertools.qh"
 #include "dialog_teamselect.qh"
 #include "dialog_singleplayer.qh"
-#include "dialog_multiplayer.qh"
 #include "dialog_settings.qh"
 #include "dialog_credits.qh"
 #include "dialog_quit.qh"
@@ -184,33 +177,7 @@ void MainWindow_configureMainWindow(entity me)
 	i.configureDialog(i);
 	me.addItemCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
 
-
-	// dialog used by multiplayer/join
-	me.serverInfoDialog = i = NEW(XonoticServerInfoDialog);
-	i.configureDialog(i);
-	me.addItemCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
-
-	me.demostartconfirmDialog = i = NEW(XonoticDemoStartConfirmDialog);
-	i.configureDialog(i);
-	me.addItemCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
-
-	me.demotimeconfirmDialog = i = NEW(XonoticDemoTimeConfirmDialog);
-	i.configureDialog(i);
-	me.addItemCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
-
-
-	// dialogs used by multiplayer/create
-	me.mapInfoDialog = i = NEW(XonoticMapInfoDialog);
-	i.configureDialog(i);
-	me.addItemCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
-
-	me.mutatorsDialog = i = NEW(XonoticMutatorsDialog);
-	i.configureDialog(i);
-	me.addItemCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
-
-
-	// dialogs used by multiplayer/media
-	me.screenshotViewerDialog = i = NEW(XonoticScreenshotViewerDialog);
+	i = NEW(XonoticProfileTab);
 	i.configureDialog(i);
 	me.addItemCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
 

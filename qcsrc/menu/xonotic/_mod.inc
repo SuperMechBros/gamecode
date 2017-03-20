@@ -16,7 +16,6 @@
 #include <menu/xonotic/crosshairpreview.qc>
 #include <menu/xonotic/cvarlist.qc>
 #include <menu/xonotic/datasource.qc>
-#include <menu/xonotic/demolist.qc>
 #include <menu/xonotic/dialog.qc>
 #include <menu/xonotic/dialog_credits.qc>
 #include <menu/xonotic/dialog_firstrun.qc>
@@ -41,19 +40,6 @@
 #include <menu/xonotic/dialog_hudpanel_weapons.qc>
 #include <menu/xonotic/dialog_hudsetup_exit.qc>
 #include <menu/xonotic/dialog_monstertools.qc>
-#include <menu/xonotic/dialog_multiplayer.qc>
-#include <menu/xonotic/dialog_multiplayer_create.qc>
-#include <menu/xonotic/dialog_multiplayer_create_mapinfo.qc>
-#include <menu/xonotic/dialog_multiplayer_create_mutators.qc>
-#include <menu/xonotic/dialog_multiplayer_join.qc>
-#include <menu/xonotic/dialog_multiplayer_join_serverinfo.qc>
-#include <menu/xonotic/dialog_multiplayer_media.qc>
-#include <menu/xonotic/dialog_multiplayer_media_demo.qc>
-#include <menu/xonotic/dialog_multiplayer_media_demo_startconfirm.qc>
-#include <menu/xonotic/dialog_multiplayer_media_demo_timeconfirm.qc>
-#include <menu/xonotic/dialog_multiplayer_media_musicplayer.qc>
-#include <menu/xonotic/dialog_multiplayer_media_screenshot.qc>
-#include <menu/xonotic/dialog_multiplayer_media_screenshot_viewer.qc>
 #include <menu/xonotic/dialog_multiplayer_profile.qc>
 #include <menu/xonotic/dialog_quit.qc>
 #include <menu/xonotic/dialog_sandboxtools.qc>
@@ -79,7 +65,6 @@
 #include <menu/xonotic/dialog_singleplayer.qc>
 #include <menu/xonotic/dialog_singleplayer_winner.qc>
 #include <menu/xonotic/dialog_teamselect.qc>
-#include <menu/xonotic/gametypelist.qc>
 #include <menu/xonotic/hudskinlist.qc>
 #include <menu/xonotic/image.qc>
 #include <menu/xonotic/inputbox.qc>
@@ -87,7 +72,6 @@
 #include <menu/xonotic/languagelist.qc>
 #include <menu/xonotic/listbox.qc>
 #include <menu/xonotic/mainwindow.qc>
-#include <menu/xonotic/maplist.qc>
 #include <menu/xonotic/nexposee.qc>
 #include <menu/xonotic/picker.qc>
 #include <menu/xonotic/playerlist.qc>
@@ -96,8 +80,6 @@
 #include <menu/xonotic/radiobutton.qc>
 #include <menu/xonotic/rootdialog.qc>
 #include <menu/xonotic/screenshotimage.qc>
-#include <menu/xonotic/screenshotlist.qc>
-#include <menu/xonotic/serverlist.qc>
 #include <menu/xonotic/skinlist.qc>
 #include <menu/xonotic/slider.qc>
 #include <menu/xonotic/slider_decibels.qc>

@@ -1,4 +1,5 @@
 #include "dialog_singleplayer.qh"
+#include "dialog_multiplayer_profile.qh"
 
 #include <common/mapinfo.qh>
 #include "bigbutton.qh"

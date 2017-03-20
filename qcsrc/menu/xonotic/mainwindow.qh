@@ -13,6 +13,7 @@ CLASS(MainWindow, ModalController)
 	ATTRIB(MainWindow, winnerDialog, entity);
 	ATTRIB(MainWindow, serverInfoDialog, entity);
 	ATTRIB(MainWindow, cvarsDialog, entity);
+	ATTRIB(MainWindow, profileDialog, entity);
 	ATTRIB(MainWindow, screenshotViewerDialog, entity);
 	ATTRIB(MainWindow, viewDialog, entity);
 	ATTRIB(MainWindow, hudconfirmDialog, entity);
