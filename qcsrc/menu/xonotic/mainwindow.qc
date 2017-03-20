@@ -247,19 +247,9 @@ void MainWindow_configureMainWindow(entity me)
 		i = NEW(XonoticSingleplayerDialog);
 		i.configureDialog(i);
 		n.addItemCentered(n, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
-		n.setNexposee(n, i, SKINPOSITION_DIALOG_SINGLEPLAYER, SKINALPHAS_MAINMENU_x, SKINALPHAS_MAINMENU_y);
-
-		i = NEW(XonoticMultiplayerDialog);
-		i.configureDialog(i);
-		n.addItemCentered(n, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
-		n.setNexposee(n, i, SKINPOSITION_DIALOG_MULTIPLAYER, SKINALPHAS_MAINMENU_x, SKINALPHAS_MAINMENU_y);
+		n.setNexposee(n, i, '0.5 0.6 0', SKINALPHAS_MAINMENU_x, SKINALPHAS_MAINMENU_y);
 
 		i = NEW(XonoticSettingsDialog);
-		i.configureDialog(i);
-		n.addItemCentered(n, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
-		n.setNexposee(n, i, SKINPOSITION_DIALOG_SETTINGS, SKINALPHAS_MAINMENU_x, SKINALPHAS_MAINMENU_y);
-
-		i = NEW(XonoticCreditsDialog);
 		i.configureDialog(i);
 		n.addItemCentered(n, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
 		n.setNexposee(n, i, SKINPOSITION_DIALOG_CREDITS, SKINALPHAS_MAINMENU_x, SKINALPHAS_MAINMENU_y);
