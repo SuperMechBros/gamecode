@@ -9,7 +9,6 @@ noref float autocvar_net_connecttimeout = 30;
 #endif
 
 #include "mapinfo.qc"
-#include "playerstats.qc"
 #ifdef SVQC
     #include "state.qc"
 #endif

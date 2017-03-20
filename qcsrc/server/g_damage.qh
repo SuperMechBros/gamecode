@@ -19,7 +19,6 @@
     #include <common/deathtypes/all.qh>
     #include "mutators/_mod.qh"
     #include <lib/csqcmodel/sv_model.qh>
-    #include <common/playerstats.qh>
     #include "g_hook.qh"
     #include "scores.qh"
     #include "spawnpoints.qh"

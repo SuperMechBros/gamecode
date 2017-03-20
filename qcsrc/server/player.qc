@@ -15,7 +15,6 @@
 #include "../common/csqcmodel_settings.qh"
 #include "../common/deathtypes/all.qh"
 #include "../common/triggers/subs.qh"
-#include "../common/playerstats.qh"
 #include "../lib/csqcmodel/sv_model.qh"
 
 #include "../common/minigames/sv_minigames.qh"
@@ -517,10 +516,7 @@ void PlayerDamage(entity this, entity inflictor, entity attacker, float damage, 
 		defer_ClientKill_Now_TeamChange = false;
 
 		if(this.alivetime)
-		{
-			PS_GR_P_ADDVAL(this, PLAYERSTATS_ALIVETIME, time - this.alivetime);
 			this.alivetime = 0;
-		}
 
 		if(valid_damage_for_weaponstats)
 			WeaponStats_LogKill(awep.m_id, abot, this.(weaponentity).m_weapon.m_id, vbot);

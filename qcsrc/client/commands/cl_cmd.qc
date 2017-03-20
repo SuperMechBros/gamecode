@@ -220,16 +220,7 @@ void LocalCommand_handlevote(int request, int argc)
 
 			if (vote_selection)
 			{
-				if (uid2name_dialog)  // handled by "uid2name" option
-				{
-					vote_active = 0;
-					vote_prev = 0;
-					vote_change = -9999;
-					localcmd(strcat("setreport cl_allow_uid2name ", ftos(vote_selection - 1), "\n"));
-					uid2name_dialog = 0;
-				}
-				else { localcmd(strcat("cmd vote ", vote_string, "\n")); }
-
+				localcmd(strcat("cmd vote ", vote_string, "\n"));
 				return;
 			}
 		}
@@ -241,7 +232,7 @@ void LocalCommand_handlevote(int request, int argc)
 		case CMD_REQUEST_USAGE:
 		{
 			LOG_INFO("\nUsage:^3 cl_cmd handlevote vote\n");
-			LOG_INFO("  Where 'vote' is the selection for either the current poll or uid2name.\n");
+			LOG_INFO("  Where 'vote' is the selection for either the current poll.\n");
 			return;
 		}
 	}

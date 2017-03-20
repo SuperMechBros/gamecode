@@ -79,7 +79,6 @@
 #include <menu/xonotic/dialog_singleplayer.qh>
 #include <menu/xonotic/dialog_singleplayer_winner.qh>
 #include <menu/xonotic/dialog_teamselect.qh>
-#include <menu/xonotic/dialog_uid2name.qh>
 #include <menu/xonotic/gametypelist.qh>
 #include <menu/xonotic/hudskinlist.qh>
 #include <menu/xonotic/image.qh>
@@ -107,7 +106,6 @@
 #include <menu/xonotic/slider_resolution.qh>
 #include <menu/xonotic/slider_sbfadetime.qh>
 #include <menu/xonotic/soundlist.qh>
-#include <menu/xonotic/statslist.qh>
 #include <menu/xonotic/tab.qh>
 #include <menu/xonotic/tabcontroller.qh>
 #include <menu/xonotic/textlabel.qh>

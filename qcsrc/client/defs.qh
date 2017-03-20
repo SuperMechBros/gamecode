@@ -114,8 +114,6 @@ float vortex_charge_movingavg;
 
 int serverflags;
 
-float uid2name_dialog;
-
 float intermission_time;
 
 .bool csqcmodel_isdead; // used by shownames and miscfunctions (entcs_IsDead) to know when a player is dead

@@ -16,7 +16,6 @@
 #include <common/net_linked.qh>
 #include <common/mapinfo.qh>
 #include <common/notifications/all.qh>
-#include <common/playerstats.qh>
 #include <common/util.qh>
 
 // =============================================
@@ -422,7 +421,6 @@ void ReadyRestart_force()
 	FOREACH_CLIENT(IS_PLAYER(it), LAMBDA(
 		it.alivetime = 0;
 		it.killcount = 0;
-		PS_GR_P_ADDVAL(it, PLAYERSTATS_ALIVETIME, -PS_GR_P_ADDVAL(it, PLAYERSTATS_ALIVETIME, 0));
 	));
 
 	restart_mapalreadyrestarted = false; // reset this var, needed when cvar sv_ready_restart_repeatable is in use

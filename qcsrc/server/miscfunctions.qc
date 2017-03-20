@@ -15,7 +15,6 @@
 #include "../common/deathtypes/all.qh"
 #include "../common/mapinfo.qh"
 #include "../common/notifications/all.qh"
-#include "../common/playerstats.qh"
 #include "../common/teams.qh"
 #include "../common/triggers/subs.qh"
 #include "../common/util.qh"
@@ -386,8 +385,6 @@ string W_FixWeaponOrder_ForceComplete_AndBuildImpulseList(entity this, string wo
 
 REPLICATE(autoswitch, bool, "cl_autoswitch");
 
-REPLICATE(cvar_cl_allow_uid2name, bool, "cl_allow_uid2name");
-
 REPLICATE(cvar_cl_autoscreenshot, int, "cl_autoscreenshot");
 
 REPLICATE(cvar_cl_autotaunt, float, "cl_autotaunt");
@@ -444,8 +441,6 @@ void GetCvars(entity this, int f)
 	GetCvars_handleString_Fixup(this, s, f, cvar_cl_weaponpriorities[8], "cl_weaponpriority8", W_FixWeaponOrder_AllowIncomplete);
 	GetCvars_handleString_Fixup(this, s, f, cvar_cl_weaponpriorities[9], "cl_weaponpriority9", W_FixWeaponOrder_AllowIncomplete);
 
-	GetCvars_handleFloat(this, s, f, cvar_cl_allow_uidtracking, "cl_allow_uidtracking");
-
 	// fixup of switchweapon (needed for LMS or when spectating is disabled, as PutClientInServer comes too early)
 	if (f > 0)
 	{
@@ -458,8 +453,6 @@ void GetCvars(entity this, int f)
 					this.(weaponentity).m_switchweapon = w_getbestweapon(this, weaponentity);
 			}
 		}
-		if (s == "cl_allow_uidtracking")
-			PlayerStats_GameReport_AddPlayer(this);
 	}
 }
 

@@ -1,7 +1,6 @@
 #include "dialog_multiplayer_profile.qh"
 
 #include "playermodel.qh"
-#include "statslist.qh"
 #include "languagelist.qh"
 #include "textlabel.qh"
 #include "commandbutton.qh"
@@ -36,8 +35,6 @@ void XonoticProfileTab_fill(entity me)
 		"name \"$_cl_name\";"
 		"playermodel $_cl_playermodel;"
 		"playerskin $_cl_playerskin;"
-		"sendcvar cl_allow_uidtracking;"
-		"sendcvar cl_allow_uid2name;"
 		, COMMANDBUTTON_APPLY);
 	profileApplyButton.disableOnClick = true;
 
@@ -111,30 +108,6 @@ void XonoticProfileTab_fill(entity me)
 			me.TDNoMargin(me, 1, 0.2, e = makeXonoticColorButton(2, 1, i), '0 1 0');
 				e.applyButton = profileApplyButton;
 		}
-
-	// ====================
-	//  STATISTICS SECTION
-	// ====================
-	me.gotoRC(me, 0.5, 3.1); me.setFirstColumn(me, me.currentColumn); // TOP RIGHT
-	//me.gotoRC(me, 9, 3.1); me.setFirstColumn(me, me.currentColumn); // BOTTOM RIGHT
-	//me.gotoRC(me, 9, 0); me.setFirstColumn(me, me.currentColumn); // BOTTOM LEFT
-		me.TD(me, 1, 3, e = makeXonoticHeaderLabel(_("Statistics")));
-
-	me.TR(me);
-		me.TDempty(me, 0.25);
-		me.TD(me, 1, 2.5, e = makeXonoticCheckBox(0, "cl_allow_uidtracking", _("Allow player statistics to track your client")));
-			e.applyButton = profileApplyButton;
-	me.TR(me);
-		me.TDempty(me, 0.25);
-		me.TD(me, 1, 2.5, e = makeXonoticCheckBox(0, "cl_allow_uid2name", _("Allow player statistics to use your nickname")));
-			e.applyButton = profileApplyButton;
-			setDependent(e, "cl_allow_uidtracking", 1, 1);
-	me.gotoRC(me, 4, 3.1); // TOP RIGHT
-	//me.gotoRC(me, 12.5, 3.1); // BOTTOM RIGHT
-	//me.gotoRC(me, 12.5, 0); // BOTTOM LEFT
-		me.TDempty(me, 0.25);
-		me.TD(me, 9, 2.5, statslist = makeXonoticStatsList());
-		//setDependent(statslist, "cl_allow_uidtracking", 1, 1);
 
 	// =================
 	//  COUNTRY SECTION

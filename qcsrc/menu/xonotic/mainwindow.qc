@@ -41,7 +41,6 @@
 #include "dialog_sandboxtools.qh"
 #include "dialog_monstertools.qh"
 #include "dialog_teamselect.qh"
-#include "dialog_uid2name.qh"
 #include "dialog_singleplayer.qh"
 #include "dialog_multiplayer.qh"
 #include "dialog_settings.qh"
@@ -224,10 +223,6 @@ void MainWindow_configureMainWindow(entity me)
 
 	// miscellaneous dialogs
 	i = NEW(XonoticTeamSelectDialog);
-	i.configureDialog(i);
-	me.addItemCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
-
-	i = NEW(XonoticUid2NameDialog);
 	i.configureDialog(i);
 	me.addItemCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
 

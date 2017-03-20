@@ -258,11 +258,7 @@ void PutObserverInServer(entity this)
 	SetSpectatee(this, NULL);
 
 	if (this.alivetime)
-	{
-		if (!warmup_stage)
-			PS_GR_P_ADDVAL(this, PLAYERSTATS_ALIVETIME, time - this.alivetime);
 		this.alivetime = 0;
-	}
 
 	WaypointSprite_PlayerDead(this);
 
@@ -1133,11 +1129,6 @@ void ClientConnect(entity this)
 		}
 	}
 
-	PlayerStats_GameReport_AddEvent(sprintf("kills-%d", this.playerid));
-
-	// always track bots, don't ask for cl_allow_uidtracking
-    if (IS_BOT_CLIENT(this)) PlayerStats_GameReport_AddPlayer(this);
-
 	if (autocvar_sv_eventlog)
 		GameLogEcho(strcat(":join:", ftos(this.playerid), ":", ftos(etof(this)), ":", ((IS_REAL_CLIENT(this)) ? this.netaddress : "bot"), ":", playername(this, false)));
 
@@ -1240,7 +1231,6 @@ void ClientDisconnect(entity this)
 {
 	assert(IS_CLIENT(this), return);
 
-	PlayerStats_GameReport_FinalizePlayer(this);
 	if (this.active_minigame) part_minigame(this);
 	if (IS_PLAYER(this)) Send_Effect(EFFECT_SPAWN_NEUTRAL, this.origin, '0 0 0', 1);
 

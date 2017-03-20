@@ -6,7 +6,6 @@
 #include <common/ent_cs.qc>
 #include <common/mapinfo.qc>
 #include <common/net_notice.qc>
-#include <common/playerstats.qc>
 #include <common/state.qc>
 #include <common/t_items.qc>
 #include <common/util.qc>

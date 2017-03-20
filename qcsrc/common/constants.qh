@@ -234,7 +234,7 @@ const int WATERLEVEL_SUBMERGED = 3;
 // server flags
 const int SERVERFLAG_ALLOW_FULLBRIGHT = 1;
 const int SERVERFLAG_TEAMPLAY = 2;
-const int SERVERFLAG_PLAYERSTATS = 4;
+const int SERVERFLAG_PLAYERSTATS = 4; // we have this for server list (compat)
 
 #ifdef SVQC
 // FIXME/EXPLAINME: why? Mario: because

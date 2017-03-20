@@ -47,7 +47,6 @@ void ClientState_attach(entity this)
 	DecodeLevelParms(this);
 
 	PlayerScore_Attach(this);
-	PlayerStats_PlayerBasic_CheckUpdate(this);
 	ClientData_Attach(this);
 	accuracy_init(this);
 	entcs_attach(this);

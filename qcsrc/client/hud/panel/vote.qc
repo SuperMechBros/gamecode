@@ -6,30 +6,6 @@
 
 void HUD_Vote()
 {
-	if(autocvar_cl_allow_uid2name == -1 && (gametype == MAPINFO_TYPE_CTS || gametype == MAPINFO_TYPE_RACE || (serverflags & SERVERFLAG_PLAYERSTATS)))
-	{
-		// this dialog gets overriden by the uid2name menu dialog, if it exists
-		// TODO remove this client side uid2name dialog in the next release
-		if(!autocvar__menu_alpha)
-			uid2name_dialog = 0;
-
-		if (!uid2name_dialog)
-			localcmd("menu_cmd directmenu Uid2Name\n");
-
-		vote_active = 1;
-		if (autocvar__hud_configure)
-		{
-			vote_yescount = 0;
-			vote_nocount = 0;
-			LOG_INFO(_("^1You must answer before entering hud configure mode\n"));
-			cvar_set("_hud_configure", "0");
-		}
-		if(vote_called_vote)
-			strunzone(vote_called_vote);
-		vote_called_vote = strzone(_("^2Name ^7instead of \"^1Anonymous player^7\" in stats"));
-		uid2name_dialog = 1;
-	}
-
 	if(!autocvar__hud_configure)
 	{
 		if(!autocvar_hud_panel_vote) return;
@@ -65,18 +41,9 @@ void HUD_Vote()
 	//panel_fade_alpha *= a;
 	// nothing can hide this panel, not even the menu
 	float hud_fade_alpha_save = hud_fade_alpha;
-	if(uid2name_dialog && autocvar__menu_alpha)
-		hud_fade_alpha = 0;
-	else
-		hud_fade_alpha = a;
+	hud_fade_alpha = a;
 	HUD_Panel_LoadCvars();
 	hud_fade_alpha = hud_fade_alpha_save;
-
-	if(uid2name_dialog)
-	{
-		panel_pos = eX * 0.3 * vid_conwidth + eY * 0.1 * vid_conheight;
-		panel_size = eX * 0.4 * vid_conwidth + eY * 0.3 * vid_conheight;
-	}
 
 	vector pos, mySize;
 	pos = panel_pos;
@@ -113,8 +80,6 @@ void HUD_Vote()
 	mySize = newSize;
 
 	s = _("A vote has been called for:");
-	if(uid2name_dialog)
-		s = _("Allow servers to store and display your name?");
 	drawstring_aspect(pos, s, eX * mySize.x + eY * (2/8) * mySize.y, '1 1 1', panel_fg_alpha, DRAWFLAG_NORMAL);
 	s = textShortenToWidth(ColorTranslateRGB(vote_called_vote), mySize.x, '1 1 0' * mySize.y * (1/8), stringwidth_colors);
 	if(autocvar__hud_configure)

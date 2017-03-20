@@ -26,7 +26,6 @@
 #include "../common/monsters/sv_monsters.qh"
 #include "../common/notifications/all.qh"
 #include "../common/physics/player.qh"
-#include "../common/playerstats.qh"
 #include "../common/stats.qh"
 #include "../common/teams.qh"
 #include "../common/triggers/trigger/secret.qh"
@@ -37,9 +36,6 @@
 #include "../common/state.qh"
 
 const float LATENCY_THINKRATE = 10;
-.float latency_sum;
-.float latency_cnt;
-.float latency_time;
 entity pingplreport;
 void PingPLReport_Think(entity this)
 {
@@ -59,15 +55,6 @@ void PingPLReport_Think(entity this)
 		WriteShort(MSG_BROADCAST, bound(1, e.ping, 65535));
 		WriteByte(MSG_BROADCAST, min(ceil(e.ping_packetloss * 255), 255));
 		WriteByte(MSG_BROADCAST, min(ceil(e.ping_movementloss * 255), 255));
-
-		// record latency times for clients throughout the match so we can report it to playerstats
-		if(time > (e.latency_time + LATENCY_THINKRATE))
-		{
-			e.latency_sum += e.ping;
-			e.latency_cnt += 1;
-			e.latency_time = time;
-			//print("sum: ", ftos(e.latency_sum), ", cnt: ", ftos(e.latency_cnt), ", avg: ", ftos(e.latency_sum / e.latency_cnt), ".\n");
-		}
 	}
 	else
 	{
@@ -744,8 +731,6 @@ spawnfunc(worldspawn)
 		CampaignPreInit();
 
 	Map_MarkAsRecent(mapname);
-
-	PlayerStats_GameReport_Init(); // we need this to be initiated before InitGameplayMode
 
 	InitGameplayMode();
 	static_init_late();
@@ -1567,7 +1552,6 @@ void NextLevel()
 	DumpStats(true);
 
 	// send statistics
-	PlayerStats_GameReport(true);
 	WeaponStats_Shutdown();
 
 	Kill_Notification(NOTIF_ALL, NULL, MSG_CENTER, CPID_Null); // kill all centerprints now
@@ -2187,9 +2171,6 @@ void Shutdown()
 		world_initialized = 0;
 		LOG_TRACE("Saving persistent data...");
 		Ban_SaveBans();
-
-		// playerstats with unfinished match
-		PlayerStats_GameReport(false);
 
 		if(!cheatcount_total)
 		{

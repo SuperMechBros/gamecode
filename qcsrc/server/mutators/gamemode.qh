@@ -57,7 +57,6 @@
 #include <lib/csqcmodel/sv_model.qh>
 #include <server/anticheat.qh>
 #include <server/cheats.qh>
-#include <common/playerstats.qh>
 #include <server/portals.qh>
 #include <server/g_hook.qh>
 #include <server/spawnpoints.qh>

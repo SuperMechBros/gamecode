@@ -17,7 +17,6 @@
 #include "../common/deathtypes/all.qh"
 #include "../common/notifications/all.qh"
 #include "../common/physics/movetypes/movetypes.qh"
-#include "../common/playerstats.qh"
 #include "../common/teams.qh"
 #include "../common/util.qh"
 #include <common/weapons/_all.qh>
@@ -51,8 +50,6 @@ void GiveFrags (entity attacker, entity targ, float f, int deathtype)
 	{
 		// regular frag
 		PlayerScore_Add(attacker, SP_KILLS, 1);
-		if(targ.playerid)
-			PS_GR_P_ADDVAL(attacker, sprintf("kills-%d", targ.playerid), 1);
 	}
 
 	PlayerScore_Add(targ, SP_DEATHS, 1);
@@ -380,7 +377,6 @@ void Obituary(entity attacker, entity inflictor, entity targ, int deathtype)
 				case counta: \
 				{ \
 					Send_Notification(NOTIF_ONE, attacker, MSG_ANNCE, ANNCE_KILLSTREAK_##countb); \
-					PS_GR_P_ADDVAL(attacker, PLAYERSTATS_ACHIEVEMENT_KILL_SPREE_##counta, 1); \
 					break; \
 				}
 			switch(attacker.killcount)
@@ -394,8 +390,6 @@ void Obituary(entity attacker, entity inflictor, entity targ, int deathtype)
 			{
 				checkrules_firstblood = true;
 				notif_firstblood = true; // modify the current messages so that they too show firstblood information
-				PS_GR_P_ADDVAL(attacker, PLAYERSTATS_ACHIEVEMENT_FIRSTBLOOD, 1);
-				PS_GR_P_ADDVAL(targ, PLAYERSTATS_ACHIEVEMENT_FIRSTVICTIM, 1);
 
 				// tell spree_inf and spree_cen that this is a first-blood and first-victim event
 				kill_count_to_attacker = -1;
@@ -510,7 +504,6 @@ void Obituary(entity attacker, entity inflictor, entity targ, int deathtype)
 		if(PlayerScore_Add(targ, SP_SCORE, 0) == -5)
 		{
 			Send_Notification(NOTIF_ONE, targ, MSG_ANNCE, ANNCE_ACHIEVEMENT_BOTLIKE);
-			PS_GR_P_ADDVAL(attacker, PLAYERSTATS_ACHIEVEMENT_BOTLIKE, 1);
 		}
 	}
 

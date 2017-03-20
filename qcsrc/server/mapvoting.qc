@@ -6,7 +6,6 @@
 #include "../common/constants.qh"
 #include <common/net_linked.qh>
 #include "../common/mapinfo.qh"
-#include "../common/playerstats.qh"
 #include "../common/util.qh"
 
 
@@ -632,9 +631,6 @@ void MapVote_Start()
 {
 	// if mapvote is already running, don't do this initialization again
 	if(mapvote_run) { return; }
-
-	// don't start mapvote until after playerstats gamereport is sent
-	if(PlayerStats_GameReport_DelayMapVote) { return; }
 
 	MapInfo_Enumerate();
 	if(MapInfo_FilterGametype(MapInfo_CurrentGametype(), MapInfo_CurrentFeatures(), MapInfo_RequiredFlags(), MapInfo_ForbiddenFlags(), 1))

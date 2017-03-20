@@ -3,7 +3,6 @@
 #include "command/common.qh"
 #include "mutators/_mod.qh"
 #include <common/net_linked.qh>
-#include "../common/playerstats.qh"
 #include "../common/teams.qh"
 
 .entity scorekeeper;
@@ -92,7 +91,6 @@ void TeamScore_Spawn(float t, string name)
 	Net_LinkEntity(ts, false, 0, TeamScore_SendEntity);
 	teamscorekeepers[t - 1] = ts;
 	++teamscores_entities_count;
-	PlayerStats_GameReport_AddTeam(t);
 }
 
 float TeamScore_AddToTeam(float t, float scorefield, float score)
@@ -159,11 +157,6 @@ void ScoreInfo_SetLabel_PlayerScore(PlayerScoreField i, string label, float scor
 		scores_primary = scores(i);
 		scores_flags_primary = scoreflags;
 	}
-	if(label != "")
-	{
-		PlayerStats_GameReport_AddEvent(strcat(PLAYERSTATS_TOTAL, label));
-		PlayerStats_GameReport_AddEvent(strcat(PLAYERSTATS_SCOREBOARD, label));
-	}
 }
 
 void ScoreInfo_SetLabel_TeamScore(float i, string label, float scoreflags)
@@ -174,11 +167,6 @@ void ScoreInfo_SetLabel_TeamScore(float i, string label, float scoreflags)
 	{
 		teamscores_primary = teamscores(i);
 		teamscores_flags_primary = scoreflags;
-	}
-	if(label != "")
-	{
-		PlayerStats_GameReport_AddEvent(strcat(PLAYERSTATS_TOTAL, label));
-		PlayerStats_GameReport_AddEvent(strcat(PLAYERSTATS_SCOREBOARD, label));
 	}
 }
 
@@ -340,8 +328,6 @@ float PlayerScore_Add(entity player, PlayerScoreField scorefield, float score)
 	if(score)
 		if(scores_label(scorefield) != "")
 			s.SendFlags |= (2 ** (scorefield.m_id % 16));
-	if(!warmup_stage)
-		PS_GR_P_ADDVAL(s.owner, strcat(PLAYERSTATS_TOTAL, scores_label(scorefield)), score);
 	return (s.(scores(scorefield)) += score);
 }
 
@@ -894,31 +880,4 @@ void Score_NicePrint(entity to)
 		Score_NicePrint_Spectator(to, it);
 		t = 1;
 	));
-}
-
-void PlayerScore_PlayerStats(entity p)
-{
-	entity s = p.scorekeeper;
-	FOREACH(Scores, true, {
-		if(s.(scores(it)) != 0)
-			if(scores_label(it) != "")
-				PS_GR_P_ADDVAL(s.owner, strcat(PLAYERSTATS_SCOREBOARD, scores_label(it)), s.(scores(it)));
-    });
-}
-
-void PlayerScore_TeamStats()
-{
-	entity sk;
-	float t, i;
-	for(t = 0; t < 16; ++t)
-	{
-		sk = teamscorekeepers[t];
-		if(!sk)
-			continue;
-		for(i = 0; i < MAX_TEAMSCORE; ++i)
-			if(sk.(teamscores(i)) != 0)
-				if(teamscores_label(i) != "")
-					// the +1 is important here!
-					PS_GR_T_ADDVAL(t+1, strcat(PLAYERSTATS_SCOREBOARD, teamscores_label(i)), sk.(teamscores(i)));
-	}
 }

@@ -306,8 +306,6 @@ MUTATOR_HOOKFUNCTION(rc, GetPressedKeys)
 {
 	entity player = M_ARGV(0, entity);
 
-	if(player.cvar_cl_allow_uidtracking == 1 && player.cvar_cl_allow_uid2name == 1)
-	{
 		if (!player.stored_netname)
 			player.stored_netname = strzone(uid2name(player.crypto_idfp));
 		if(player.stored_netname != player.netname)
@@ -316,7 +314,6 @@ MUTATOR_HOOKFUNCTION(rc, GetPressedKeys)
 			strunzone(player.stored_netname);
 			player.stored_netname = strzone(player.netname);
 		}
-	}
 
 	if (!IS_OBSERVER(player))
 	{

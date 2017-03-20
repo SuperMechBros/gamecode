@@ -6,7 +6,6 @@
 #include "miscfunctions.qh"
 
 #include "command/common.qh"
-#include <common/playerstats.qh>
 #include <common/state.qh>
 
 .float anticheat_jointime;
@@ -199,22 +198,6 @@ void anticheat_report_to_eventlog(entity this) {
 	GameLogEcho(strcat(":anticheat:", name, ":", anticheat_display(f, servertime - CS(this).anticheat_jointime, tmin, mi, ma)))
 	ANTICHEATS(ANTICHEAT_REPORT_ONE);
 #undef ANTICHEAT_REPORT_ONE
-}
-
-void anticheat_report_to_playerstats(entity this) {
-	PS_GR_P_ADDVAL(this, strcat(PLAYERSTATS_ANTICHEAT, "_time"), servertime - CS(this).anticheat_jointime);
-#define ANTICHEAT_REPORT_ONE(name, f, tmin, mi, ma) \
-	PS_GR_P_ADDVAL(this, strcat(PLAYERSTATS_ANTICHEAT, name), f)
-	ANTICHEATS(ANTICHEAT_REPORT_ONE);
-#undef ANTICHEAT_REPORT_ONE
-}
-
-void anticheat_register_to_playerstats() {
-	PlayerStats_GameReport_AddEvent(strcat(PLAYERSTATS_ANTICHEAT, "_time"));
-#define ANTICHEAT_REGISTER_ONE(name, unused_f, unused_tmin, unused_mi, unused_ma) \
-	PlayerStats_GameReport_AddEvent(strcat(PLAYERSTATS_ANTICHEAT, name))
-	ANTICHEATS(ANTICHEAT_REGISTER_ONE);
-#undef ANTICHEAT_REGISTER_ONE
 }
 
 #undef ANTICHEATS
