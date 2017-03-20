@@ -1,0 +1,29 @@
+#pragma once
+
+.bool cvar_cl_accuracy_data_share;
+REPLICATE(cvar_cl_accuracy_data_share, bool, "cl_accuracy_data_share");
+.bool cvar_cl_accuracy_data_receive;
+REPLICATE(cvar_cl_accuracy_data_receive, bool, "cl_accuracy_data_receive");
+
+.entity accuracy;
+.float accuracy_frags[Weapons_MAX];
+
+.float accuracy_hit[Weapons_MAX];
+.float accuracy_fired[Weapons_MAX];
+.float accuracy_cnt_hit[Weapons_MAX];
+.float accuracy_cnt_fired[Weapons_MAX];
+
+
+// init/free
+void accuracy_init(entity e);
+void accuracy_free(entity e);
+
+// force a resend of a player's accuracy stats
+void accuracy_resend(entity e);
+
+// update accuracy stats
+void accuracy_add(entity e, float w, float fired, float hit);
+
+// helper
+bool accuracy_isgooddamage(entity attacker, entity targ);
+bool accuracy_canbegooddamage(entity attacker);

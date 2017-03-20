@@ -1,0 +1,34 @@
+#pragma once
+
+#include <common/command/_mod.qh>
+
+#include "item.qh"
+
+REGISTRY(Items, BITS(7))
+#define Items_from(i) _Items_from(i, NULL)
+REGISTER_REGISTRY(Items)
+#define REGISTER_ITEM(id, class) REGISTER(Items, ITEM, id, m_id, NEW(class))
+
+REGISTRY_SORT(Items)
+REGISTRY_CHECK(Items)
+STATIC_INIT(Items) { FOREACH(Items, true, it.m_id = i); }
+
+void Dump_Items();
+
+GENERIC_COMMAND(dumpitems, "Dump all items to the console") {
+    switch (request) {
+        case CMD_REQUEST_COMMAND: {
+            Dump_Items();
+            return;
+        }
+        default:
+        case CMD_REQUEST_USAGE: {
+            LOG_INFOF("\nUsage:^3 %s dumpitems", GetProgramCommandPrefix());
+            return;
+        }
+    }
+}
+
+#ifdef GAMEQC
+string Item_Model(string item_mdl);
+#endif

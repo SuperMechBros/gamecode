@@ -1,0 +1,38 @@
+#pragma once
+
+#ifdef SVQC
+// ==========================
+//  Balance Config Generator
+// ==========================
+
+void Dump_Weapon_Settings();
+int wep_config_file;
+bool wep_config_alsoprint;
+
+const int MAX_WEP_CONFIG = 256;
+int WEP_CONFIG_COUNT;
+string wep_config_queue[MAX_WEP_CONFIG];
+
+#define WEP_CONFIG_QUEUE(a) { \
+	wep_config_queue[WEP_CONFIG_COUNT] = a; \
+	++WEP_CONFIG_COUNT; }
+
+#define WEP_CONFIG_WRITETOFILE(a) MACRO_BEGIN { \
+	fputs(wep_config_file, a); \
+	if(wep_config_alsoprint) { LOG_INFO(a); } \
+} MACRO_END
+
+
+#define WEP_CONFIG_WRITE_CVARS(wepname, name, T) WEP_CONFIG_WRITE_PROPS_##T(wepname, name)
+
+#define WEP_CONFIG_WRITE_PROPS_string(wepname, name) \
+	{ WEP_CONFIG_QUEUE( \
+		sprintf("set g_balance_%s_%s \"%s\"\n", #wepname, #name, \
+		cvar_string(sprintf("g_balance_%s_%s", #wepname, #name)))) }
+
+#define WEP_CONFIG_WRITE_PROPS_float(wepname, name) \
+	{ WEP_CONFIG_QUEUE( \
+		sprintf("set g_balance_%s_%s %g\n", #wepname, #name, \
+		cvar(sprintf("g_balance_%s_%s", #wepname, #name)))) }
+
+#endif
