@@ -23,7 +23,6 @@
 #include "dialog_hudpanel_infomessages.qh"
 #include "dialog_hudpanel_physics.qh"
 #include "dialog_hudpanel_centerprint.qh"
-#include "dialog_hudpanel_itemstime.qh"
 #include "dialog_hudpanel_quickmenu.qh"
 
 #include "dialog_settings_input_userbind.qh"
@@ -140,10 +139,6 @@ void MainWindow_configureMainWindow(entity me)
 	i = NEW(XonoticHUDCenterprintDialog);
 	i.configureDialog(i);
 	me.addItemRightCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
-
-	i = NEW(XonoticHUDItemsTimeDialog);
-	i.configureDialog(i);
-	me.addItemCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z);
 
 	i = NEW(XonoticHUDQuickMenuDialog);
 	i.configureDialog(i);

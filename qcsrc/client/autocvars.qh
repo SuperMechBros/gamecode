@@ -200,7 +200,6 @@ bool autocvar_hud_panel_engineinfo_dynamichud   = true;
 bool autocvar_hud_panel_infomessages_dynamichud = false;
 bool autocvar_hud_panel_physics_dynamichud      = true;
 bool autocvar_hud_panel_centerprint_dynamichud  = true;
-//bool autocvar_hud_panel_itemstime_dynamichud    = true;
 bool autocvar_hud_panel_healtharmor_hide_ondeath  = false;
 bool autocvar_hud_panel_ammo_hide_ondeath         = false;
 bool autocvar_hud_panel_powerups_hide_ondeath     = false;

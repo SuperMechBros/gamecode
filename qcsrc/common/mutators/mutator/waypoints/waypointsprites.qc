@@ -482,10 +482,7 @@ void Draw_WaypointSprite(entity this)
     switch (this.rule)
     {
         case SPRITERULE_SPECTATOR:
-            if (!(
-                (autocvar_g_waypointsprite_itemstime == 1 && t == NUM_SPECTATOR + 1)
-            ||	(autocvar_g_waypointsprite_itemstime == 2 && (t == NUM_SPECTATOR + 1 || warmup_stage || STAT(ITEMSTIME) == 2))
-                ))
+            if(!(t == NUM_SPECTATOR + 1 || warmup_stage))
                 return;
             spriteimage = this.netname;
             break;
@@ -931,9 +928,7 @@ bool WaypointSprite_visible_for_player(entity this, entity player, entity view)
     // team waypoints
     if (this.rule == SPRITERULE_SPECTATOR)
     {
-        if (!autocvar_sv_itemstime)
-            return false;
-        if (!warmup_stage && IS_PLAYER(view) && autocvar_sv_itemstime != 2)
+        if (!warmup_stage && IS_PLAYER(view))
             return false;
     }
     else if (this.team && this.rule == SPRITERULE_DEFAULT)

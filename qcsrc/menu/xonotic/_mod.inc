@@ -25,7 +25,6 @@
 #include <menu/xonotic/dialog_hudpanel_engineinfo.qc>
 #include <menu/xonotic/dialog_hudpanel_healtharmor.qc>
 #include <menu/xonotic/dialog_hudpanel_infomessages.qc>
-#include <menu/xonotic/dialog_hudpanel_itemstime.qc>
 #include <menu/xonotic/dialog_hudpanel_modicons.qc>
 #include <menu/xonotic/dialog_hudpanel_notification.qc>
 #include <menu/xonotic/dialog_hudpanel_physics.qc>

@@ -194,15 +194,6 @@ void HUD_Panel_ExportCfg(string cfgname)
 					HUD_Write_PanelCvar("_fade_subsequent_minfontsize");
 					HUD_Write_PanelCvar("_fade_minfontsize");
 					break;
-				case HUD_PANEL_ITEMSTIME:
-					HUD_Write_PanelCvar("_iconalign");
-					HUD_Write_PanelCvar("_progressbar");
-					HUD_Write_PanelCvar("_progressbar_name");
-					HUD_Write_PanelCvar("_progressbar_reduced");
-					HUD_Write_PanelCvar("_text");
-					HUD_Write_PanelCvar("_ratio");
-					HUD_Write_PanelCvar("_dynamicsize");
-					break;
 				case HUD_PANEL_QUICKMENU:
 					HUD_Write_PanelCvar("_align");
 					break;
