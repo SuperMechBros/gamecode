@@ -48,8 +48,6 @@ float CA_GetWinnerTeam()
 	return -1; // no player left
 }
 
-void nades_Clear(entity player);
-
 #define CA_ALIVE_TEAMS() ((redalive > 0) + (bluealive > 0) + (yellowalive > 0) + (pinkalive > 0))
 #define CA_ALIVE_TEAMS_OK() (CA_ALIVE_TEAMS() == NumTeams(ca_teams))
 float CA_CheckWinner()
@@ -58,7 +56,6 @@ float CA_CheckWinner()
 	{
 		Send_Notification(NOTIF_ALL, NULL, MSG_CENTER, CENTER_ROUND_OVER);
 		Send_Notification(NOTIF_ALL, NULL, MSG_INFO, INFO_ROUND_OVER);
-		FOREACH_CLIENT(IS_PLAYER(it), LAMBDA(nades_Clear(it)));
 
 		allowed_to_spawn = false;
 		game_stopped = true;
@@ -86,8 +83,6 @@ float CA_CheckWinner()
 	allowed_to_spawn = false;
 	game_stopped = true;
 	round_handler_Init(5, autocvar_g_ca_warmup, autocvar_g_ca_round_timelimit);
-
-	FOREACH_CLIENT(IS_PLAYER(it), LAMBDA(nades_Clear(it)));
 
 	return 1;
 }

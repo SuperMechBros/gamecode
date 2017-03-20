@@ -125,10 +125,6 @@
     MSG_ANNCE_NOTIF(KILLSTREAK_25,              N_GNTLOFF, "25kills",           CH_INFO, VOL_BASEVOICE, ATTEN_NONE)
     MSG_ANNCE_NOTIF(KILLSTREAK_30,              N_GNTLOFF, "30kills",           CH_INFO, VOL_BASEVOICE, ATTEN_NONE)
 
-    MSG_ANNCE_NOTIF(INSTAGIB_LASTSECOND,        N_GNTLOFF, "lastsecond",        CH_INFO, VOL_BASEVOICE, ATTEN_NONE)
-    MSG_ANNCE_NOTIF(INSTAGIB_NARROWLY,          N_GNTLOFF, "narrowly",          CH_INFO, VOL_BASEVOICE, ATTEN_NONE)
-    MSG_ANNCE_NOTIF(INSTAGIB_TERMINATED,        N_GNTLOFF, "terminated",        CH_INFO, VOL_BASEVOICE, ATTEN_NONE)
-
     MSG_ANNCE_NOTIF(MULTIFRAG,                  N___NEVER, "multifrag",         CH_INFO, VOL_BASEVOICE, ATTEN_NONE)
 
     MSG_ANNCE_NOTIF(NUM_1,                      N__ALWAYS, "1",                 CH_INFO, VOL_BASEVOICE, ATTEN_NONE)
@@ -265,8 +261,6 @@
     MSG_INFO_NOTIF(COINTOSS,                                N_CHATCON,  1, 0, "s1", "",     "",     _("^F2Throwing coin... Result: %s^F2!"), "")
 
     MSG_INFO_NOTIF(JETPACK_NOFUEL,                          N_CONSOLE,  0, 0, "", "",       "",     _("^BGYou don't have any fuel for the ^F1Jetpack"), "")
-
-    MSG_INFO_NOTIF(SUPERSPEC_MISSING_UID,                   N_CHATCON,  0, 0, "", "",       "",     _("^F2You lack a UID, superspec options will not be saved/restored"), "")
 
     MSG_INFO_NOTIF(CA_JOIN_LATE,                            N_CONSOLE,  0, 0, "", "",       "",     _("^F1Round already started, you will join the game in the next round"), "")
     MSG_INFO_NOTIF(CA_LEAVE,                                N_CONSOLE,  0, 0, "", "",       "",     _("^F2You will spectate in the next round"), "")
@@ -668,11 +662,6 @@
     MSG_CENTER_NOTIF(MISSING_TEAMS,                     N_ENABLE,    0, 1, "missing_teams",  CPID_MISSING_TEAMS,     "-1 0", _("^BGWaiting for players to join...\nNeed active players for: %s"), "")
     MSG_CENTER_NOTIF(MISSING_PLAYERS,                   N_ENABLE,    0, 1, "f1",             CPID_MISSING_PLAYERS,   "-1 0", _("^BGWaiting for %s player(s) to join..."), "")
 
-    MSG_CENTER_NOTIF(INSTAGIB_DOWNGRADE,                N_ENABLE,    0, 0, "",               CPID_INSTAGIB_FINDAMMO, "5 0",  _("^BGYour weapon has been downgraded until you find some ammo!"), "")
-    MSG_CENTER_NOTIF(INSTAGIB_FINDAMMO,                 N_ENABLE,    0, 0, "",               CPID_INSTAGIB_FINDAMMO, "1 9",  _("^F4^COUNT^BG left to find some ammo!"), "")
-    MSG_CENTER_NOTIF(INSTAGIB_FINDAMMO_FIRST,           N_ENABLE,    0, 0, "",               CPID_INSTAGIB_FINDAMMO, "1 10", _("^BGGet some ammo or you'll be dead in ^F4^COUNT^BG!"), _("^BGGet some ammo! ^F4^COUNT^BG left!"))
-    MSG_CENTER_NOTIF(INSTAGIB_LIVES_REMAINING,          N_ENABLE,    0, 1, "f1",             CPID_Null,              "0 0",  _("^F2Extra lives remaining: ^K1%s"), "")
-
     MSG_CENTER_NOTIF(MOTD,                              N_ENABLE,    1, 0, "s1",             CPID_MOTD,              "-1 0", "^BG%s", "")
 
     MSG_CENTER_NOTIF(NIX_COUNTDOWN,                     N_ENABLE,    0, 2, "item_wepname",   CPID_NIX,               "1 f2", _("^F2^COUNT^BG until weapon change...\nNext weapon: ^F1%s"), "")
@@ -812,7 +801,6 @@
 
     MSG_MULTI_NOTIF(MULTI_COINTOSS,                     N_ENABLE,  NULL,           INFO_COINTOSS,                          CENTER_COINTOSS)
     MSG_MULTI_NOTIF(MULTI_COUNTDOWN_BEGIN,              N_ENABLE,  ANNCE_BEGIN,    NULL,                                   CENTER_COUNTDOWN_BEGIN)
-    MSG_MULTI_NOTIF(MULTI_INSTAGIB_FINDAMMO,            N_ENABLE,  ANNCE_NUM_10,   NULL,                                   CENTER_INSTAGIB_FINDAMMO_FIRST)
 
     MSG_MULTI_NOTIF(WEAPON_ACCORDEON_MURDER,            N_ENABLE,  NULL,           INFO_WEAPON_ACCORDEON_MURDER,           NULL)
     MSG_MULTI_NOTIF(WEAPON_ACCORDEON_SUICIDE,           N_ENABLE,  NULL,           INFO_WEAPON_ACCORDEON_SUICIDE,          CENTER_DEATH_SELF_GENERIC)

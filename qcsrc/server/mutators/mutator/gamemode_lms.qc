@@ -1,10 +1,8 @@
 #include "gamemode_lms.qh"
 
-#include <common/mutators/mutator/instagib/items.qc>
 #include <server/campaign.qh>
 #include <server/command/_mod.qh>
 
-int autocvar_g_lms_extra_lives;
 bool autocvar_g_lms_join_anytime;
 int autocvar_g_lms_last_join;
 bool autocvar_g_lms_regenerate;
@@ -315,54 +313,7 @@ MUTATOR_HOOKFUNCTION(lms, ForbidPlayerScore_Clear)
 
 MUTATOR_HOOKFUNCTION(lms, FilterItem)
 {
-	entity item = M_ARGV(0, entity);
-
-	if(autocvar_g_lms_extra_lives)
-	if(item.itemdef == ITEM_ExtraLife)
-		return false;
-
 	return true;
-}
-
-void lms_extralife(entity this)
-{
-	StartItem(this, ITEM_ExtraLife);
-}
-
-MUTATOR_HOOKFUNCTION(lms, OnEntityPreSpawn)
-{
-	if (!autocvar_g_powerups) return false;
-	if (!autocvar_g_lms_extra_lives) return false;
-
-	entity ent = M_ARGV(0, entity);
-
-	// Can't use .itemdef here
-	if (ent.classname != "item_health_mega") return false;
-
-	entity e = spawn();
-	setthink(e, lms_extralife);
-
-	e.nextthink = time + 0.1;
-	e.spawnflags = ent.spawnflags;
-	e.noalign = ent.noalign;
-	setorigin(e, ent.origin);
-
-	return true;
-}
-
-MUTATOR_HOOKFUNCTION(lms, ItemTouch)
-{
-	entity item = M_ARGV(0, entity);
-	entity toucher = M_ARGV(1, entity);
-
-	if(item.itemdef == ITEM_ExtraLife)
-	{
-		Send_Notification(NOTIF_ONE, toucher, MSG_CENTER, CENTER_EXTRALIVES);
-		PlayerScore_Add(toucher, SP_LMS_LIVES, autocvar_g_lms_extra_lives);
-		return MUT_ITEMTOUCH_PICKUP;
-	}
-
-	return MUT_ITEMTOUCH_CONTINUE;
 }
 
 MUTATOR_HOOKFUNCTION(lms, Bot_FixCount, CBC_ORDER_EXCLUSIVE)

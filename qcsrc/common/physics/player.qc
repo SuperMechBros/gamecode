@@ -586,18 +586,7 @@ void PM_check_frozen(entity this)
 {
 	if (!PHYS_FROZEN(this))
 		return;
-	if (PHYS_DODGING_FROZEN(this)
-#ifdef SVQC
-	&& IS_REAL_CLIENT(this)
-#endif
-	)
-	{
-		this.movement_x = bound(-5, this.movement.x, 5);
-		this.movement_y = bound(-5, this.movement.y, 5);
-		this.movement_z = bound(-5, this.movement.z, 5);
-	}
-	else
-		this.movement = '0 0 0';
+	this.movement = '0 0 0';
 
 	vector midpoint = ((this.absmin + this.absmax) * 0.5);
 	if (pointcontents(midpoint) == CONTENT_WATER)

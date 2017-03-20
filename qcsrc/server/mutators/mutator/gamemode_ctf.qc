@@ -547,8 +547,6 @@ void shockwave_spawn(string m, vector org, float sz, float t1, float t2)
 // Event Handlers
 // ==============
 
-void nades_GiveBonus(entity player, float score);
-
 void ctf_Handle_Capture(entity flag, entity toucher, int capturetype)
 {
 	entity enemy_flag = ((capturetype == CAPTURE_NORMAL) ? toucher.flagcarried : toucher);
@@ -567,8 +565,6 @@ void ctf_Handle_Capture(entity flag, entity toucher, int capturetype)
 		player_team_flag = tmp_entity;
 		break;
 	}
-
-	nades_GiveBonus(player, autocvar_g_nades_bonus_score_high );
 
 	player.throw_prevtime = time;
 	player.throw_count = 0;
@@ -639,8 +635,6 @@ void ctf_Handle_Return(entity flag, entity player)
 	{
 		PlayerTeamScore_AddScore(player, ((flag.score_return) ? flag.score_return : autocvar_g_ctf_score_return)); // reward for return
 		PlayerScore_Add(player, SP_CTF_RETURNS, 1); // add to count of returns
-
-		nades_GiveBonus(player,autocvar_g_nades_bonus_score_medium);
 	}
 
 	TeamScore_AddToTeam(flag.team, ST_SCORE, -autocvar_g_ctf_score_penalty_returned); // punish the team who was last carrying it
@@ -715,7 +709,6 @@ void ctf_Handle_Pickup(entity flag, entity player, int pickuptype)
 
 	// scoring
 	PlayerScore_Add(player, SP_CTF_PICKUPS, 1);
-	nades_GiveBonus(player, autocvar_g_nades_bonus_score_minor);
 	switch(pickuptype)
 	{
 		case PICKUP_BASE:
@@ -2408,51 +2401,6 @@ MUTATOR_HOOKFUNCTION(ctf, GetRecords)
 	}
 
 	M_ARGV(1, string) = ret_string;
-}
-
-bool superspec_Spectate(entity this, entity targ); // TODO
-void superspec_msg(string _center_title, string _con_title, entity _to, string _msg, float _spamlevel); // TODO
-MUTATOR_HOOKFUNCTION(ctf, SV_ParseClientCommand)
-{
-	entity player = M_ARGV(0, entity);
-	string cmd_name = M_ARGV(1, string);
-	int cmd_argc = M_ARGV(2, int);
-
-	if(IS_PLAYER(player) || MUTATOR_RETURNVALUE || !cvar("g_superspectate")) { return false; }
-
-	if(cmd_name == "followfc")
-	{
-		if(!g_ctf)
-			return true;
-
-		int _team = 0;
-		bool found = false;
-
-		if(cmd_argc == 2)
-		{
-			switch(argv(1))
-			{
-				case "red":    if(ctf_teams & BIT(0)) _team = NUM_TEAM_1; break;
-				case "blue":   if(ctf_teams & BIT(1)) _team = NUM_TEAM_2; break;
-				case "yellow": if(ctf_teams & BIT(2)) _team = NUM_TEAM_3; break;
-				case "pink":   if(ctf_teams & BIT(3)) _team = NUM_TEAM_4; break;
-			}
-		}
-
-		FOREACH_CLIENT(IS_PLAYER(it), LAMBDA(
-			if(it.flagcarried && (it.team == _team || _team == 0))
-			{
-				found = true;
-				if(_team == 0 && IS_SPEC(player) && player.enemy == it)
-					continue; // already spectating this fc, try another
-				return superspec_Spectate(player, it);
-			}
-		));
-
-		if(!found)
-			superspec_msg("", "", player, "No active flag carrier\n", 1);
-		return true;
-	}
 }
 
 MUTATOR_HOOKFUNCTION(ctf, DropSpecialItems)

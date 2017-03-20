@@ -198,7 +198,7 @@ void W_Vaporizer_Attack(Weapon thiswep, entity actor, .entity weaponentity)
 
 	actor.vaporizer_lasthit = damage_goodhits;
 
-	W_DecreaseAmmo(thiswep, actor, ((g_instagib) ? 1 : WEP_CVAR_PRI(vaporizer, ammo)), weaponentity);
+	W_DecreaseAmmo(thiswep, actor, WEP_CVAR_PRI(vaporizer, ammo), weaponentity);
 }
 
 METHOD(Vaporizer, wr_aim, void(entity thiswep, entity actor, .entity weaponentity))
@@ -210,7 +210,7 @@ METHOD(Vaporizer, wr_aim, void(entity thiswep, entity actor, .entity weaponentit
 }
 METHOD(Vaporizer, wr_think, void(entity thiswep, entity actor, .entity weaponentity, int fire))
 {
-    float vaporizer_ammo = ((g_instagib) ? 1 : WEP_CVAR_PRI(vaporizer, ammo));
+    float vaporizer_ammo = WEP_CVAR_PRI(vaporizer, ammo);
     // if the laser uses load, we also consider its ammo for reloading
     if(WEP_CVAR(vaporizer, reload_ammo) && WEP_CVAR_SEC(vaporizer, ammo) && actor.(weaponentity).clip_load < min(vaporizer_ammo, WEP_CVAR_SEC(vaporizer, ammo))) { // forced reload
         thiswep.wr_reload(thiswep, actor, weaponentity);
@@ -269,7 +269,7 @@ METHOD(Vaporizer, wr_setup, void(entity thiswep, entity actor, .entity weaponent
 }
 METHOD(Vaporizer, wr_checkammo1, bool(entity thiswep, entity actor, .entity weaponentity))
 {
-    float vaporizer_ammo = ((g_instagib) ? 1 : WEP_CVAR_PRI(vaporizer, ammo));
+    float vaporizer_ammo = WEP_CVAR_PRI(vaporizer, ammo);
     float ammo_amount = actor.(thiswep.ammo_field) >= vaporizer_ammo;
     ammo_amount += actor.(weaponentity).(weapon_load[WEP_VAPORIZER.m_id]) >= vaporizer_ammo;
     return ammo_amount;
@@ -288,7 +288,7 @@ METHOD(Vaporizer, wr_resetplayer, void(entity thiswep, entity actor))
 }
 METHOD(Vaporizer, wr_reload, void(entity thiswep, entity actor, .entity weaponentity))
 {
-    float vaporizer_ammo = ((g_instagib) ? 1 : WEP_CVAR_PRI(vaporizer, ammo));
+    float vaporizer_ammo = WEP_CVAR_PRI(vaporizer, ammo);
     float used_ammo;
     if(WEP_CVAR_SEC(vaporizer, ammo))
         used_ammo = min(vaporizer_ammo, WEP_CVAR_SEC(vaporizer, ammo));

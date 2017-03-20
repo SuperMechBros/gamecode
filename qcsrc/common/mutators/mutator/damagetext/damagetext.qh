@@ -1,5 +1,0 @@
-#pragma once
-
-#ifdef MENUQC
-#include <menu/xonotic/tab.qh>
-#endif

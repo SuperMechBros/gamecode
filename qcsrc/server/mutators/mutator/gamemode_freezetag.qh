@@ -48,5 +48,3 @@ float freezetag_teams;
 
 float autocvar_g_freezetag_revive_extra_size;
 float autocvar_g_freezetag_revive_speed;
-bool autocvar_g_freezetag_revive_nade;
-float autocvar_g_freezetag_revive_nade_health;

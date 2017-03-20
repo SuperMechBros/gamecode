@@ -1109,8 +1109,6 @@ int Onslaught_GetWinnerTeam()
 	return -1; // no generators left?
 }
 
-void nades_Clear(entity e);
-
 #define ONS_OWNED_GENERATORS() ((redowned > 0) + (blueowned > 0) + (yellowowned > 0) + (pinkowned > 0))
 #define ONS_OWNED_GENERATORS_OK() (ONS_OWNED_GENERATORS() > 1)
 bool Onslaught_CheckWinner()
@@ -1184,8 +1182,6 @@ bool Onslaught_CheckWinner()
 	FOREACH_CLIENT(IS_PLAYER(it), {
 		STAT(ROUNDLOST, it) = true;
 		it.player_blocked = true;
-
-		nades_Clear(it);
 	});
 
 	game_stopped = true;

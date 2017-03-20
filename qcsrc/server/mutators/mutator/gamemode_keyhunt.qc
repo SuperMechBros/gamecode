@@ -520,8 +520,6 @@ void kh_FinishRound()  // runs when a team captures the keys
 	kh_Controller_SetThink(autocvar_g_balance_keyhunt_delay_round, kh_StartRound);
 }
 
-void nades_GiveBonus(entity player, float score);
-
 void kh_WinnerTeam(int winner_team)  // runs when a team wins
 {
 	// all key carriers get some points
@@ -535,7 +533,6 @@ void kh_WinnerTeam(int winner_team)  // runs when a team wins
 		float f = DistributeEvenly_Get(1);
 		kh_Scores_Event(key.owner, key, "capture", f, 0);
 		PlayerTeamScore_Add(key.owner, SP_KH_CAPS, ST_KH_CAPS, 1);
-		nades_GiveBonus(key.owner, autocvar_g_nades_bonus_score_high);
 	}
 
 	bool first = true;

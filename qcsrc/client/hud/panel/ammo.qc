@@ -14,8 +14,6 @@ void DrawNadeProgressBar(vector myPos, vector mySize, float progress, vector col
 		autocvar_hud_progressbar_alpha * panel_fg_alpha, DRAWFLAG_NORMAL);
 }
 
-void DrawAmmoNades(vector myPos, vector mySize, bool draw_expanding, float expand_time); // TODO: mutator
-
 void DrawAmmoItem(vector myPos, vector mySize, .int ammoType, bool isCurrent, bool isInfinite)
 {
     TC(bool, isCurrent); TC(bool, isInfinite);
@@ -89,10 +87,6 @@ void DrawAmmoItem(vector myPos, vector mySize, .int ammoType, bool isCurrent, bo
 	drawpic_aspect_skin(iconPos, GetAmmoPicture(ammoType), '1 1 0' * mySize.y, iconColor, alpha, DRAWFLAG_NORMAL);
 }
 
-int nade_prevstatus;
-int nade_prevframe;
-float nade_statuschange_time;
-
 void HUD_Ammo()
 {
 	if(hud != HUD_NORMAL) return;
@@ -124,9 +118,6 @@ void HUD_Ammo()
 	}
 
 	int rows = 0, columns, row, column;
-	float nade_cnt = STAT(NADE_BONUS), nade_score = STAT(NADE_BONUS_SCORE);
-	bool draw_nades = (nade_cnt > 0 || nade_score > 0);
-	float nade_statuschange_elapsedtime;
 	int total_ammo_count;
 
 	vector ammo_size;
@@ -134,19 +125,6 @@ void HUD_Ammo()
 		total_ammo_count = 1;
 	else
 		total_ammo_count = AMMO_COUNT;
-
-	if(draw_nades)
-	{
-		++total_ammo_count;
-		if (nade_cnt != nade_prevframe)
-		{
-			nade_statuschange_time = time;
-			nade_prevstatus = nade_prevframe;
-			nade_prevframe = nade_cnt;
-		}
-	}
-	else
-		nade_prevstatus = nade_prevframe = nade_statuschange_time = 0;
 
 	rows = HUD_GetRowCount(total_ammo_count, mySize, 3);
 	columns = ceil((total_ammo_count)/rows);
@@ -221,15 +199,6 @@ void HUD_Ammo()
 				column = column + 1;
 			}
 		}
-	}
-
-	if (draw_nades)
-	{
-		nade_statuschange_elapsedtime = time - nade_statuschange_time;
-
-		float f = bound(0, nade_statuschange_elapsedtime*2, 1);
-
-		DrawAmmoNades(pos + eX * column * (ammo_size.x + offset.x) + eY * row * (ammo_size.y + offset.y), ammo_size, nade_prevstatus < nade_cnt && nade_cnt != 0 && f < 1, f);
 	}
 
 	draw_endBoldFont();

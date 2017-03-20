@@ -97,9 +97,6 @@ float freezetag_getWinnerTeam()
 	return -1; // no player left
 }
 
-void nades_Clear(entity);
-void nades_GiveBonus(entity player, float score);
-
 float freezetag_CheckWinner()
 {
 	if(round_handler_GetEndTime() > 0 && round_handler_GetEndTime() - time <= 0)
@@ -108,7 +105,6 @@ float freezetag_CheckWinner()
 		Send_Notification(NOTIF_ALL, NULL, MSG_INFO, INFO_ROUND_OVER);
 		FOREACH_CLIENT(IS_PLAYER(it), LAMBDA(
 			it.freezetag_frozen_timeout = 0;
-			nades_Clear(it);
 		));
 		game_stopped = true;
 		round_handler_Init(5, autocvar_g_freezetag_warmup, autocvar_g_freezetag_round_timelimit);
@@ -133,7 +129,6 @@ float freezetag_CheckWinner()
 
 	FOREACH_CLIENT(IS_PLAYER(it), LAMBDA(
 		it.freezetag_frozen_timeout = 0;
-		nades_Clear(it);
 	));
 
 	game_stopped = true;
@@ -489,7 +484,6 @@ MUTATOR_HOOKFUNCTION(ft, PlayerPreThink, CBC_ORDER_FIRST)
 			FOREACH_CLIENT(IS_PLAYER(it) && it.reviving, LAMBDA(
 				PlayerScore_Add(it, SP_FREEZETAG_REVIVALS, +1);
 				PlayerScore_Add(it, SP_SCORE, +1);
-				nades_GiveBonus(it,autocvar_g_nades_bonus_score_low);
 			));
 
 			Send_Notification(NOTIF_ONE, player, MSG_CENTER, CENTER_FREEZETAG_REVIVED, o.netname);

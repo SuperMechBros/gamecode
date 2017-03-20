@@ -104,7 +104,6 @@ SOUND(TAG_ROCKET_FLY, W_Sound("tag_rocket_fly"));
 SOUND(UNAVAILABLE, W_Sound("unavailable"));
 SOUND(UZI_FIRE, W_Sound("uzi_fire"));
 SOUND(WEAPONPICKUP, W_Sound("weaponpickup"));
-SOUND(WEAPONPICKUP_NEW_TOYS, W_Sound("weaponpickup_new_toys"));
 SOUND(WEAPON_SWITCH, W_Sound("weapon_switch"));
 
 SOUND(CTF_CAPTURE_NEUTRAL, "ctf/capture");

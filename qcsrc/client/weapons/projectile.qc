@@ -48,8 +48,6 @@ void Projectile_DrawTrail(entity this, vector to)
 	}
 }
 
-bool Projectile_isnade(int proj); // TODO: remove
-
 void Projectile_Draw(entity this)
 {
 	vector rot;
@@ -113,9 +111,6 @@ void Projectile_Draw(entity this)
 				break;
 		}
 
-		if (Projectile_isnade(this.cnt))
-			rot = this.avelocity;
-
 		this.angles = AnglesTransform_ToAngles(AnglesTransform_Multiply(AnglesTransform_FromAngles(this.angles), rot * (t - this.spawntime)));
 	}
 
@@ -140,9 +135,6 @@ void Projectile_Draw(entity this)
 		default:
 			break;
 	}
-
-	if (Projectile_isnade(this.cnt))
-		trailorigin += v_up * 4;
 
 	if (drawn)
 		Projectile_DrawTrail(this, trailorigin);
