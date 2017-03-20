@@ -2,7 +2,6 @@
 
 #include <common/mutators/mutator/bloodloss/_mod.qh>
 #include <common/mutators/mutator/breakablehook/_mod.qh>
-#include <common/mutators/mutator/buffs/_mod.qh>
 #include <common/mutators/mutator/bugrigs/_mod.qh>
 #include <common/mutators/mutator/campcheck/_mod.qh>
 #include <common/mutators/mutator/cloaked/_mod.qh>

@@ -1,5 +1,4 @@
 REGISTER_DEATHTYPE(AUTOTEAMCHANGE,          DEATH_SELF_AUTOTEAMCHANGE,      NULL,                           "")
-REGISTER_DEATHTYPE(BUFF,                    NULL,                           DEATH_MURDER_BUFF,              "")
 REGISTER_DEATHTYPE(CAMP,                    DEATH_SELF_CAMP,                NULL,                           "")
 REGISTER_DEATHTYPE(CHEAT,                   DEATH_SELF_CHEAT,               DEATH_MURDER_CHEAT,             "")
 REGISTER_DEATHTYPE(CUSTOM,                  DEATH_SELF_CUSTOM,              NULL,                           "")

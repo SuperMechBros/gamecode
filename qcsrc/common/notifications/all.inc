@@ -271,7 +271,6 @@
     MSG_INFO_NOTIF(CA_JOIN_LATE,                            N_CONSOLE,  0, 0, "", "",       "",     _("^F1Round already started, you will join the game in the next round"), "")
     MSG_INFO_NOTIF(CA_LEAVE,                                N_CONSOLE,  0, 0, "", "",       "",     _("^F2You will spectate in the next round"), "")
 
-    MSG_INFO_NOTIF(DEATH_MURDER_BUFF,                       N_CONSOLE,  3, 3, "spree_inf s1 s2 f3buffname s3loc spree_end", "s2 s1",    "notify_death",         _("^BG%s%s^K1 was killed by ^BG%s^K1's ^BG%s^K1 buff ^K1%s%s"), _("^BG%s%s^K1 was scored against by ^BG%s^K1's ^BG%s^K1 buff ^K1%s%s"))
     MSG_INFO_NOTIF(DEATH_MURDER_CHEAT,                      N_CONSOLE,  3, 2, "spree_inf s1 s2 s3loc spree_end", "s2 s1",               "notify_death",         _("^BG%s%s^K1 was unfairly eliminated by ^BG%s^K1%s%s"), "")
     MSG_INFO_NOTIF(DEATH_MURDER_DROWN,                      N_CONSOLE,  3, 2, "spree_inf s1 s2 s3loc spree_end", "s2 s1",               "notify_water",         _("^BG%s%s^K1 was drowned by ^BG%s^K1%s%s"), "")
     MSG_INFO_NOTIF(DEATH_MURDER_FALL,                       N_CONSOLE,  3, 2, "spree_inf s1 s2 s3loc spree_end", "s2 s1",               "notify_fall",          _("^BG%s%s^K1 was grounded by ^BG%s^K1%s%s"), "")
@@ -340,11 +339,6 @@
     MSG_INFO_NOTIF(ROUND_OVER,                              N_CONSOLE,  0, 0, "", "",           "",     _("^BGRound over, there's no winner"), "")
 
     MSG_INFO_NOTIF(GODMODE_OFF,                             N_CONSOLE,  0, 1, "f1", "",         "",     _("^BGGodmode saved you %s units of damage, cheater!"), "")
-
-    MSG_INFO_NOTIF(ITEM_BUFF,                               N_CONSOLE,  1, 1, "s1 item_buffname", "",       "",     _("^BG%s^BG got the %s^BG buff!"), "")
-    MSG_INFO_NOTIF(ITEM_BUFF_LOST,                          N_CONSOLE,  1, 1, "s1 item_buffname", "",       "",     _("^BG%s^BG lost the %s^BG buff!"), "")
-    MSG_INFO_NOTIF(ITEM_BUFF_DROP,                          N_CONSOLE,  0, 1, "item_buffname", "",          "",     _("^BGYou dropped the %s^BG buff!"), "")
-    MSG_INFO_NOTIF(ITEM_BUFF_GOT,                           N_CONSOLE,  0, 1, "item_buffname", "",          "",     _("^BGYou got the %s^BG buff!"), "")
 
     MSG_INFO_NOTIF(ITEM_WEAPON_DONTHAVE,                    N_DISABLE,  0, 1, "item_wepname", "",                           "",     _("^BGYou do not have the ^F1%s"), "")
     MSG_INFO_NOTIF(ITEM_WEAPON_DROP,                        N_DISABLE,  1, 1, "item_wepname item_wepammo", "",              "",     _("^BGYou dropped the ^F1%s^BG%s"), "")
@@ -645,8 +639,6 @@
 
     MSG_CENTER_NOTIF(INVASION_SUPERMONSTER,             N_ENABLE,    1, 0, "s1",             CPID_Null,              "0 0",  _("^K1A %s has arrived!"), "")
 
-    MSG_CENTER_NOTIF(ITEM_BUFF_DROP,                    N_ENABLE,    0, 1, "item_buffname",                      CPID_ITEM, "item_centime 0", _("^BGYou dropped the %s^BG buff!"), "")
-    MSG_CENTER_NOTIF(ITEM_BUFF_GOT,                     N_ENABLE,    0, 1, "item_buffname",                      CPID_ITEM, "item_centime 0", _("^BGYou got the %s^BG buff!"), "")
     MSG_CENTER_NOTIF(ITEM_FUELREGEN_GOT,                N_ENABLE,    0, 0, "",                                   CPID_ITEM, "item_centime 0", _("^BGYou got the ^F1Fuel regenerator"), "")
     MSG_CENTER_NOTIF(ITEM_JETPACK_GOT,                  N_ENABLE,    0, 0, "",                                   CPID_ITEM, "item_centime 0", _("^BGYou got the ^F1Jet pack"), "")
     MSG_CENTER_NOTIF(ITEM_WEAPON_DONTHAVE,              N_ENABLE,    0, 1, "item_wepname",                       CPID_ITEM, "item_centime 0", _("^BGYou do not have the ^F1%s"), "")
@@ -760,7 +752,6 @@
     MULTITEAM_MULTI##teams(prefix, default, anncepre, infopre, centerpre)
 
 // MSG_MULTI_NOTIFICATIONS
-    MSG_MULTI_NOTIF(DEATH_MURDER_BUFF,                  N_ENABLE,  NULL,           INFO_DEATH_MURDER_BUFF,                 NULL)
     MSG_MULTI_NOTIF(DEATH_MURDER_CHEAT,                 N_ENABLE,  NULL,           INFO_DEATH_MURDER_CHEAT,                NULL)
     MSG_MULTI_NOTIF(DEATH_MURDER_DROWN,                 N_ENABLE,  NULL,           INFO_DEATH_MURDER_DROWN,                NULL)
     MSG_MULTI_NOTIF(DEATH_MURDER_FALL,                  N_ENABLE,  NULL,           INFO_DEATH_MURDER_FALL,                 NULL)
@@ -812,8 +803,6 @@
     MSG_MULTI_NOTIF(DEATH_SELF_TOUCHEXPLODE,            N_ENABLE,  NULL,           INFO_DEATH_SELF_TOUCHEXPLODE,           CENTER_DEATH_SELF_TOUCHEXPLODE)
     MSG_MULTI_NOTIF(DEATH_SELF_VOID,                    N_ENABLE,  NULL,           INFO_DEATH_SELF_VOID,                   CENTER_DEATH_SELF_VOID)
 
-    MSG_MULTI_NOTIF(ITEM_BUFF_DROP,                     N_ENABLE,  NULL,           INFO_ITEM_BUFF_DROP,                    CENTER_ITEM_BUFF_DROP)
-    MSG_MULTI_NOTIF(ITEM_BUFF_GOT,                      N_ENABLE,  NULL,           INFO_ITEM_BUFF_GOT,                     CENTER_ITEM_BUFF_GOT)
     MSG_MULTI_NOTIF(ITEM_WEAPON_DONTHAVE,               N_ENABLE,  NULL,           INFO_ITEM_WEAPON_DONTHAVE,              CENTER_ITEM_WEAPON_DONTHAVE)
     MSG_MULTI_NOTIF(ITEM_WEAPON_DROP,                   N_ENABLE,  NULL,           INFO_ITEM_WEAPON_DROP,                  CENTER_ITEM_WEAPON_DROP)
     MSG_MULTI_NOTIF(ITEM_WEAPON_GOT,                    N_ENABLE,  NULL,           INFO_ITEM_WEAPON_GOT,                   CENTER_ITEM_WEAPON_GOT)

@@ -213,8 +213,6 @@ SOUND(PORTO_UNSUPPORTED, "porto/unsupported");
 
 SOUND(NADE_BEEP, "overkill/grenadebip");
 
-SOUND(BUFF_LOST, "relics/relic_effect");
-
 SOUND(POWEROFF, Item_Sound("poweroff"));
 SOUND(POWERUP, Item_Sound("powerup"));
 SOUND(SHIELD_RESPAWN, Item_Sound("shield_respawn"));

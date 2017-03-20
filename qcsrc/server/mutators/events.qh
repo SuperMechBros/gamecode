@@ -632,20 +632,6 @@ MUTATOR_HOOKABLE(Scores_CountFragsRemaining, EV_NO_ARGS);
     /**/
 MUTATOR_HOOKABLE(GrappleHookThink, EV_GrappleHookThink);
 
-#define EV_BuffModel_Customize(i, o) \
-    /** buff */    i(entity, MUTATOR_ARGV_0_entity) \
-    /** player */  i(entity, MUTATOR_ARGV_1_entity) \
-    /**/
-MUTATOR_HOOKABLE(BuffModel_Customize, EV_BuffModel_Customize);
-
-/** called at when a buff is touched. Called early, can edit buff properties. */
-#define EV_BuffTouch(i, o) \
-    /** buff */    i(entity, MUTATOR_ARGV_0_entity) \
-    /** player */  i(entity, MUTATOR_ARGV_1_entity) \
-    /**/           o(entity, MUTATOR_ARGV_1_entity) \
-    /**/
-MUTATOR_HOOKABLE(BuffTouch, EV_BuffTouch);
-
 MUTATOR_HOOKABLE(SetNewParms, EV_NO_ARGS);
 
 MUTATOR_HOOKABLE(SetChangeParms, EV_NO_ARGS);

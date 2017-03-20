@@ -141,8 +141,6 @@ Model MDL_GIB_ROBO_RANDOM() {
 MODEL(CASING_SHELL,                     "models/casing_shell.mdl");
 MODEL(CASING_BULLET,                    "models/casing_bronze.iqm");
 
-MODEL(BUFF,                             "models/relics/relic.md3");
-
 MODEL(BLASTER_VIEW,                     W_Model("h_laser.iqm"));
 MODEL(BLASTER_WORLD,                    W_Model("v_laser.md3"));
 MODEL(BLASTER_ITEM,                     W_Model("g_laser.md3"));
