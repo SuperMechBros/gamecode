@@ -35,7 +35,7 @@ float nix_nextweapon;
 
 bool NIX_CanChooseWeapon(int wpn);
 
-REGISTER_MUTATOR(nix, cvar("g_nix") && !cvar("g_instagib") && !cvar("g_overkill"))
+REGISTER_MUTATOR(nix, cvar("g_nix") && !cvar("g_instagib"))
 {
 	MUTATOR_ONADD
 	{

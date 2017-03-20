@@ -1,6 +1,6 @@
 #include "sv_pinata.qh"
 
-REGISTER_MUTATOR(pinata, cvar("g_pinata") && !cvar("g_instagib") && !cvar("g_overkill"));
+REGISTER_MUTATOR(pinata, cvar("g_pinata") && !cvar("g_instagib"));
 
 MUTATOR_HOOKFUNCTION(pinata, PlayerDies)
 {

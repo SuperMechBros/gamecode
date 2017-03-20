@@ -19,11 +19,7 @@
 #include <common/mutators/mutator/nades/_mod.inc>
 #include <common/mutators/mutator/new_toys/_mod.inc>
 #include <common/mutators/mutator/nix/_mod.inc>
-#include <common/mutators/mutator/overkill/_mod.inc>
-#include <common/mutators/mutator/physical_items/_mod.inc>
 #include <common/mutators/mutator/pinata/_mod.inc>
-#include <common/mutators/mutator/random_gravity/_mod.inc>
-#include <common/mutators/mutator/rocketflying/_mod.inc>
 #include <common/mutators/mutator/rocketminsta/_mod.inc>
 #include <common/mutators/mutator/running_guns/_mod.inc>
 #include <common/mutators/mutator/sandbox/_mod.inc>
@@ -34,4 +30,3 @@
 #include <common/mutators/mutator/vampirehook/_mod.inc>
 #include <common/mutators/mutator/walljump/_mod.inc>
 #include <common/mutators/mutator/waypoints/_mod.inc>
-#include <common/mutators/mutator/weaponarena_random/_mod.inc>
