@@ -567,7 +567,7 @@ void W_WeaponFrame(Player actor, .entity weaponentity)
 
 		bool block_weapon = false;
 		{
-			bool key_pressed = PHYS_INPUT_BUTTON_HOOK(actor) && !actor.vehicle;
+			bool key_pressed = PHYS_INPUT_BUTTON_HOOK(actor);
 			if (round_handler_IsActive() && !round_handler_IsRoundStarted())
 				key_pressed = false;
 

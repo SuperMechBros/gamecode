@@ -110,28 +110,8 @@ EFFECT(0, FIREBALL_LASER,           "fireball_laser")
 EFFECT(0, FIREBALL_MUZZLEFLASH,     "fireball_muzzleflash")
 EFFECT(0, FIREBALL_PRE_MUZZLEFLASH, "fireball_preattack_muzzleflash")
 
-
-
-EFFECT(0, RAPTOR_CANNON_IMPACT,     "raptor_cannon_impact")
-EFFECT(0, RAPTOR_BOMB_IMPACT,       "raptor_bomb_impact")
-EFFECT(0, RAPTOR_BOMB_SPREAD,       "raptor_bomb_spread")
-EFFECT(0, RAPTOR_MUZZLEFLASH,       "raptor_cannon_muzzleflash")
-
-EFFECT(0, RACER_BOOSTER,            "wakizashi_booster_smoke")
-EFFECT(0, RACER_IMPACT,             "wakizashi_gun_impact")
-EFFECT(0, RACER_MUZZLEFLASH,        "wakizashi_gun_muzzleflash")
-EFFECT(0, RACER_ROCKETLAUNCH,       "wakizashi_rocket_launch")
-EFFECT(0, RACER_ROCKET_EXPLODE,     "wakizashi_rocket_launch")
 EFFECT(1, RACER_ROCKET_TRAIL,       "wakizashi_rocket_thrust")
-
-EFFECT(0, SPIDERBOT_ROCKETLAUNCH,           "spiderbot_rocket_launch")
-EFFECT(1, SPIDERBOT_ROCKET_TRAIL,           "spiderbot_rocket_thrust")
-EFFECT(0, SPIDERBOT_ROCKET_EXPLODE,         "spiderbot_rocket_explode")
-EFFECT(0, SPIDERBOT_MINIGUN_IMPACT,         "spiderbot_minigun_impact")
-EFFECT(0, SPIDERBOT_MINIGUN_MUZZLEFLASH,    "spiderbot_minigun_muzzleflash")
-
-EFFECT(0, BUMBLEBEE_HEAL_MUZZLEFLASH,   "healray_muzzleflash")
-EFFECT(0, BUMBLEBEE_HEAL_IMPACT,        "healray_impact")
+EFFECT(1, SPIDERBOT_ROCKET_TRAIL,   "spiderbot_rocket_thrust")
 
 EFFECT(0, BIGPLASMA_IMPACT,         "bigplasma_impact")
 EFFECT(0, BIGPLASMA_MUZZLEFLASH,    "bigplasma_muzzleflash")

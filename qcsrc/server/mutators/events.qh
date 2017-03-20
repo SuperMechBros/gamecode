@@ -544,45 +544,6 @@ MUTATOR_HOOKABLE(PortalTeleport, EV_PortalTeleport);
     /**/
 MUTATOR_HOOKABLE(HelpMePing, EV_HelpMePing);
 
-/**
- * called when a vehicle initializes
- * return true to remove the vehicle
- */
-#define EV_VehicleInit(i, o) \
-    /** vehicle */ i(entity, MUTATOR_ARGV_0_entity) \
-    /**/
-MUTATOR_HOOKABLE(VehicleInit, EV_VehicleInit);
-
-/**
- * called when a player enters a vehicle
- * allows mutators to set special settings in this event
- */
-#define EV_VehicleEnter(i, o) \
-    /** player */ i(entity, MUTATOR_ARGV_0_entity) \
-    /** vehicle */ i(entity, MUTATOR_ARGV_1_entity) \
-    /**/
-MUTATOR_HOOKABLE(VehicleEnter, EV_VehicleEnter);
-
-/**
- * called when a player touches a vehicle
- * return true to stop player from entering the vehicle
- */
-#define EV_VehicleTouch(i, o) \
-    /** vehicle */ i(entity, MUTATOR_ARGV_0_entity) \
-    /** player */ i(entity, MUTATOR_ARGV_1_entity) \
-    /**/
-MUTATOR_HOOKABLE(VehicleTouch, EV_VehicleTouch);
-
-/**
- * called when a player exits a vehicle
- * allows mutators to set special settings in this event
- */
-#define EV_VehicleExit(i, o) \
-    /** player */ i(entity, MUTATOR_ARGV_0_entity) \
-    /** vehicle */ i(entity, MUTATOR_ARGV_1_entity) \
-    /**/
-MUTATOR_HOOKABLE(VehicleExit, EV_VehicleExit);
-
 /** called when a speedrun is aborted and the player is teleported back to start position */
 #define EV_AbortSpeedrun(i, o) \
     /** player */ i(entity, MUTATOR_ARGV_0_entity) \

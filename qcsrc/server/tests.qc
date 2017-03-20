@@ -36,20 +36,3 @@ TEST(Weapons, Hurt)
 
     SUCCEED();
 }
-
-TEST(Vehicles, Spawn)
-{
-    entity it;
-
-    noref Client bot = it = NEW(Client, "Rider");
-    Client_Add(it, NUM_TEAM_1);
-    it.origin = '0 0 100';
-
-    noref entity v = it = new(vehicle);
-    Vehicle veh = VEH_BUMBLEBEE;
-    it.active = ACTIVE_NOT;
-    vehicle_initialize(it, veh, false);
-    it.nextthink = time;
-
-    SUCCEED();
-}

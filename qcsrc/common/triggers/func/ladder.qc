@@ -6,8 +6,6 @@ void func_ladder_touch(entity this, entity toucher)
 #ifdef SVQC
 	if (!toucher.iscreature)
 		return;
-	if(IS_VEHICLE(toucher))
-		return;
 #elif defined(CSQC)
 	if(!toucher.isplayermodel)
 		return;

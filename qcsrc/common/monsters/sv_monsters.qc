@@ -13,7 +13,6 @@
 #include "../deathtypes/all.qh"
 #include <server/mutators/_mod.qh>
 #include <server/steerlib.qh>
-#include "../vehicles/all.qh"
 #include <server/campaign.qh>
 #include <server/command/_mod.qh>
 #include "../triggers/triggers.qh"
@@ -78,14 +77,13 @@ bool Monster_ValidTarget(entity this, entity targ)
 
 	if((targ == this)
 	|| (autocvar_g_monsters_lineofsight && !checkpvs(this.origin + this.view_ofs, targ)) // enemy cannot be seen
-	|| (IS_VEHICLE(targ) && !((Monsters_from(this.monsterid)).spawnflags & MON_FLAG_RANGED)) // melee vs vehicle is useless
 	|| (time < game_starttime) // monsters do nothing before match has started
 	|| (targ.takedamage == DAMAGE_NO)
 	|| (targ.items & IT_INVISIBILITY)
 	|| (IS_SPEC(targ) || IS_OBSERVER(targ)) // don't attack spectators
-	|| (!IS_VEHICLE(targ) && (IS_DEAD(targ) || IS_DEAD(this) || targ.health <= 0 || this.health <= 0))
+	|| (IS_DEAD(targ) || IS_DEAD(this) || targ.health <= 0 || this.health <= 0)
 	|| (this.monster_follow == targ || targ.monster_follow == this)
-	|| (!IS_VEHICLE(targ) && (targ.flags & FL_NOTARGET))
+	|| (targ.flags & FL_NOTARGET)
 	|| (!autocvar_g_monsters_typefrag && PHYS_INPUT_BUTTON_CHAT(targ))
 	|| (SAME_TEAM(targ, this))
 	|| (STAT(FROZEN, targ))
@@ -844,9 +842,6 @@ void Monster_Move(entity this, float runspeed, float walkspeed, float stpspeed)
 	if(this.state == MONSTER_ATTACK_MELEE)
 		this.moveto = this.origin;
 
-	if(this.enemy && this.enemy.vehicle)
-		runspeed = 0;
-
 	if(!(this.spawnflags & MONSTERFLAG_FLY_VERTICAL) && !(this.flags & FL_SWIM))
 		this.moveto_z = this.origin_z;
 
@@ -1073,8 +1068,6 @@ void Monster_Damage(entity this, entity inflictor, entity attacker, float damage
 
 	if(this.sprite)
 		WaypointSprite_UpdateHealth(this.sprite, this.health);
-
-	this.dmg_time = time;
 
 	if(deathtype != DEATH_DROWN.m_id && deathtype != DEATH_FIRE.m_id && sound_allowed(MSG_BROADCAST, attacker))
 		spamsound (this, CH_PAIN, SND(BODYIMPACT1), VOL_BASE, ATTEN_NORM);  // FIXME: PLACEHOLDER

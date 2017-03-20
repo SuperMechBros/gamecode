@@ -159,7 +159,6 @@ void buff_Touch(entity this, entity toucher)
 
 	if((this.team && DIFF_TEAM(toucher, this))
 	|| (STAT(FROZEN, toucher))
-	|| (toucher.vehicle)
 	|| (time < toucher.buff_shield)
 	|| (!this.buff_active)
 	)
@@ -536,7 +535,6 @@ MUTATOR_HOOKFUNCTION(buffs, Damage_Calculate)
 
 	// this... is ridiculous (TODO: fix!)
 	if(frag_attacker.buffs & BUFF_VAMPIRE.m_itemid)
-	if(!frag_target.vehicle)
 	if(!ITEM_DAMAGE_NEEDKILL(frag_deathtype))
 	if(!IS_DEAD(frag_target))
 	if(IS_PLAYER(frag_target) || IS_MONSTER(frag_target))
@@ -646,7 +644,7 @@ MUTATOR_HOOKFUNCTION(buffs, ForbidThrowCurrentWeapon)
 		float best_distance = autocvar_g_buffs_swapper_range;
 		entity closest = NULL;
 		FOREACH_CLIENT(IS_PLAYER(it), LAMBDA(
-			if(!IS_DEAD(it) && !STAT(FROZEN, it) && !it.vehicle)
+			if(!IS_DEAD(it) && !STAT(FROZEN, it))
 			if(DIFF_TEAM(it, player))
 			{
 				float test = vlen2(player.origin - it.origin);
@@ -987,28 +985,6 @@ MUTATOR_HOOKFUNCTION(buffs, SpectateCopy)
 
 	client.buffs = spectatee.buffs;
 	client.buff_time = spectatee.buff_time;
-}
-
-MUTATOR_HOOKFUNCTION(buffs, VehicleEnter)
-{
-	entity player = M_ARGV(0, entity);
-	entity veh = M_ARGV(1, entity);
-
-	veh.buffs = player.buffs;
-	player.buffs = 0;
-	veh.buff_time = max(0, player.buff_time - time);
-	player.buff_time = 0;
-}
-
-MUTATOR_HOOKFUNCTION(buffs, VehicleExit)
-{
-	entity player = M_ARGV(0, entity);
-	entity veh = M_ARGV(1, entity);
-
-	player.buffs = player.oldbuffs = veh.buffs;
-	veh.buffs = 0;
-	player.buff_time = time + veh.buff_time;
-	veh.buff_time = 0;
 }
 
 MUTATOR_HOOKFUNCTION(buffs, PlayerRegen)

@@ -24,7 +24,6 @@
 
 #include <common/weapons/weapon/tuba.qh>
 
-#include <common/vehicles/all.qh>
 #include <common/weapons/_all.qh>
 #include <common/viewloc.qh>
 #include <common/minigames/cl_minigames.qh>
@@ -291,11 +290,6 @@ void viewmodel_draw(entity this)
 		return;
 	int mask = (intermission || (STAT(HEALTH) <= 0) || autocvar_chase_active) ? 0 : MASK_NORMAL;
 	float a = this.alpha;
-	static bool wasinvehicle;
-	bool invehicle = player_localentnum > maxclients;
-	if (invehicle) a = -1;
-	else if (wasinvehicle) a = 1;
-	wasinvehicle = invehicle;
 	Weapon wep = this.activeweapon;
 	int c = entcs_GetClientColors(current_player);
 	vector g = weaponentity_glowmod(wep, NULL, c, this);
@@ -765,7 +759,7 @@ bool WantEventchase(entity this)
 		return true;
 	if(spectatee_status >= 0)
 	{
-		if(hud != HUD_NORMAL && (autocvar_cl_eventchase_vehicle || spectatee_status > 0))
+		if(hud != HUD_NORMAL && spectatee_status > 0)
 			return true;
 		if(MUTATOR_CALLHOOK(WantEventchase, this))
 			return true;
@@ -781,15 +775,6 @@ bool WantEventchase(entity this)
 		}
 	}
 	return false;
-}
-
-void HUD_Crosshair_Vehicle(entity this)
-{
-	if(hud != HUD_BUMBLEBEE_GUN)
-	{
-		Vehicle info = Vehicles_from(hud);
-		info.vr_crosshair(info, this);
-	}
 }
 
 vector damage_blurpostprocess, content_blurpostprocess;
@@ -981,7 +966,6 @@ void HUD_Crosshair(entity this)
 
 		if (hud != HUD_NORMAL)
 		{
-			HUD_Crosshair_Vehicle(this);
 			return;
 		}
 
@@ -1408,7 +1392,6 @@ void cl_notice_run();
 
 float prev_myteam;
 int lasthud;
-float vh_notice_time;
 void WaypointSprite_Load();
 void CSQC_UpdateView(entity this, float w, float h)
 {
@@ -1425,9 +1408,6 @@ void CSQC_UpdateView(entity this, float w, float h)
 
 	stats_get();
 	hud = STAT(HUD);
-
-	if(hud != HUD_NORMAL && lasthud == HUD_NORMAL)
-		vh_notice_time = time + autocvar_cl_vehicles_notify_time;
 
 	lasthud = hud;
 
@@ -1515,21 +1495,6 @@ void CSQC_UpdateView(entity this, float w, float h)
 		else if(autocvar_chase_active == -2)
 			cvar_set("chase_active", "0");
 
-		float vehicle_chase = (hud != HUD_NORMAL && (autocvar_cl_eventchase_vehicle || spectatee_status > 0));
-
-		float vehicle_viewdist = 0;
-		vector vehicle_viewofs = '0 0 0';
-
-		if(vehicle_chase)
-		{
-			if(hud != HUD_BUMBLEBEE_GUN)
-			{
-				Vehicle info = Vehicles_from(hud);
-				vehicle_viewdist = info.height;
-				vehicle_viewofs = info.view_ofs;
-			}
-		}
-
 		if(WantEventchase(this))
 		{
 			vector current_view_origin_override = '0 0 0';
@@ -1555,13 +1520,6 @@ void CSQC_UpdateView(entity this, float w, float h)
 
 			// detect maximum viewoffset and use it
 			vector view_offset = autocvar_cl_eventchase_viewoffset;
-			if(vehicle_chase)
-			{
-				if(vehicle_viewofs)
-					view_offset = vehicle_viewofs;
-				else
-					view_offset = autocvar_cl_eventchase_vehicle_viewoffset;
-			}
 			if (custom_eventchase)
 				view_offset = view_offset_override;
 
@@ -1579,13 +1537,6 @@ void CSQC_UpdateView(entity this, float w, float h)
 
 			// make the camera smooth back
 			float chase_distance = autocvar_cl_eventchase_distance;
-			if(vehicle_chase)
-			{
-				if(vehicle_viewofs)
-					chase_distance = vehicle_viewdist;
-				else
-					chase_distance = autocvar_cl_eventchase_vehicle_distance;
-			}
 			if (custom_eventchase)
 				chase_distance = chase_distance_override;
 

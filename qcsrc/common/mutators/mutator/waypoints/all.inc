@@ -58,7 +58,4 @@ REGISTER_WAYPOINT(Weapon, _("Weapon"), '0 0 0', 1);
 
 REGISTER_WAYPOINT(Monster, _("Monster"), '1 0 0', 1);
 
-REGISTER_WAYPOINT(Vehicle, _("Vehicle"), '1 1 1', 1);
-REGISTER_WAYPOINT(VehicleIntruder, _("Intruder!"), '1 1 1', 1);
-
 REGISTER_WAYPOINT(Seeker, _("Tagged"), '0.5 1 0', 2);

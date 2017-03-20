@@ -14,7 +14,6 @@
     #include <server/constants.qh>
     #include <server/defs.qh>
     #include "../deathtypes/all.qh"
-    #include "../vehicles/all.qh"
     #include "../mapinfo.qh"
     #include <server/anticheat.qh>
 #endif

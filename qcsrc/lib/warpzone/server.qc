@@ -137,8 +137,6 @@ float WarpZone_Teleport(entity wz, entity player, float f0, float f1)
 
 #ifndef WARPZONE_USE_FIXANGLE
 	#ifdef SVQC
-	if(IS_VEHICLE(player) && player.owner)
-		player = player.owner; // hax
 	if(IS_PLAYER(player))
 	{
 		// instead of fixangle, send the transform to the client for smoother operation

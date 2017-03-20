@@ -9,7 +9,6 @@
 #include <common/deathtypes/all.qh>
 #include <common/items/_mod.qh>
 #include <common/mapinfo.qh>
-#include <common/vehicles/all.qh>
 #include <common/mutators/mutator/waypoints/all.qh>
 #include <common/stats.qh>
 #include <lib/csqcmodel/cl_player.qh>
@@ -395,21 +394,6 @@ Main HUD system
 ==================
 */
 
-void CSQC_BUMBLE_GUN_HUD();
-
-void HUD_Vehicle()
-{
-	if(autocvar__hud_configure) return;
-	if(intermission == 2) return;
-
-	if(hud == HUD_BUMBLEBEE_GUN)
-		CSQC_BUMBLE_GUN_HUD();
-	else {
-		Vehicle info = Vehicles_from(hud);
-		info.vr_hud(info);
-	}
-}
-
 void HUD_Panel_Draw(entity panent)
 {
 	panel = panent;
@@ -676,8 +660,6 @@ void HUD_Main()
 	// draw panels in the order specified by panel_order array
 	for(i = hud_panels_COUNT - 1; i >= 0; --i)
 		HUD_Panel_Draw(hud_panels_from(panel_order[i]));
-
-	HUD_Vehicle();
 
 	hud_draw_maximized = 1; // panels that may be maximized must check this var
 	// draw maximized panels on top

@@ -15,11 +15,8 @@
 #include "../common/minigames/sv_minigames.qh"
 
 #include <common/weapons/_all.qh>
-#include "../common/vehicles/sv_vehicles.qh"
 
 #include "../common/mutators/mutator/waypoints/waypointsprites.qh"
-
-.entity vehicle;
 
 #define IMPULSE(id) _IMPULSE(IMP_##id)
 #define _IMPULSE(id) \
@@ -85,7 +82,6 @@ X(0)
 #define X(slot, dir) \
 	IMPULSE(weapon_priority_##slot##_##dir) \
 	{ \
-		if (this.vehicle) return; \
 		if (IS_DEAD(this)) \
 		{ \
 			this.impulse = IMP_weapon_priority_##slot##_##dir.impulse; \
@@ -141,7 +137,6 @@ X(9, next)
 #define X(i) \
 	IMPULSE(weapon_byid_##i) \
 	{ \
-		if (this.vehicle) return; \
 		if (IS_DEAD(this)) \
 		{ \
 			this.impulse = IMP_weapon_byid_##i.impulse; \
@@ -183,7 +178,6 @@ X(23)
 
 IMPULSE(weapon_next_byid)
 {
-	if (this.vehicle) return;
 	if (IS_DEAD(this))
 	{
 		this.impulse = IMP_weapon_next_byid.impulse;
@@ -201,7 +195,6 @@ IMPULSE(weapon_next_byid)
 
 IMPULSE(weapon_prev_byid)
 {
-	if (this.vehicle) return;
 	if (IS_DEAD(this))
 	{
 		this.impulse = IMP_weapon_prev_byid.impulse;
@@ -219,7 +212,6 @@ IMPULSE(weapon_prev_byid)
 
 IMPULSE(weapon_next_bygroup)
 {
-	if (this.vehicle) return;
 	if (IS_DEAD(this))
 	{
 		this.impulse = IMP_weapon_next_bygroup.impulse;
@@ -237,7 +229,6 @@ IMPULSE(weapon_next_bygroup)
 
 IMPULSE(weapon_prev_bygroup)
 {
-	if (this.vehicle) return;
 	if (IS_DEAD(this))
 	{
 		this.impulse = IMP_weapon_prev_bygroup.impulse;
@@ -255,7 +246,6 @@ IMPULSE(weapon_prev_bygroup)
 
 IMPULSE(weapon_next_bypriority)
 {
-	if (this.vehicle) return;
 	if (IS_DEAD(this))
 	{
 		this.impulse = IMP_weapon_next_bypriority.impulse;
@@ -273,7 +263,6 @@ IMPULSE(weapon_next_bypriority)
 
 IMPULSE(weapon_prev_bypriority)
 {
-	if (this.vehicle) return;
 	if (IS_DEAD(this))
 	{
 		this.impulse = IMP_weapon_prev_bypriority.impulse;
@@ -291,7 +280,6 @@ IMPULSE(weapon_prev_bypriority)
 
 IMPULSE(weapon_last)
 {
-	if (this.vehicle) return;
 	if (IS_DEAD(this)) return;
 	for(int slot = 0; slot < MAX_WEAPONSLOTS; ++slot)
 	{
@@ -305,7 +293,6 @@ IMPULSE(weapon_last)
 
 IMPULSE(weapon_best)
 {
-	if (this.vehicle) return;
 	if (IS_DEAD(this)) return;
 	for(int slot = 0; slot < MAX_WEAPONSLOTS; ++slot)
 	{
@@ -319,7 +306,6 @@ IMPULSE(weapon_best)
 
 IMPULSE(weapon_drop)
 {
-	if (this.vehicle) return;
 	if (IS_DEAD(this)) return;
 	for(int slot = 0; slot < MAX_WEAPONSLOTS; ++slot)
 	{
@@ -333,7 +319,6 @@ IMPULSE(weapon_drop)
 
 IMPULSE(weapon_reload)
 {
-	if (this.vehicle) return;
 	if (IS_DEAD(this)) return;
 	if (forbidWeaponUse(this)) return;
 	entity actor = this;
@@ -444,8 +429,6 @@ void ImpulseCommands(entity this)
 		}
 #undef X
 	}
-
-	if (vehicle_impulse(this, imp)) return;
 
 	if (CheatImpulse(this, imp)) return;
 

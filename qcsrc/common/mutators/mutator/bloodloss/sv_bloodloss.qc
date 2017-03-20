@@ -15,8 +15,6 @@ MUTATOR_HOOKFUNCTION(bloodloss, PlayerPreThink)
 
 		if(time >= player.bloodloss_timer)
 		{
-			if(player.vehicle)
-				vehicles_exit(player.vehicle, VHEF_RELEASE);
 			if(player.event_damage)
 				player.event_damage(player, player, player, 1, DEATH_ROT.m_id, player.origin, '0 0 0');
 			player.bloodloss_timer = time + 0.5 + random() * 0.5;

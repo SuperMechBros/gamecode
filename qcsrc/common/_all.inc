@@ -45,7 +45,6 @@ noref float autocvar_net_connecttimeout = 30;
 #include "items/_mod.inc"
     #include "weapons/_all.inc"
         #include "monsters/_mod.inc"
-        #include "vehicles/all.qc"
 
 #include "mutators/_mod.inc"
     #include "gamemodes/_mod.inc"

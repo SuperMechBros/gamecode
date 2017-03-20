@@ -8,7 +8,6 @@
 #include "../common/state.qh"
 #include "../common/physics/player.qh"
 #include "../common/t_items.qh"
-#include "../common/vehicles/all.qh"
 #include "../common/items/_mod.qh"
 #include "../common/mutators/mutator/waypoints/waypointsprites.qh"
 #include "weapons/accuracy.qh"
@@ -644,10 +643,6 @@ void Damage (entity targ, entity inflictor, entity attacker, float damage, int d
 
 	if(deathtype == DEATH_KILL.m_id || deathtype == DEATH_TEAMCHANGE.m_id || deathtype == DEATH_AUTOTEAMCHANGE.m_id)
 	{
-		// exit the vehicle before killing (fixes a crash)
-		if(IS_PLAYER(targ) && targ.vehicle)
-			vehicles_exit(targ.vehicle, VHEF_RELEASE);
-
 		// These are ALWAYS lethal
 		// No damage modification here
 		// Instead, prepare the victim for his death...
@@ -829,11 +824,7 @@ void Damage (entity targ, entity inflictor, entity attacker, float damage, int d
 		if(targ.takedamage == DAMAGE_AIM)
 		if(targ != attacker)
 		{
-			entity victim;
-			if(IS_VEHICLE(targ) && targ.owner)
-				victim = targ.owner;
-			else
-				victim = targ;
+			entity victim = targ;
 
 			if(IS_PLAYER(victim) || IS_MONSTER(victim) || MUTATOR_CALLHOOK(PlayHitsound, victim, attacker))
 			{

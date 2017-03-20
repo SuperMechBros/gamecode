@@ -20,7 +20,6 @@ float autocvar_g_onslaught_cp_health;
 float autocvar_g_onslaught_cp_regen;
 float autocvar_g_onslaught_gen_health;
 float autocvar_g_onslaught_shield_force = 100;
-float autocvar_g_onslaught_allow_vehicle_touch;
 float autocvar_g_onslaught_round_timelimit;
 float autocvar_g_onslaught_warmup;
 float autocvar_g_onslaught_teleport_radius;
@@ -674,12 +673,6 @@ void ons_ControlPoint_UpdateSprite(entity e)
 void ons_ControlPoint_Touch(entity this, entity toucher)
 {
 	int attackable;
-
-	if(IS_VEHICLE(toucher) && toucher.owner)
-	if(autocvar_g_onslaught_allow_vehicle_touch)
-		toucher = toucher.owner;
-	else
-		return;
 
 	if(!IS_PLAYER(toucher)) { return; }
 	if(STAT(FROZEN, toucher)) { return; }
@@ -1994,7 +1987,7 @@ MUTATOR_HOOKFUNCTION(ons, PlayerUseKey)
 
 	entity player = M_ARGV(0, entity);
 
-	if((time > player.teleport_antispam) && (!IS_DEAD(player)) && !player.vehicle)
+	if((time > player.teleport_antispam) && (!IS_DEAD(player)))
 	{
 		entity source_point = ons_Nearest_ControlPoint(player, player.origin, autocvar_g_onslaught_teleport_radius);
 		if ( source_point )

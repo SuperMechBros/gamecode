@@ -10,7 +10,6 @@
 #include "round_handler.qh"
 #include "../common/state.qh"
 #include "../common/physics/player.qh"
-#include "../common/vehicles/all.qh"
 #include "../common/constants.qh"
 #include "../common/util.qh"
 #include <common/net_linked.qh>
@@ -259,7 +258,7 @@ void GrapplingHookThink(entity this)
 				{
 					if(this.aiment.move_movetype == MOVETYPE_WALK || this.aiment.classname == "nade")
 					{
-						entity aim_ent = ((IS_VEHICLE(this.aiment) && this.aiment.owner) ? this.aiment.owner : this.aiment);
+						entity aim_ent = this.aiment;
 						v = v - dv * 0.5;
 						if((frozen_pulling && STAT(FROZEN, this.aiment)) || !frozen_pulling)
 						{
@@ -363,7 +362,6 @@ void GrapplingHook_Damage(entity this, entity inflictor, entity attacker, float 
 void FireGrapplingHook(entity actor, .entity weaponentity)
 {
 	if(forbidWeaponUse(actor)) return;
-	if(actor.vehicle) return;
 
 	makevectors(actor.v_angle);
 

@@ -13,8 +13,6 @@
 #include "../lib/warpzone/anglestransform.qh"
 #include "../lib/warpzone/util_server.qh"
 #include "../lib/warpzone/common.qh"
-#include "../common/vehicles/vehicle.qh"
-#include "../common/vehicles/sv_vehicles.qh"
 
 #define PORTALS_ARE_NOT_SOLID
 
@@ -267,10 +265,6 @@ void Portal_Touch(entity this, entity toucher)
 
 	if(toucher.classname == "grapplinghook")
 		return; // handled by think
-
-	if(!autocvar_g_vehicles_teleportable)
-	if(IS_VEHICLE(toucher))
-		return; // no teleporting vehicles?
 
 	if(!this.enemy)
 		error("Portal_Touch called for a broken portal\n");

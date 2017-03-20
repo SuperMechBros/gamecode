@@ -34,14 +34,11 @@ REGISTER_MUTATOR(ctf, false)
 #endif
 
 #ifdef SVQC
-#include <common/vehicles/all.qh>
 #include <server/teamplay.qh>
 #endif
 
 #include <lib/warpzone/common.qh>
 
-bool autocvar_g_ctf_allow_vehicle_carry;
-bool autocvar_g_ctf_allow_vehicle_touch;
 bool autocvar_g_ctf_allow_monster_touch;
 bool autocvar_g_ctf_throw;
 float autocvar_g_ctf_throw_angle_max;
@@ -420,17 +417,8 @@ void ctf_Handle_Retrieve(entity flag, entity player)
 	flag.owner.flagcarried = flag;
 
 	// reset flag
-	if(player.vehicle)
-	{
-		setattachment(flag, player.vehicle, "");
-		setorigin(flag, VEHICLE_FLAG_OFFSET);
-		flag.scale = VEHICLE_FLAG_SCALE;
-	}
-	else
-	{
-		setattachment(flag, player, "");
-		setorigin(flag, FLAG_CARRY_OFFSET);
-	}
+	setattachment(flag, player, "");
+	setorigin(flag, FLAG_CARRY_OFFSET);
 	set_movetype(flag, MOVETYPE_NONE);
 	flag.takedamage = DAMAGE_NO;
 	flag.solid = SOLID_NOT;
@@ -680,17 +668,9 @@ void ctf_Handle_Pickup(entity flag, entity player, int pickuptype)
 	// attach the flag to the player
 	flag.owner = player;
 	player.flagcarried = flag;
-	if(player.vehicle)
-	{
-		setattachment(flag, player.vehicle, "");
-		setorigin(flag, VEHICLE_FLAG_OFFSET);
-		flag.scale = VEHICLE_FLAG_SCALE;
-	}
-	else
-	{
-		setattachment(flag, player, "");
-		setorigin(flag, FLAG_CARRY_OFFSET);
-	}
+
+	setattachment(flag, player, "");
+	setorigin(flag, FLAG_CARRY_OFFSET);
 
 	// flag setup
 	set_movetype(flag, MOVETYPE_NONE);
@@ -1068,13 +1048,6 @@ METHOD(Flag, giveTo, bool(Flag this, entity flag, entity toucher))
 
 	// special touch behaviors
 	if(STAT(FROZEN, toucher)) { return; }
-	else if(IS_VEHICLE(toucher))
-	{
-		if(autocvar_g_ctf_allow_vehicle_touch && toucher.owner)
-			toucher = toucher.owner; // the player is actually the vehicle owner, not other
-		else
-			return; // do nothing
-	}
 	else if(IS_MONSTER(toucher))
 	{
 		if(!autocvar_g_ctf_allow_monster_touch)
@@ -1170,9 +1143,6 @@ void ctf_RespawnFlag(entity flag)
 		if(flag.speedrunning)
 			ctf_FakeTimeLimit(flag.owner, -1);
 	}
-
-	if((flag.owner) && (flag.owner.vehicle))
-		flag.scale = FLAG_SCALE;
 
 	if(flag.ctf_status == FLAG_DROPPED)
 		{ WaypointSprite_Kill(flag.wps_flagdropped); }
@@ -2250,7 +2220,7 @@ MUTATOR_HOOKFUNCTION(ctf, PlayerUseKey)
 
 	entity player = M_ARGV(0, entity);
 
-	if((time > player.throw_antispam) && !IS_DEAD(player) && !player.speedrunning && (!player.vehicle || autocvar_g_ctf_allow_vehicle_touch))
+	if((time > player.throw_antispam) && !IS_DEAD(player) && !player.speedrunning)
 	{
 		// pass the flag to a team mate
 		if(autocvar_g_ctf_pass)
@@ -2262,7 +2232,7 @@ MUTATOR_HOOKFUNCTION(ctf, PlayerUseKey)
 			{
 				if(IS_PLAYER(head) && !IS_DEAD(head))
 				if(head != player && SAME_TEAM(head, player))
-				if(!head.speedrunning && !head.vehicle)
+				if(!head.speedrunning)
 				{
 					// if it's a player, use the view origin as reference (stolen from RadiusDamage functions in g_damage.qc)
 					vector head_center = WarpZone_UnTransformOrigin(head, CENTER_OR_VIEWOFS(head));
@@ -2351,44 +2321,6 @@ MUTATOR_HOOKFUNCTION(ctf, HelpMePing)
 	}
 
 	return true;
-}
-
-MUTATOR_HOOKFUNCTION(ctf, VehicleEnter)
-{
-	entity player = M_ARGV(0, entity);
-	entity veh = M_ARGV(1, entity);
-
-	if(player.flagcarried)
-	{
-		if(!autocvar_g_ctf_allow_vehicle_carry && !autocvar_g_ctf_allow_vehicle_touch)
-		{
-			ctf_Handle_Throw(player, NULL, DROP_NORMAL);
-		}
-		else
-		{
-			player.flagcarried.nodrawtoclient = player; // hide the flag from the driver
-			setattachment(player.flagcarried, veh, "");
-			setorigin(player.flagcarried, VEHICLE_FLAG_OFFSET);
-			player.flagcarried.scale = VEHICLE_FLAG_SCALE;
-			//player.flagcarried.angles = '0 0 0';
-		}
-		return true;
-	}
-}
-
-MUTATOR_HOOKFUNCTION(ctf, VehicleExit)
-{
-	entity player = M_ARGV(0, entity);
-
-	if(player.flagcarried)
-	{
-		setattachment(player.flagcarried, player, "");
-		setorigin(player.flagcarried, FLAG_CARRY_OFFSET);
-		player.flagcarried.scale = FLAG_SCALE;
-		player.flagcarried.angles = '0 0 0';
-		player.flagcarried.nodrawtoclient = NULL;
-		return true;
-	}
 }
 
 MUTATOR_HOOKFUNCTION(ctf, AbortSpeedrun)

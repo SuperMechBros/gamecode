@@ -19,7 +19,6 @@ const string STR_OBSERVER = "observer";
 #define IS_NOT_A_CLIENT(v) (!IS_CLIENT(v))
 
 #define IS_MONSTER(v) (v.flags & FL_MONSTER)
-#define IS_VEHICLE(v) (v.vehicle_flags & VHF_ISVEHICLE)
 
 // NOTE: FOR_EACH_CLIENTSLOT deprecated! Use the following instead: FOREACH_CLIENTSLOT(true, { code; });
 // NOTE: FOR_EACH_CLIENT deprecated! Use the following instead: FOREACH_CLIENT(true, { code; });

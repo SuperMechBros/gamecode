@@ -8,4 +8,3 @@
 #include <common/items/item.qh>
 #include <common/physics/player.qh>
 #include <common/weapons/_all.qh>
-#include <common/vehicles/all.qh>

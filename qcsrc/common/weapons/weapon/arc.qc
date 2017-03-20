@@ -347,8 +347,6 @@ void W_Arc_Beam_Think(entity this)
 		||
 		(!PHYS_INPUT_BUTTON_ATCK(own) && !burst )
 		||
-		own.vehicle
-		||
 		(WEP_CVAR(arc, overheat_max) > 0 && this.beam_heat >= WEP_CVAR(arc, overheat_max))
 	)
 	{

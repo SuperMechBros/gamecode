@@ -20,8 +20,6 @@
 #include "../common/triggers/subs.qh"
 #include "../common/util.qh"
 #include <common/weapons/_all.qh>
-#include "../common/vehicles/sv_vehicles.qh"
-#include "../common/vehicles/vehicle.qh"
 #include "../common/items/_mod.qh"
 #include "../common/state.qh"
 #include "../common/effects/qc/globalsound.qh"
@@ -1421,8 +1419,6 @@ bool isPushable(entity e)
 {
 	if(e.pushable)
 		return true;
-	if(IS_VEHICLE(e))
-		return false;
 	if(e.iscreature)
 		return true;
 	switch(e.classname)

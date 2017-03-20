@@ -3,7 +3,6 @@
 #elif defined(MENUQC)
 #elif defined(SVQC)
     #include <common/state.qh>
-    #include <common/vehicles/all.qh>
     #include "antilag.qh"
 #endif
 
@@ -18,11 +17,6 @@ const int ANTILAG_MAX_ORIGINS = 64;
 
 void antilag_record(entity e, entity store, float t)
 {
-    if (e.vehicle) {
-        if (e.vehicle.vehicle_flags == VHF_PLAYERSLOT) return;
-        antilag_record(e.vehicle, e.vehicle, t);
-    }
-
 	if (time < store.antilag_times[store.antilag_index]) return;
 	store.antilag_index += 1;
 	if (store.antilag_index >= ANTILAG_MAX_ORIGINS)
@@ -83,11 +77,6 @@ vector antilag_takebackavgvelocity(entity e, entity store, float t0, float t1)
 
 void antilag_takeback(entity e, entity store, float t)
 {
-	if (e.vehicle) {
-	    if (e.vehicle.vehicle_flags == VHF_PLAYERSLOT) return;
-		antilag_takeback(e.vehicle, e.vehicle, t);
-    }
-
 	if (!store.antilag_takenback)
 		store.antilag_saved_origin = e.origin;
 
@@ -98,11 +87,6 @@ void antilag_takeback(entity e, entity store, float t)
 
 void antilag_restore(entity e, entity store)
 {
-	if (e.vehicle) {
-	    if (e.vehicle.vehicle_flags == VHF_PLAYERSLOT) return;
-		antilag_restore(e.vehicle, e.vehicle);
-	}
-
 	if (!store.antilag_takenback) return;
 
 	setorigin(e, store.antilag_saved_origin);

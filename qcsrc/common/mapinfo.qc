@@ -363,8 +363,6 @@ float _MapInfo_Generate(string pFilename) // 0: failure, 1: ok ent, 2: ok bsp
 					{ }
 				else if(startsWith(v, "weapon_"))
 					MapInfo_Map_supportedFeatures |= MAPINFO_FEATURE_WEAPONS;
-				else if(startsWith(v, "vehicle_"))
-					MapInfo_Map_supportedFeatures |= MAPINFO_FEATURE_VEHICLES;
 				else if(startsWith(v, "monster_"))
 					MapInfo_Map_supportedFeatures |= MAPINFO_FEATURE_MONSTERS;
 				else if(v == "target_music" || v == "trigger_music")
@@ -837,10 +835,6 @@ float MapInfo_Get_ByName_NoFallbacks(string pFilename, int pAllowGenerate, Gamet
 				fputs(fh, "has weapons\n");
 			else
 				fputs(fh, "// uncomment this if you added weapon pickups: has weapons\n");
-			if(MapInfo_Map_supportedFeatures & MAPINFO_FEATURE_VEHICLES)
-				fputs(fh, "has vehicles\n");
-			else
-				fputs(fh, "// uncomment this if you added vehicles: has vehicles\n");
 			if(MapInfo_Map_flags & MAPINFO_FLAG_FRUSTRATING)
 				fputs(fh, "frustrating\n");
 
@@ -900,7 +894,6 @@ float MapInfo_Get_ByName_NoFallbacks(string pFilename, int pAllowGenerate, Gamet
 		{
 			t = car(s); // s = cdr(s);
 			if     (t == "weapons") MapInfo_Map_supportedFeatures |= MAPINFO_FEATURE_WEAPONS;
-			else if(t == "vehicles") MapInfo_Map_supportedFeatures |= MAPINFO_FEATURE_VEHICLES;
 			else if(t == "monsters") MapInfo_Map_supportedFeatures |= MAPINFO_FEATURE_MONSTERS;
 			else if(t == "new_toys") MapInfo_Map_supportedFeatures |= MAPINFO_FEATURE_WEAPONS;
 			else

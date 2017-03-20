@@ -44,8 +44,6 @@ void HUD_Panel_ExportCfg(string cfgname)
 		HUD_Write_Cvar("hud_progressbar_speed_color");
 		HUD_Write_Cvar("hud_progressbar_acceleration_color");
 		HUD_Write_Cvar("hud_progressbar_acceleration_neg_color");
-		HUD_Write_Cvar("hud_progressbar_vehicles_ammo1_color");
-		HUD_Write_Cvar("hud_progressbar_vehicles_ammo2_color");
 		HUD_Write("\n");
 
 		HUD_Write_Cvar("_hud_panelorder");

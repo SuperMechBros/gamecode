@@ -480,9 +480,6 @@ void nade_ice_boom(entity this)
 
 void nade_translocate_boom(entity this)
 {
-	if(this.realowner.vehicle)
-		return;
-
 	vector locout = this.origin + '0 0 1' * (1 - this.realowner.mins.z - 24);
 	tracebox(locout, this.realowner.mins, this.realowner.maxs, locout, MOVE_NOMONSTERS, this.realowner);
 	locout = trace_endpos;
@@ -584,9 +581,9 @@ void nade_entrap_touch(entity this, entity toucher)
 	#endif
 	}
 
-	if ( IS_REAL_CLIENT(toucher) || IS_VEHICLE(toucher) || IS_MONSTER(toucher) )
+	if ( IS_REAL_CLIENT(toucher) || IS_MONSTER(toucher) )
 	{
-		entity show_tint = (IS_VEHICLE(toucher)) ? toucher.owner : toucher;
+		entity show_tint = toucher;
 		STAT(ENTRAP_ORB, show_tint) = time + 0.1;
 
 		float tint_alpha = 0.75;
@@ -638,9 +635,9 @@ void nade_heal_touch(entity this, entity toucher)
 
 	}
 
-	if ( IS_REAL_CLIENT(toucher) || IS_VEHICLE(toucher) )
+	if ( IS_REAL_CLIENT(toucher) )
 	{
-		entity show_red = (IS_VEHICLE(toucher)) ? toucher.owner : toucher;
+		entity show_red = toucher;
 		show_red.stat_healing_orb = time+0.1;
 		show_red.stat_healing_orb_alpha = 0.75 * (this.ltime - time) / this.orb_lifetime;
 	}
@@ -1102,9 +1099,6 @@ void nade_prime(entity this)
 
 bool CanThrowNade(entity this)
 {
-	if(this.vehicle)
-		return false;
-
 	if(IS_DEAD(this))
 		return false;
 
@@ -1162,14 +1156,6 @@ void nades_Clear(entity player)
 
 	player.nade = player.fake_nade = NULL;
 	player.nade_timer = 0;
-}
-
-MUTATOR_HOOKFUNCTION(nades, VehicleEnter)
-{
-	entity player = M_ARGV(0, entity);
-
-	if(player.nade)
-		toss_nade(player, true, '0 0 100', max(player.nade.wait, time + 0.05));
 }
 
 CLASS(NadeOffhand, OffhandWeapon)

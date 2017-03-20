@@ -211,26 +211,6 @@ SOUND(PORTO_EXPLODE, "porto/explode");
 SOUND(PORTO_FIRE, "porto/fire");
 SOUND(PORTO_UNSUPPORTED, "porto/unsupported");
 
-SOUND(VEH_ALARM, "vehicles/alarm");
-SOUND(VEH_ALARM_SHIELD, "vehicles/alarm_shield");
-SOUND(VEH_MISSILE_ALARM, "vehicles/missile_alarm");
-
-SOUND(VEH_BUMBLEBEE_FIRE, W_Sound("flacexp3"));
-
-SOUND(VEH_RACER_BOOST, "vehicles/racer_boost");
-SOUND(VEH_RACER_IDLE, "vehicles/racer_idle");
-SOUND(VEH_RACER_MOVE, "vehicles/racer_move");
-
-SOUND(VEH_RAPTOR_FLY, "vehicles/raptor_fly");
-SOUND(VEH_RAPTOR_SPEED, "vehicles/raptor_speed");
-
-SOUND(VEH_SPIDERBOT_DIE, "vehicles/spiderbot_die");
-SOUND(VEH_SPIDERBOT_IDLE, "vehicles/spiderbot_idle");
-SOUND(VEH_SPIDERBOT_JUMP, "vehicles/spiderbot_jump");
-SOUND(VEH_SPIDERBOT_LAND, "vehicles/spiderbot_land");
-SOUND(VEH_SPIDERBOT_STRAFE, "vehicles/spiderbot_strafe");
-SOUND(VEH_SPIDERBOT_WALK, "vehicles/spiderbot_walk");
-
 SOUND(NADE_BEEP, "overkill/grenadebip");
 
 SOUND(BUFF_LOST, "relics/relic_effect");

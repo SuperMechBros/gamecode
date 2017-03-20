@@ -17,7 +17,6 @@
 #include "../common/mapinfo.qh"
 #include "../common/util.qh"
 
-#include "../common/vehicles/all.qh"
 #include <common/weapons/_all.qh>
 
 #include "../lib/csqcmodel/sv_model.qh"
@@ -94,7 +93,7 @@ void CreatureFrame_Liquids(entity this)
 
 void CreatureFrame_FallDamage(entity this)
 {
-	if(!IS_VEHICLE(this) && !(this.flags & FL_PROJECTILE)) // vehicles don't get falling damage
+	if(!(this.flags & FL_PROJECTILE)) // projectiles don't get falling damage
 	if(this.velocity || this.oldvelocity) // moving or has moved
 	{
 		// check for falling damage

@@ -28,7 +28,6 @@ const int CVAR_READONLY = 4;
 // csqc communication stuff
 
 const int HUD_NORMAL = 0;
-const int HUD_BUMBLEBEE_GUN = 25;
 
 // moved that here so the client knows the max.
 // # of maps, I'll use arrays for them :P
@@ -200,16 +199,6 @@ const int PROJECTILE_HAGAR_BOUNCING = 18;
 const int PROJECTILE_CRYLINK_BOUNCING = 20;
 const int PROJECTILE_FIREBALL = 21;
 const int PROJECTILE_FIREMINE = 22;
-
-const int PROJECTILE_RAPTORCANNON = 24;
-const int PROJECTILE_RAPTORBOMB = 25;
-const int PROJECTILE_RAPTORBOMBLET = 26;
-const int PROJECTILE_SPIDERROCKET = 27;
-const int PROJECTILE_WAKIROCKET = 28;
-const int PROJECTILE_WAKICANNON = 29;
-
-const int PROJECTILE_BUMBLE_GUN = 30;
-const int PROJECTILE_BUMBLE_BEAM = 31;
 
 const int PROJECTILE_MAGE_SPIKE = 32;
 const int PROJECTILE_SHAMBLER_LIGHTNING = 33;

@@ -304,17 +304,6 @@ NET_HANDLE(ENT_CLIENT_PROJECTILE, bool isnew)
 			HANDLE(MAGE_SPIKE)         this.traileffect = EFFECT_TR_VORESPIKE.m_id; break;
 			HANDLE(SHAMBLER_LIGHTNING) this.traileffect = EFFECT_TR_NEXUIZPLASMA.m_id; break;
 
-			HANDLE(RAPTORBOMB)         this.gravity = 1; this.avelocity = '0 0 180'; this.traileffect = EFFECT_Null.m_id; break;
-			HANDLE(RAPTORBOMBLET)      this.gravity = 1; this.avelocity = '0 0 180'; this.traileffect = EFFECT_Null.m_id; break;
-			HANDLE(RAPTORCANNON)       this.traileffect = EFFECT_TR_CRYLINKPLASMA.m_id; break;
-
-			HANDLE(SPIDERROCKET)       this.traileffect = EFFECT_SPIDERBOT_ROCKET_TRAIL.m_id; break;
-			HANDLE(WAKIROCKET)         this.traileffect = EFFECT_RACER_ROCKET_TRAIL.m_id; break;
-			HANDLE(WAKICANNON)         this.traileffect = EFFECT_Null.m_id; break;
-
-			HANDLE(BUMBLE_GUN)         this.traileffect = EFFECT_TR_NEXUIZPLASMA.m_id; break;
-			HANDLE(BUMBLE_BEAM)        this.traileffect = EFFECT_TR_NEXUIZPLASMA.m_id; break;
-
 			HANDLE(RPC)                this.traileffect = EFFECT_TR_ROCKET.m_id; break;
 
 			HANDLE(ROCKETMINSTA_LASER) this.traileffect = EFFECT_ROCKETMINSTA_LASER(this.team).m_id; break;
@@ -419,34 +408,6 @@ NET_HANDLE(ENT_CLIENT_PROJECTILE, bool isnew)
 				this.mins = '-4 -4 -4';
 				this.maxs = '4 4 4';
 				break;
-			case PROJECTILE_RAPTORBOMB:
-				this.mins = '-3 -3 -3';
-				this.maxs = '3 3 3';
-				break;
-			case PROJECTILE_RAPTORBOMBLET:
-				break;
-			case PROJECTILE_RAPTORCANNON:
-				break;
-			case PROJECTILE_SPIDERROCKET:
-				loopsound(this, CH_SHOTS_SINGLE, SND(TAG_ROCKET_FLY), VOL_BASE, ATTEN_NORM);
-				break;
-			case PROJECTILE_WAKIROCKET:
-				loopsound(this, CH_SHOTS_SINGLE, SND(TAG_ROCKET_FLY), VOL_BASE, ATTEN_NORM);
-				break;
-			/*
-			case PROJECTILE_WAKICANNON:
-			    break;
-			case PROJECTILE_BUMBLE_GUN:
-			    // only new engines support sound moving with object
-			    loopsound(this, CH_SHOTS_SINGLE, SND(ELECTRO_FLY), VOL_BASE, ATTEN_NORM);
-			    this.mins = '0 0 -4';
-			    this.maxs = '0 0 -4';
-			    this.move_movetype = MOVETYPE_BOUNCE;
-			    settouch(this, func_null);
-			    this.bouncefactor = WEP_CVAR_SEC(electro, bouncefactor);
-			    this.bouncestop = WEP_CVAR_SEC(electro, bouncestop);
-			    break;
-			*/
 			default:
 				break;
 		}

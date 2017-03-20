@@ -31,8 +31,6 @@
 #include "../common/triggers/func/conveyor.qh"
 #include "../common/triggers/teleporters.qh"
 
-#include "../common/vehicles/all.qh"
-
 #include "weapons/hitplot.qh"
 #include "weapons/weaponsystem.qh"
 
@@ -55,6 +53,8 @@
 #include "../common/monsters/sv_monsters.qh"
 
 #include "../lib/warpzone/server.qh"
+
+.int hud = _STAT(HUD);
 
 STATIC_METHOD(Client, Add, void(Client this, int _team))
 {
@@ -264,8 +264,6 @@ void PutObserverInServer(entity this)
 		this.alivetime = 0;
 	}
 
-	if (this.vehicle) vehicles_exit(this.vehicle, VHEF_RELEASE);
-
 	WaypointSprite_PlayerDead(this);
 
 	if (mutator_returnvalue) {
@@ -354,15 +352,6 @@ void PutObserverInServer(entity this)
 	this.oldvelocity = this.velocity;
 	this.fire_endtime = -1;
 	this.event_damage = func_null;
-
-	for(int slot = 0; slot < MAX_AXH; ++slot)
-	{
-		entity axh = this.(AuxiliaryXhair[slot]);
-		this.(AuxiliaryXhair[slot]) = NULL;
-
-		if(axh.owner == this && axh != NULL && !wasfreed(axh))
-			delete(axh);
-	}
 }
 
 int player_getspecies(entity this)
@@ -511,8 +500,6 @@ void PutClientInServer(entity this)
 	if (IS_OBSERVER(this)) {
 		PutObserverInServer(this);
 	} else if (IS_PLAYER(this)) {
-		if (this.vehicle) vehicles_exit(this.vehicle, VHEF_RELEASE);
-
 		PlayerState_attach(this);
 		accuracy_resend(this);
 
@@ -863,16 +850,6 @@ void ClientKill_Now_TeamChange(entity this)
 
 void ClientKill_Now(entity this)
 {
-	if(this.vehicle)
-	{
-	    vehicles_exit(this.vehicle, VHEF_RELEASE);
-	    if(!this.killindicator_teamchange)
-	    {
-            this.vehicle_health = -1;
-            Damage(this, this, this, 1 , DEATH_KILL.m_id, this.origin, '0 0 0');
-	    }
-	}
-
 	if(this.killindicator && !wasfreed(this.killindicator))
 		delete(this.killindicator);
 
@@ -895,7 +872,7 @@ void KillIndicator_Think(entity this)
 		return;
 	}
 
-	if (this.owner.alpha < 0 && !this.owner.vehicle)
+	if (this.owner.alpha < 0)
 	{
 		this.owner.killindicator = NULL;
 		delete(this);
@@ -1264,7 +1241,6 @@ void ClientDisconnect(entity this)
 	assert(IS_CLIENT(this), return);
 
 	PlayerStats_GameReport_FinalizePlayer(this);
-	if (this.vehicle) vehicles_exit(this.vehicle, VHEF_RELEASE);
 	if (this.active_minigame) part_minigame(this);
 	if (IS_PLAYER(this)) Send_Effect(EFFECT_SPAWN_NEUTRAL, this.origin, '0 0 0', 1);
 
@@ -1416,7 +1392,7 @@ void player_powerups(entity this)
 
 	this.effects &= ~(EF_RED | EF_BLUE | EF_ADDITIVE | EF_FULLBRIGHT | EF_FLAME | EF_NODEPTHTEST);
 
-	if((this.alpha < 0 || IS_DEAD(this)) && !this.vehicle) // don't apply the flags if the player is gibbed
+	if(this.alpha < 0 || IS_DEAD(this)) // don't apply the flags if the player is gibbed
 		return;
 
 	Fire_ApplyDamage(this);
@@ -1614,8 +1590,6 @@ void player_regen(entity this)
 	// check this outside above checks, as player may still be able to rot to death
 	if(this.health < 1)
 	{
-		if(this.vehicle)
-			vehicles_exit(this.vehicle, VHEF_RELEASE);
 		if(this.event_damage)
 			this.event_damage(this, this, this, 1, DEATH_ROT.m_id, this.origin, '0 0 0');
 	}
@@ -1722,39 +1696,8 @@ void SpectateCopy(entity this, entity spectatee)
 		this.(weaponentity) = spectatee.(weaponentity);
 	}
 
-	for(int slot = 0; slot < MAX_AXH; ++slot)
-	{
-		this.(AuxiliaryXhair[slot]) = spectatee.(AuxiliaryXhair[slot]);
-	}
-
     anticheat_spectatecopy(this, spectatee);
 	this.hud = spectatee.hud;
-	if(spectatee.vehicle)
-    {
-    	this.angles = spectatee.v_angle;
-
-        //this.fixangle = false;
-        //this.velocity = spectatee.vehicle.velocity;
-        this.vehicle_health = spectatee.vehicle_health;
-        this.vehicle_shield = spectatee.vehicle_shield;
-        this.vehicle_energy = spectatee.vehicle_energy;
-        this.vehicle_ammo1 = spectatee.vehicle_ammo1;
-        this.vehicle_ammo2 = spectatee.vehicle_ammo2;
-        this.vehicle_reload1 = spectatee.vehicle_reload1;
-        this.vehicle_reload2 = spectatee.vehicle_reload2;
-
-        //msg_entity = this;
-
-       // WriteByte (MSG_ONE, SVC_SETVIEWANGLES);
-            //WriteAngle(MSG_ONE,  spectatee.v_angle.x);
-           // WriteAngle(MSG_ONE,  spectatee.v_angle.y);
-           // WriteAngle(MSG_ONE,  spectatee.v_angle.z);
-
-        //WriteByte (MSG_ONE, SVC_SETVIEW);
-        //    WriteEntity(MSG_ONE, this);
-        //makevectors(spectatee.v_angle);
-        //setorigin(this, spectatee.origin - v_forward * 400 + v_up * 300);*/
-    }
 }
 
 bool SpectateUpdate(entity this)
@@ -2171,50 +2114,10 @@ void SpectatorThink(entity this)
 	this.flags |= FL_CLIENT | FL_NOTARGET;
 }
 
-void vehicles_enter (entity pl, entity veh);
 void PlayerUseKey(entity this)
 {
 	if (!IS_PLAYER(this))
 		return;
-
-	if(this.vehicle)
-	{
-		if(!game_stopped)
-		{
-			vehicles_exit(this.vehicle, VHEF_NORMAL);
-			return;
-		}
-	}
-	else if(autocvar_g_vehicles_enter)
-	{
-		if(!STAT(FROZEN, this))
-		if(!IS_DEAD(this))
-		if(!game_stopped)
-		{
-			entity head, closest_target = NULL;
-			head = WarpZone_FindRadius(this.origin, autocvar_g_vehicles_enter_radius, true);
-
-			while(head) // find the closest acceptable target to enter
-			{
-				if(IS_VEHICLE(head))
-				if(!IS_DEAD(head))
-				if(!head.owner || ((head.vehicle_flags & VHF_MULTISLOT) && SAME_TEAM(head.owner, this)))
-				if(head.takedamage != DAMAGE_NO)
-				{
-					if(closest_target)
-					{
-						if(vlen2(this.origin - head.origin) < vlen2(this.origin - closest_target.origin))
-						{ closest_target = head; }
-					}
-					else { closest_target = head; }
-				}
-
-				head = head.chain;
-			}
-
-			if(closest_target) { vehicles_enter(this, closest_target); return; }
-		}
-	}
 
 	// a use key was pressed; call handlers
 	MUTATOR_CALLHOOK(PlayerUseKey, this);
@@ -2229,7 +2132,6 @@ Called every frame for each client before the physics are run
 =============
 */
 .float usekeypressed;
-.float last_vehiclecheck;
 .int items_added;
 void PlayerPreThink (entity this)
 {
@@ -2309,8 +2211,6 @@ void PlayerPreThink (entity this)
 
 		if (this.health < 1)
 		{
-			if (this.vehicle)
-				vehicles_exit(this.vehicle, VHEF_RELEASE);
 			if(this.event_damage)
 				this.event_damage(this, this, this.frozen_by, 1, DEATH_NADE_ICE_FREEZE.m_id, this.origin, '0 0 0');
 		}
@@ -2319,28 +2219,6 @@ void PlayerPreThink (entity this)
 	}
 
 	MUTATOR_CALLHOOK(PlayerPreThink, this);
-
-	if(autocvar_g_vehicles_enter && (time > this.last_vehiclecheck) && !game_stopped && !this.vehicle)
-	if(IS_PLAYER(this) && !STAT(FROZEN, this) && !IS_DEAD(this))
-	{
-		FOREACH_ENTITY_RADIUS(this.origin, autocvar_g_vehicles_enter_radius, IS_VEHICLE(it),
-		{
-			if(!IS_DEAD(it) && it.takedamage != DAMAGE_NO)
-			if((it.vehicle_flags & VHF_MULTISLOT) && SAME_TEAM(it.owner, this))
-			{
-				Send_Notification(NOTIF_ONE, this, MSG_CENTER, CENTER_VEHICLE_ENTER_GUNNER);
-			}
-			else if(!it.owner)
-			{
-				if(!it.team || SAME_TEAM(this, it))
-					Send_Notification(NOTIF_ONE, this, MSG_CENTER, CENTER_VEHICLE_ENTER);
-				else if(autocvar_g_vehicles_steal)
-					Send_Notification(NOTIF_ONE, this, MSG_CENTER, CENTER_VEHICLE_ENTER_STEAL);
-			}
-		});
-
-		this.last_vehiclecheck = time + 1;
-	}
 
 	if(!this.cvar_cl_newusekeysupported) // FIXME remove this - it was a stupid idea to begin with, we can JUST use the button
 	{
@@ -2457,8 +2335,6 @@ void PlayerPreThink (entity this)
 		if (have_hook) {
 			do_crouch = false;
 		} else if (this.waterlevel >= WATERLEVEL_SWIMMING) {
-			do_crouch = false;
-		} else if (this.vehicle) {
 			do_crouch = false;
 		} else if (STAT(FROZEN, this)) {
 			do_crouch = false;
@@ -2585,7 +2461,7 @@ void DrownPlayer(entity this)
 	if(IS_DEAD(this))
 		return;
 
-	if (this.waterlevel != WATERLEVEL_SUBMERGED || this.vehicle)
+	if (this.waterlevel != WATERLEVEL_SUBMERGED)
 	{
 		if(this.air_finished < time)
 			PlayerSound(this, playersound_gasp, CH_PLAYER, VOL_BASE, VOICETYPE_PLAYERSOUND);

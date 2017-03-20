@@ -14,10 +14,6 @@
 
 #include "../mutators/_mod.qh"
 
-#ifdef SVQC
-	#include <common/vehicles/all.qh>
-#endif
-
 #include <common/constants.qh>
 #include <common/deathtypes/all.qh>
 #include <common/effects/all.qh>

@@ -534,13 +534,6 @@ MUTATOR_HOOKFUNCTION(as, PlayerSpawn)
 		Send_Notification(NOTIF_ONE, player, MSG_CENTER, CENTER_ASSAULT_DEFENDING);
 }
 
-MUTATOR_HOOKFUNCTION(as, VehicleInit)
-{
-	entity veh = M_ARGV(0, entity);
-
-	veh.nextthink = time + 0.5;
-}
-
 MUTATOR_HOOKFUNCTION(as, HavocBot_ChooseRole)
 {
 	entity bot = M_ARGV(0, entity);

@@ -106,18 +106,6 @@ MODEL(PROJECTILE_SEEKER,                "models/tagrocket.md3");
 MODEL(PROJECTILE_MAGE_SPIKE,            "models/ebomb.mdl");
 MODEL(PROJECTILE_SHAMBLER_LIGHTNING,    "models/ebomb.mdl");
 
-MODEL(PROJECTILE_RAPTORBOMB,            "models/vehicles/clusterbomb.md3");
-MODEL(PROJECTILE_RAPTORBOMBLET,         "models/vehicles/bomblet.md3");
-MODEL(PROJECTILE_RAPTORCANNON,          "models/plasmatrail.mdl");
-
-MODEL(PROJECTILE_SPIDERROCKET,          "models/vehicles/rocket02.md3");
-
-MODEL(PROJECTILE_WAKIROCKET,            "models/vehicles/rocket01.md3");
-MODEL(PROJECTILE_WAKICANNON,            "models/laser.mdl");
-
-MODEL(PROJECTILE_BUMBLE_GUN,            "models/elaser.mdl");
-MODEL(PROJECTILE_BUMBLE_BEAM,           "models/elaser.mdl");
-
 MODEL(PROJECTILE_RPC,                   W_Model("ok_rocket.md3"));
 
 MODEL(PROJECTILE_ROCKETMINSTA_LASER,    "models/elaser.mdl");
@@ -260,32 +248,6 @@ MODEL(RPC_MUZZLEFLASH,                  "models/flash.md3");
 MODEL(RPC_VIEW,                         W_Model("h_ok_rl.iqm"));
 MODEL(RPC_WORLD,                        W_Model("v_ok_rl.md3"));
 MODEL(RPC_ITEM,                         W_Model("g_ok_rl.md3"));
-
-MODEL(VEH_SHIELD,                       "models/vhshield.md3");
-
-MODEL(VEH_BUMBLEBEE_BODY,               "models/vehicles/bumblebee_body.dpm");
-MODEL(VEH_BUMBLEBEE_CANNON_CENTER,      "models/vehicles/bumblebee_ray.dpm");
-MODEL(VEH_BUMBLEBEE_CANNON_LEFT,        "models/vehicles/bumblebee_plasma_left.dpm");
-MODEL(VEH_BUMBLEBEE_CANNON_RIGHT,       "models/vehicles/bumblebee_plasma_right.dpm");
-MODEL(VEH_BUMBLEBEE_SHIELD,             "models/vhshield.md3");
-
-MODEL(VEH_RACER_BODY,                   "models/vehicles/wakizashi.dpm");
-MODEL(VEH_RACER_VIEW,                   "models/vehicles/wakizashi_cockpit.dpm");
-
-MODEL(VEH_RAPTOR_BODY,                  "models/vehicles/raptor.dpm");
-MODEL(VEH_RAPTOR_CB_FOLDED,             "models/vehicles/clusterbomb_folded.md3");
-MODEL(VEH_RAPTOR_CB_FRAGMENT,           "models/vehicles/clusterbomb_fragment.md3");
-MODEL(VEH_RAPTOR_FLARE,                 "models/runematch/rune.mdl");
-MODEL(VEH_RAPTOR_GUN,                   "models/vehicles/raptor_gun.dpm");
-MODEL(VEH_RAPTOR_PROP,                  "models/vehicles/spinner.dpm");
-MODEL(VEH_RAPTOR_TAIL,                  "models/vehicles/raptor_body.dpm");
-MODEL(VEH_RAPTOR_VIEW,                  "models/vehicles/raptor_cockpit.dpm");
-
-MODEL(VEH_SPIDERBOT_BODY,               "models/vehicles/spiderbot.dpm");
-MODEL(VEH_SPIDERBOT_GUN,                "models/vehicles/spiderbot_barrels.dpm");
-MODEL(VEH_SPIDERBOT_MUZZLEFLASH,        "models/uziflash.md3");
-MODEL(VEH_SPIDERBOT_TOP,                "models/vehicles/spiderbot_top.dpm");
-MODEL(VEH_SPIDERBOT_VIEW,               "models/vehicles/spiderbot_cockpit.dpm");
 
 MODEL(CHAT,                             "models/misc/chatbubble.spr");
 
