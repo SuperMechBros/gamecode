@@ -32,7 +32,6 @@
 #include "dialog_settings_user_languagewarning.qh"
 #include "dialog_settings_game_hudconfirm.qh"
 #include "dialog_singleplayer_winner.qh"
-#include "dialog_sandboxtools.qh"
 #include "dialog_monstertools.qh"
 #include "dialog_teamselect.qh"
 #include "dialog_singleplayer.qh"
@@ -183,9 +182,6 @@ void MainWindow_configureMainWindow(entity me)
 
 
 	// mutator dialogs
-	i = NEW(XonoticSandboxToolsDialog);
-	i.configureDialog(i);
-	me.addItemCentered(me, i, i.intendedWidth * eX + i.intendedHeight * eY, SKINALPHAS_MAINMENU_z * SKINALPHA_DIALOG_SANDBOXTOOLS);
 
 
 	// miscellaneous dialogs

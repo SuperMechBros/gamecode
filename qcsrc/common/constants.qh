@@ -203,8 +203,6 @@ const int PROJECTILE_FIREMINE = 22;
 const int PROJECTILE_MAGE_SPIKE = 32;
 const int PROJECTILE_SHAMBLER_LIGHTNING = 33;
 
-const int PROJECTILE_ROCKETMINSTA_LASER = 34;
-
 const int PROJECTILE_ARC_BOLT = 35;
 
 // projectile IDs 40-50 reserved

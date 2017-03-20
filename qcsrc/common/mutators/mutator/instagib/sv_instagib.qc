@@ -57,14 +57,6 @@ void instagib_ammocheck(entity this)
 		instagib_stop_countdown(this);
 	else if (this.ammo_cells > 0 || (this.items & IT_UNLIMITED_WEAPON_AMMO) || (this.flags & FL_GODMODE))
 		instagib_stop_countdown(this);
-	else if(autocvar_g_rm && autocvar_g_rm_laser)
-	{
-		if(!this.instagib_needammo)
-		{
-			Send_Notification(NOTIF_ONE, this, MSG_CENTER, CENTER_INSTAGIB_DOWNGRADE);
-			this.instagib_needammo = true;
-		}
-	}
 	else
 	{
 		this.instagib_needammo = true;

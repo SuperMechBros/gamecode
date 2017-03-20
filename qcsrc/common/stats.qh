@@ -132,39 +132,6 @@ REGISTER_STAT(MULTIJUMP, int, autocvar_g_multijump)
 REGISTER_STAT(DOUBLEJUMP, int, autocvar_sv_doublejump)
 
 #ifdef SVQC
-bool g_bugrigs;
-bool g_bugrigs_planar_movement;
-bool g_bugrigs_planar_movement_car_jumping;
-float g_bugrigs_reverse_spinning;
-float g_bugrigs_reverse_speeding;
-float g_bugrigs_reverse_stopping;
-float g_bugrigs_air_steering;
-float g_bugrigs_angle_smoothing;
-float g_bugrigs_friction_floor;
-float g_bugrigs_friction_brake;
-float g_bugrigs_friction_air;
-float g_bugrigs_accel;
-float g_bugrigs_speed_ref;
-float g_bugrigs_speed_pow;
-float g_bugrigs_steer;
-#endif
-REGISTER_STAT(BUGRIGS, int, g_bugrigs)
-REGISTER_STAT(BUGRIGS_ACCEL, float, g_bugrigs_accel)
-REGISTER_STAT(BUGRIGS_AIR_STEERING, int, g_bugrigs_air_steering)
-REGISTER_STAT(BUGRIGS_ANGLE_SMOOTHING, int, g_bugrigs_angle_smoothing)
-REGISTER_STAT(BUGRIGS_CAR_JUMPING, int, g_bugrigs_planar_movement_car_jumping)
-REGISTER_STAT(BUGRIGS_FRICTION_AIR, float, g_bugrigs_friction_air)
-REGISTER_STAT(BUGRIGS_FRICTION_BRAKE, float, g_bugrigs_friction_brake)
-REGISTER_STAT(BUGRIGS_FRICTION_FLOOR, float, g_bugrigs_friction_floor)
-REGISTER_STAT(BUGRIGS_PLANAR_MOVEMENT, int, g_bugrigs_planar_movement)
-REGISTER_STAT(BUGRIGS_REVERSE_SPEEDING, int, g_bugrigs_reverse_speeding)
-REGISTER_STAT(BUGRIGS_REVERSE_SPINNING, int, g_bugrigs_reverse_spinning)
-REGISTER_STAT(BUGRIGS_REVERSE_STOPPING, int, g_bugrigs_reverse_stopping)
-REGISTER_STAT(BUGRIGS_SPEED_POW, float, g_bugrigs_speed_pow)
-REGISTER_STAT(BUGRIGS_SPEED_REF, float, g_bugrigs_speed_ref)
-REGISTER_STAT(BUGRIGS_STEER, float, g_bugrigs_steer)
-
-#ifdef SVQC
 int autocvar_sv_gameplayfix_downtracesupportsongroundflag;
 int autocvar_sv_gameplayfix_easierwaterjump;
 int autocvar_sv_gameplayfix_stepdown;

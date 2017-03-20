@@ -42,7 +42,6 @@
 #include <menu/xonotic/dialog_monstertools.qc>
 #include <menu/xonotic/dialog_multiplayer_profile.qc>
 #include <menu/xonotic/dialog_quit.qc>
-#include <menu/xonotic/dialog_sandboxtools.qc>
 #include <menu/xonotic/dialog_settings.qc>
 #include <menu/xonotic/dialog_settings_audio.qc>
 #include <menu/xonotic/dialog_settings_effects.qc>

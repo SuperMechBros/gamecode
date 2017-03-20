@@ -1,8 +1,6 @@
 // generated file; do not modify
 
-#include <common/mutators/mutator/bloodloss/_mod.inc>
 #include <common/mutators/mutator/breakablehook/_mod.inc>
-#include <common/mutators/mutator/bugrigs/_mod.inc>
 #include <common/mutators/mutator/campcheck/_mod.inc>
 #include <common/mutators/mutator/cloaked/_mod.inc>
 #include <common/mutators/mutator/damagetext/_mod.inc>
@@ -20,9 +18,7 @@
 #include <common/mutators/mutator/new_toys/_mod.inc>
 #include <common/mutators/mutator/nix/_mod.inc>
 #include <common/mutators/mutator/pinata/_mod.inc>
-#include <common/mutators/mutator/rocketminsta/_mod.inc>
 #include <common/mutators/mutator/running_guns/_mod.inc>
-#include <common/mutators/mutator/sandbox/_mod.inc>
 #include <common/mutators/mutator/spawn_near_teammate/_mod.inc>
 #include <common/mutators/mutator/superspec/_mod.inc>
 #include <common/mutators/mutator/touchexplode/_mod.inc>

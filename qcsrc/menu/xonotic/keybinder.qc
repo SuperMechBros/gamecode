@@ -104,7 +104,6 @@ void Xonotic_KeyBinds_Read()
 	KEYBIND_DEF(""                                      , "");
 	KEYBIND_DEF(""                                      , _("Misc"));
 	KEYBIND_DEF("quickmenu"                             , _("quick menu"));
-	KEYBIND_DEF("menu_showsandboxtools"                 , _("sandbox menu"));
 	KEYBIND_DEF("+button8"                              , _("drag object"));
 	KEYBIND_DEF(""                                      , "");
 	KEYBIND_DEF(""                                      , _("User defined"));

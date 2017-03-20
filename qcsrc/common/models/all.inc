@@ -108,8 +108,6 @@ MODEL(PROJECTILE_SHAMBLER_LIGHTNING,    "models/ebomb.mdl");
 
 MODEL(PROJECTILE_RPC,                   W_Model("ok_rocket.md3"));
 
-MODEL(PROJECTILE_ROCKETMINSTA_LASER,    "models/elaser.mdl");
-
 MODEL(PROJECTILE_NADE,                  W_Model("v_ok_grenade.md3"));
 MODEL(NADE_VIEW,                        W_Model("h_ok_grenade.iqm"));
 MODEL(NADE_TIMER,                       "models/ok_nade_counter/ok_nade_counter.md3");
