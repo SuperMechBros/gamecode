@@ -261,53 +261,6 @@ MODEL(RPC_VIEW,                         W_Model("h_ok_rl.iqm"));
 MODEL(RPC_WORLD,                        W_Model("v_ok_rl.md3"));
 MODEL(RPC_ITEM,                         W_Model("g_ok_rl.md3"));
 
-MODEL(TUR_GIB_BASE1,                    "models/turrets/base-gib1.md3");
-MODEL(TUR_GIB_BASE2,                    "models/turrets/base-gib2.md3");
-MODEL(TUR_GIB_BASE3,                    "models/turrets/base-gib3.md3");
-MODEL(TUR_GIB_BASE4,                    "models/turrets/base-gib4.md3");
-MODEL(TUR_GIB_HEAD1,                    "models/turrets/head-gib1.md3");
-MODEL(TUR_GIB_HEAD2,                    "models/turrets/head-gib2.md3");
-MODEL(TUR_GIB_HEAD3,                    "models/turrets/head-gib3.md3");
-MODEL(TUR_GIB_HEAD4,                    "models/turrets/head-gib4.md3");
-MODEL(TUR_BASE,                         "models/turrets/base.md3");
-
-MODEL(TUR_EWHEEL_BASE,                  "models/turrets/ewheel-base2.md3");
-MODEL(TUR_EWHEEL_HEAD,                  "models/turrets/ewheel-gun1.md3");
-
-MODEL(TUR_FLAC_BASE,                    "models/turrets/base.md3");
-MODEL(TUR_FLAC_HEAD,                    "models/turrets/flac.md3");
-
-MODEL(TUR_FUSIONREACTOR_BASE,           "models/turrets/base.md3");
-MODEL(TUR_FUSIONREACTOR_HEAD,           "models/turrets/reactor.md3");
-
-MODEL(TUR_HELLION_BASE,                 "models/turrets/base.md3");
-MODEL(TUR_HELLION_HEAD,                 "models/turrets/hellion.md3");
-
-MODEL(TUR_HK_BASE,                      "models/turrets/base.md3");
-MODEL(TUR_HK_HEAD,                      "models/turrets/hk.md3");
-
-MODEL(TUR_MACHINEGUN_BASE,              "models/turrets/base.md3");
-MODEL(TUR_MACHINEGUN_HEAD,              "models/turrets/machinegun.md3");
-
-MODEL(TUR_MIRS_BASE,                    "models/turrets/base.md3");
-MODEL(TUR_MIRS_HEAD,                    "models/turrets/mlrs.md3");
-
-MODEL(TUR_PHASER_BASE,                  "models/turrets/base.md3");
-MODEL(TUR_PHASER_BEAM,                  "models/turrets/phaser_beam.md3");
-MODEL(TUR_PHASER_HEAD,                  "models/turrets/phaser.md3");
-
-MODEL(TUR_PLASMA_BASE,                  "models/turrets/base.md3");
-MODEL(TUR_PLASMA_HEAD,                  "models/turrets/plasma.md3");
-
-MODEL(TUR_PLASMA_DUAL_BASE,             "models/turrets/base.md3");
-MODEL(TUR_PLASMA_DUAL_HEAD,             "models/turrets/plasmad.md3");
-
-MODEL(TUR_TESLA_BASE,                   "models/turrets/tesla_base.md3");
-MODEL(TUR_TESLA_HEAD,                   "models/turrets/tesla_head.md3");
-
-MODEL(TUR_WALKER_BASE,                  "models/turrets/walker_body.md3");
-MODEL(TUR_WALKER_HEAD,                  "models/turrets/walker_head_minigun.md3");
-
 MODEL(VEH_SHIELD,                       "models/vhshield.md3");
 
 MODEL(VEH_BUMBLEBEE_BODY,               "models/vehicles/bumblebee_body.dpm");

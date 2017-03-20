@@ -19,7 +19,6 @@
 #include "../common/teams.qh"
 #include "../common/triggers/subs.qh"
 #include "../common/util.qh"
-#include "../common/turrets/sv_turrets.qh"
 #include <common/weapons/_all.qh>
 #include "../common/vehicles/sv_vehicles.qh"
 #include "../common/vehicles/vehicle.qh"

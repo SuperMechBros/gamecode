@@ -119,7 +119,7 @@ void vehicles_locktarget(entity this, float incr, float decr, float _lock_time)
 		if(IS_DEAD(trace_ent))
 			trace_ent = NULL;
 
-		if(!(IS_VEHICLE(trace_ent) || IS_TURRET(trace_ent)))
+		if(!IS_VEHICLE(trace_ent))
 			trace_ent = NULL;
 
 		if(trace_ent.alpha <= 0.5 && trace_ent.alpha != 0)
@@ -218,6 +218,9 @@ void vehicles_projectile_damage(entity this, entity inflictor, entity attacker, 
 	}
 }
 
+.float shot_dmg;
+.float shot_radius;
+.float shot_force;
 void vehicles_projectile_explode(entity this, entity toucher)
 {
 	if(this.owner && toucher != NULL)

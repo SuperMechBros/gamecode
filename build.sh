@@ -10,6 +10,8 @@ export PROGS_OUT
 : ${QCC:=$PWD/gmqcc/gmqcc}
 export QCC
 
+export QCCFLAGS_WATERMARK=Super Mechanical Brothers Alpha
+
 relpath() {
     b=; s=$(cd $(readlink -f ${1%%/}); pwd); d=$(cd $2; pwd)
     while [ "${d#$s/}" == "${d}" ]; do s=$(dirname ${s}); b="../${b}"; done
@@ -17,5 +19,4 @@ relpath() {
 }
 
 export XONOTIC=1
-export ZIP=:
 make -C ${base}

@@ -13,8 +13,6 @@
 #include "../deathtypes/all.qh"
 #include <server/mutators/_mod.qh>
 #include <server/steerlib.qh>
-#include "../turrets/sv_turrets.qh"
-#include "../turrets/util.qh"
 #include "../vehicles/all.qh"
 #include <server/campaign.qh>
 #include <server/command/_mod.qh>

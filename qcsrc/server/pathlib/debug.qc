@@ -7,12 +7,6 @@ MODEL(SQUARE_GOOD,  "models/pathlib/goodsquare.md3");
 MODEL(SQUARE_BAD,   "models/pathlib/badsquare.md3");
 MODEL(EDGE,         "models/pathlib/edge.md3");
 
-#ifdef TURRET_DEBUG
-void mark_error(vector where,float lifetime);
-void mark_info(vector where,float lifetime);
-entity mark_misc(vector where,float lifetime);
-#endif
-
 void pathlib_showpath(entity start)
 {
     entity e;
@@ -32,9 +26,6 @@ void path_dbg_think(entity this)
 
 void __showpath2_think(entity this)
 {
-    #ifdef TURRET_DEBUG
-	mark_info(this.origin,1);
-	#endif
     if(this.path_next)
     {
         setthink(this.path_next, __showpath2_think);

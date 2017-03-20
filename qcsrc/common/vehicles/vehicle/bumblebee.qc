@@ -566,14 +566,6 @@ bool bumblebee_pilot_frame(entity this, float dt)
 
 							trace_ent.health = min(trace_ent.health + autocvar_g_vehicle_bumblebee_healgun_hps * dt, autocvar_g_vehicle_bumblebee_healgun_hmax);
 						}
-						else if(IS_TURRET(trace_ent))
-						{
-							if(trace_ent.health  <= trace_ent.max_health && autocvar_g_vehicle_bumblebee_healgun_hps)
-								trace_ent.health = min(trace_ent.health + autocvar_g_vehicle_bumblebee_healgun_hps * dt, trace_ent.max_health);
-							//else ..hmmm what? ammo?
-
-							trace_ent.SendFlags |= TNSF_STATUS;
-						}
 					}
 			}
 		}

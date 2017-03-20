@@ -145,19 +145,6 @@ void target_assault_roundend_use(entity this, entity actor, entity trigger)
 void assault_roundstart_use(entity this, entity actor, entity trigger)
 {
 	SUB_UseTargets(this, this, trigger);
-
-	//(Re)spawn all turrets
-	IL_EACH(g_turrets, true,
-	{
-		// Swap turret teams
-		if(it.team == NUM_TEAM_1)
-			it.team = NUM_TEAM_2;
-		else
-			it.team = NUM_TEAM_1;
-
-		// Doubles as teamchange
-		turret_respawn(it);
-	});
 }
 void assault_roundstart_use_this(entity this)
 {
@@ -545,14 +532,6 @@ MUTATOR_HOOKFUNCTION(as, PlayerSpawn)
 		Send_Notification(NOTIF_ONE, player, MSG_CENTER, CENTER_ASSAULT_ATTACKING);
 	else
 		Send_Notification(NOTIF_ONE, player, MSG_CENTER, CENTER_ASSAULT_DEFENDING);
-}
-
-MUTATOR_HOOKFUNCTION(as, TurretSpawn)
-{
-	entity turret = M_ARGV(0, entity);
-
-	if(!turret.team || turret.team == FLOAT_MAX)
-		turret.team = 5; // this gets reversed when match starts?
 }
 
 MUTATOR_HOOKFUNCTION(as, VehicleInit)

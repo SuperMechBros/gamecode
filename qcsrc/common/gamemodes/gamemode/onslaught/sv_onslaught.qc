@@ -1887,38 +1887,6 @@ MUTATOR_HOOKFUNCTION(ons, MonsterSpawn)
 	InitializeEntity(e, ons_MonsterSpawn_Delayed, INITPRIO_FINDTARGET);
 }
 
-void ons_TurretSpawn_Delayed(entity this)
-{
-	entity own = this.owner;
-
-	if(!own) { delete(this); return; }
-
-	if(own.targetname)
-	{
-		entity e = find(NULL, target, own.targetname);
-		if(e != NULL)
-		{
-			own.team = e.team;
-			own.active = ACTIVE_NOT;
-
-			own.use(own, e, NULL);
-		}
-	}
-
-	delete(this);
-}
-
-MUTATOR_HOOKFUNCTION(ons, TurretSpawn)
-{
-	entity turret = M_ARGV(0, entity);
-
-	entity e = spawn();
-	e.owner = turret;
-	InitializeEntity(e, ons_TurretSpawn_Delayed, INITPRIO_FINDTARGET);
-
-	return false;
-}
-
 MUTATOR_HOOKFUNCTION(ons, HavocBot_ChooseRole)
 {
 	entity bot = M_ARGV(0, entity);
@@ -2071,36 +2039,6 @@ MUTATOR_HOOKFUNCTION(ons, SendWaypoint)
 
 	M_ARGV(3, int) = wp_flag;
 }
-
-MUTATOR_HOOKFUNCTION(ons, TurretValidateTarget)
-{
-	entity turret_target = M_ARGV(1, entity);
-
-	if(substring(turret_target.classname, 0, 10) == "onslaught_") // don't attack onslaught targets, that's the player's job!
-	{
-		M_ARGV(3, float) = -3;
-		return true;
-	}
-
-	return false;
-}
-
-MUTATOR_HOOKFUNCTION(ons, TurretThink)
-{
-    entity turret = M_ARGV(0, entity);
-
-	// ONS uses somewhat backwards linking.
-	if(turret.target)
-	{
-		entity e = find(NULL, targetname, turret.target);
-		if (e != NULL)
-			turret.team = e.team;
-	}
-
-	if(turret.team != turret.tur_head.team)
-		turret_respawn(turret);
-}
-
 
 // ==========
 // Spawnfuncs

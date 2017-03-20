@@ -835,7 +835,7 @@ void Damage (entity targ, entity inflictor, entity attacker, float damage, int d
 			else
 				victim = targ;
 
-			if(IS_PLAYER(victim) || (IS_TURRET(victim) && victim.active == ACTIVE_ACTIVE) || IS_MONSTER(victim) || MUTATOR_CALLHOOK(PlayHitsound, victim, attacker))
+			if(IS_PLAYER(victim) || IS_MONSTER(victim) || MUTATOR_CALLHOOK(PlayHitsound, victim, attacker))
 			{
 				if(DIFF_TEAM(victim, attacker) && !STAT(FROZEN, victim))
 				{

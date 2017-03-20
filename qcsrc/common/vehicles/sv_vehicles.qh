@@ -1,7 +1,6 @@
 #pragma once
 #ifdef SVQC
 
-#include <common/turrets/sv_turrets.qh>
 #include "vehicle.qh"
 
 // vehicle cvars

@@ -17,7 +17,6 @@
 
 #ifdef SVQC
 	#include <server/command/_mod.qh>
-	#include <common/turrets/config.qh>
 	#include <common/weapons/config.qh>
 #endif
 

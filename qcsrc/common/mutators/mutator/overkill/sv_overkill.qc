@@ -42,7 +42,7 @@ MUTATOR_HOOKFUNCTION(ok, Damage_Calculate, CBC_ORDER_LAST)
 	entity frag_target = M_ARGV(2, entity);
 	float frag_deathtype = M_ARGV(3, float);
 
-	if(IS_PLAYER(frag_attacker) && (IS_PLAYER(frag_target) || IS_VEHICLE(frag_target) || IS_TURRET(frag_target)))
+	if(IS_PLAYER(frag_attacker) && (IS_PLAYER(frag_target) || IS_VEHICLE(frag_target)))
 	if(DEATH_ISWEAPON(frag_deathtype, WEP_BLASTER))
 	{
 		if(frag_attacker != frag_target)

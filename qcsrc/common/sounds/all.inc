@@ -211,8 +211,6 @@ SOUND(PORTO_EXPLODE, "porto/explode");
 SOUND(PORTO_FIRE, "porto/fire");
 SOUND(PORTO_UNSUPPORTED, "porto/unsupported");
 
-SOUND(TUR_PHASER, "turrets/phaser");
-
 SOUND(VEH_ALARM, "vehicles/alarm");
 SOUND(VEH_ALARM_SHIELD, "vehicles/alarm_shield");
 SOUND(VEH_MISSILE_ALARM, "vehicles/missile_alarm");

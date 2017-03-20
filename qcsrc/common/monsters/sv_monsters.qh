@@ -27,6 +27,8 @@ int monsters_killed;
 .float stopspeed;
 .int oldskin;
 .string mdl_dead; // dead model for goombas
+.float target_range;
+.float ticrate;
 
 #define MONSTER_SKILLMOD(mon) (0.5 + mon.monster_skill * ((1.2 - 0.3) / 10))
 

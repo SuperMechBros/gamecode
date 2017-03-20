@@ -25,8 +25,6 @@ void Teleport_Touch(entity this, entity toucher)
 	if(!toucher.vehicle.teleportable)
 		return;
 
-	if(IS_TURRET(toucher))
-		return;
 #elif defined(CSQC)
 	if(!IS_PLAYER(toucher))
 		return;

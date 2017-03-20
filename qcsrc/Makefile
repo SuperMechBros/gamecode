@@ -10,22 +10,6 @@ NDEBUG ?= 1
 XONOTIC ?= 1
 BUILD_MOD ?=
 
-ifndef ZIP
-	ifneq ($(shell which zip),)
-		ZIP := zip -9
-	endif
-	ifneq ($(shell which 7z),)
-		ZIP := 7z a -tzip -mx=9
-	endif
-	ifneq ($(shell which 7za),)
-		ZIP := 7za a -tzip -mx=9
-	endif
-    ifndef ZIP
-        $(warning "No zip in ($(PATH))")
-        ZIP := : zip_not_found
-    endif
-endif
-
 # We eventually need to get rid of these
 QCCFLAGS_WTFS ?= \
 	-Wno-field-redeclared
@@ -51,7 +35,7 @@ QCCFLAGS ?= \
 
 
 .PHONY: all
-all: qc pk3
+all: qc
 
 $(WORKDIR):
 	@mkdir -p $@
@@ -68,25 +52,8 @@ clean: | $(WORKDIR)
 .PHONY: qc
 qc: $(PROGS_OUT)/csprogs.dat $(PROGS_OUT)/menu.dat $(PROGS_OUT)/progs.dat
 
-.PHONY: pk3
-pk3: csprogs-$(VER).pk3
 
 
-
-
-
-%-$(VER).pk3: $(PROGS_OUT)/%.dat
-	$(eval PROG=$*)
-	$(eval PK3=$(PROG)-$(VER).pk3)
-	$(eval TXT=$(PROG)-$(VER).txt)
-	$(eval DAT=$(PROG)-$(VER).dat)
-	$(eval LNO=$(PROG)-$(VER).lno)
-	@ echo "http://xonotic.org" > $(TXT)
-	@ ln -f $(PROGS_OUT)/$(PROG).dat $(DAT)
-	@ ln -f $(PROGS_OUT)/$(PROG).lno $(LNO)
-	@ $(RM) *.pk3
-	$(ZIP) $(PK3) $(TXT) $(DAT) $(LNO)
-	@ $(RM) $(TXT) $(DAT) $(LNO)
 
 QCCVERSION := $(shell cd lib && $(QCC) --version)
 QCCVERSIONFILE := $(WORKDIR)/qccversion.$(shell echo ${QCCVERSION} | git hash-object --stdin)

@@ -55,6 +55,7 @@ void raptor_flare_think(entity this);
 void raptor_flare_damage(entity this, entity inflictor, entity attacker, float damage, int deathtype, vector hitloc, vector force);
 void raptor_flare_touch(entity this, entity toucher);
 
+.float tur_impacttime;
 METHOD(RaptorFlare, wr_think, void(entity thiswep, entity actor, .entity weaponentity, int fire)) {
     bool isPlayer = IS_PLAYER(actor);
     entity player = isPlayer ? actor : actor.owner;
