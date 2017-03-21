@@ -5,22 +5,6 @@ string W_Model(string w_mdl);
 
 MODEL(ICE,                              "models/ice/ice.md3");
 
-MODEL(OK_HMG,                           W_Model("g_ok_hmg.md3"));
-
-MODEL(OK_RPC,                           W_Model("g_ok_rl.md3"));
-
-MODEL(OK_MG_VIEW,                       W_Model("h_ok_mg.iqm"));
-MODEL(OK_MG_WORLD,                      W_Model("v_ok_mg.md3"));
-MODEL(OK_MG_ITEM,                       W_Model("g_ok_mg.md3"));
-
-MODEL(OK_SHOTGUN_VIEW,                  W_Model("h_ok_shotgun.iqm"));
-MODEL(OK_SHOTGUN_WORLD,                 W_Model("v_ok_shotgun.md3"));
-MODEL(OK_SHOTGUN_ITEM,                  W_Model("g_ok_shotgun.md3"));
-
-MODEL(OK_SNIPER_VIEW,                   W_Model("h_ok_sniper.iqm"));
-MODEL(OK_SNIPER_WORLD,                  W_Model("v_ok_sniper.md3"));
-MODEL(OK_SNIPER_ITEM,                   W_Model("g_ok_sniper.md3"));
-
 MODEL(PROJECTILE_ELECTRO,               "models/ebomb.mdl");
 MODEL(PROJECTILE_ELECTRO_BEAM,          "models/elaser.mdl");
 
@@ -63,13 +47,6 @@ MODEL(PROJECTILE_SEEKER,                "models/tagrocket.md3");
 
 MODEL(PROJECTILE_MAGE_SPIKE,            "models/ebomb.mdl");
 MODEL(PROJECTILE_SHAMBLER_LIGHTNING,    "models/ebomb.mdl");
-
-MODEL(PROJECTILE_RPC,                   W_Model("ok_rocket.md3"));
-
-MODEL(PROJECTILE_NADE,                  W_Model("v_ok_grenade.md3"));
-MODEL(NADE_VIEW,                        W_Model("h_ok_grenade.iqm"));
-MODEL(NADE_TIMER,                       "models/ok_nade_counter/ok_nade_counter.md3");
-MODEL(NADE_ORB,                         "models/ctf/shield.md3");
 
 MODEL(GIB_CHUNK,                        "models/gibs/chunk.mdl");
 MODEL(GIB_LEG1,                         "models/gibs/leg1.md3");
@@ -192,16 +169,6 @@ MODEL(ARC_MUZZLEFLASH,                  "models/flash.md3");
 MODEL(ARC_VIEW,                         W_Model("h_arc.iqm"));
 MODEL(ARC_WORLD,                        W_Model("v_arc.md3"));
 MODEL(ARC_ITEM,                         W_Model("g_arc.md3"));
-
-MODEL(HMG_MUZZLEFLASH,                  "models/uziflash.md3");
-MODEL(HMG_VIEW,                         W_Model("h_ok_hmg.iqm"));
-MODEL(HMG_WORLD,                        W_Model("v_ok_hmg.md3"));
-MODEL(HMG_ITEM,                         W_Model("g_ok_hmg.md3"));
-
-MODEL(RPC_MUZZLEFLASH,                  "models/flash.md3");
-MODEL(RPC_VIEW,                         W_Model("h_ok_rl.iqm"));
-MODEL(RPC_WORLD,                        W_Model("v_ok_rl.md3"));
-MODEL(RPC_ITEM,                         W_Model("g_ok_rl.md3"));
 
 MODEL(CHAT,                             "models/misc/chatbubble.spr");
 

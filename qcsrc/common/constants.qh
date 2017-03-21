@@ -173,8 +173,6 @@ const int PROJECTILE_ARC_BOLT = 35;
 
 // projectile IDs 40-50 reserved
 
-const int PROJECTILE_RPC = 60;
-
 const int SPECIES_HUMAN = 0;
 const int SPECIES_ROBOT_SOLID = 1;
 const int SPECIES_ALIEN = 2;

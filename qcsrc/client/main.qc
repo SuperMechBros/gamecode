@@ -119,9 +119,6 @@ void CSQC_Init()
 	registercvar("hud_usecsqc", "1");
 	registercvar("scoreboard_columns", "default");
 
-	registercvar("cl_nade_type", "3");
-	registercvar("cl_pokenade_type", "zombie");
-
 	registercvar("cl_jumpspeedcap_min", "");
 	registercvar("cl_jumpspeedcap_max", "");
 

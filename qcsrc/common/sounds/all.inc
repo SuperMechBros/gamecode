@@ -130,8 +130,6 @@ SOUND(PORTO_EXPLODE, "porto/explode");
 SOUND(PORTO_FIRE, "porto/fire");
 SOUND(PORTO_UNSUPPORTED, "porto/unsupported");
 
-SOUND(NADE_BEEP, "overkill/grenadebip");
-
 SOUND(POWEROFF, Item_Sound("poweroff"));
 SOUND(POWERUP, Item_Sound("powerup"));
 SOUND(SHIELD_RESPAWN, Item_Sound("shield_respawn"));

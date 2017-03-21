@@ -2199,7 +2199,7 @@ void PlayerPreThink (entity this)
 		if (this.health < 1)
 		{
 			if(this.event_damage)
-				this.event_damage(this, this, this.frozen_by, 1, DEATH_NADE_ICE_FREEZE.m_id, this.origin, '0 0 0');
+				this.event_damage(this, this, this.frozen_by, 1, DEATH_ROT.m_id, this.origin, '0 0 0');
 		}
 		else if (this.revive_progress <= 0)
 			Unfreeze(this);

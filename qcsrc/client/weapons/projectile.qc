@@ -296,8 +296,6 @@ NET_HANDLE(ENT_CLIENT_PROJECTILE, bool isnew)
 			HANDLE(MAGE_SPIKE)         this.traileffect = EFFECT_TR_VORESPIKE.m_id; break;
 			HANDLE(SHAMBLER_LIGHTNING) this.traileffect = EFFECT_TR_NEXUIZPLASMA.m_id; break;
 
-			HANDLE(RPC)                this.traileffect = EFFECT_TR_ROCKET.m_id; break;
-
 #undef HANDLE
 			default:
 				if (MUTATOR_CALLHOOK(Ent_Projectile, this))
@@ -326,7 +324,6 @@ NET_HANDLE(ENT_CLIENT_PROJECTILE, bool isnew)
 				this.bouncefactor = WEP_CVAR_SEC(electro, bouncefactor);
 				this.bouncestop = WEP_CVAR_SEC(electro, bouncestop);
 				break;
-			case PROJECTILE_RPC:
 			case PROJECTILE_ROCKET:
 				loopsound(this, CH_SHOTS_SINGLE, SND(ROCKET_FLY), VOL_BASE, ATTEN_NORM);
 				this.mins = '-3 -3 -3';
