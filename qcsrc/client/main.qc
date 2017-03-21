@@ -6,7 +6,6 @@
 #include "mutators/events.qh"
 #include "hud/panel/scoreboard.qh"
 #include "hud/panel/quickmenu.qh"
-#include "shownames.qh"
 #include <common/t_items.qh>
 #include "wall.qh"
 #include "weapons/projectile.qh"

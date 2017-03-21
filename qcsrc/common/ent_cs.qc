@@ -53,14 +53,6 @@ ENTCS_PROP(ANGLES, false, angles_y, ENTCS_SET_NORMAL,
 	{ WriteByte(chan, ent.angles.y / 360 * 256); },
 	{ vector v = '0 0 0'; v.y = ReadByte() / 256 * 360; ent.angles = v; })
 
-ENTCS_PROP(HEALTH, false, health, ENTCS_SET_NORMAL,
-	{ WriteByte(chan, bound(0, ent.health / 10, 255));  /* FIXME: use a better scale? */ },
-	{ ent.healthvalue = ReadByte() * 10; })
-
-ENTCS_PROP(ARMOR, false, armorvalue, ENTCS_SET_NORMAL,
-	{ WriteByte(chan, bound(0, ent.armorvalue / 10, 255));  /* FIXME: use a better scale? */ },
-	{ ent.armorvalue = ReadByte() * 10; })
-
 ENTCS_PROP(NAME, true, netname, ENTCS_SET_MUTABLE_STRING,
 	{ WriteString(chan, ent.netname); },
 	{ if (ent.netname) strunzone(ent.netname); ent.netname = strzone(ReadString()); })

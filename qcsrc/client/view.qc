@@ -3,7 +3,6 @@
 #include "announcer.qh"
 #include "hud/_mod.qh"
 #include "mapvoting.qh"
-#include "shownames.qh"
 #include "hud/panel/scoreboard.qh"
 #include "hud/panel/quickmenu.qh"
 
@@ -2189,8 +2188,6 @@ void CSQC_UpdateView(entity this, float w, float h)
 
 	// draw 2D entities
 	IL_EACH(g_drawables_2d, it.draw2d, it.draw2d(it));
-	Draw_ShowNames_All();
-	Debug_Draw();
 
 	scoreboard_active = Scoreboard_WouldDraw();
 

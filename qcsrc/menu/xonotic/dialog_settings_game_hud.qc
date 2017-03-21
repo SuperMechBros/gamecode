@@ -108,50 +108,6 @@ void XonoticGameHUDSettingsTab_fill(entity me)
 	me.TR(me);
 	#endif
 
-	me.gotoRC(me, 0, 3.2); me.setFirstColumn(me, me.currentColumn);
-		me.TD(me, 1, 3, e = makeXonoticHeaderLabel(_("Player Names")));
-	me.TR(me);
-		me.TD(me, 1, 3, e = makeXonoticCheckBox(0, "hud_shownames", _("Show names above players")));
-
-	me.TR(me);
-		me.TDempty(me, 0.2);
-		me.TD(me, 1, 0.8, e = makeXonoticTextLabel(0, _("Alpha:")));
-			setDependent(e, "hud_shownames", 1, 1);
-		me.TD(me, 1, 2, e = makeXonoticSlider(0.1, 1, 0.05, "hud_shownames_alpha"));
-			setDependent(e, "hud_shownames", 1, 1);
-	me.TR(me);
-		me.TDempty(me, 0.2);
-		me.TD(me, 1, 0.8, e = makeXonoticTextLabel(0, _("Fontsize:")));
-			setDependent(e, "hud_shownames", 1, 1);
-		me.TD(me, 1, 2, e = makeXonoticSlider(5, 16, 1, "hud_shownames_fontsize"));
-			setDependent(e, "hud_shownames", 1, 1);
-	me.TR(me);
-		me.TDempty(me, 0.2);
-		me.TD(me, 1, 0.8, e = makeXonoticTextLabel(0, _("Max distance:")));
-			setDependent(e, "hud_shownames", 1, 1);
-		me.TD(me, 1, 2, e = makeXonoticSlider(2000, 10000, 500, "hud_shownames_maxdistance"));
-			setDependent(e, "hud_shownames", 1, 1);
-	me.TR(me);
-		me.TDempty(me, 0.2);
-		me.TD(me, 1, 0.8, e = makeXonoticTextLabel(0, _("Decolorize:")));
-			setDependent(e, "hud_shownames", 1, 1);
-		me.TD(me, 1, 2, e = makeXonoticTextSlider("hud_shownames_decolorize"));
-			e.addValue(e, _("Never"), "0");
-			e.addValue(e, _("Teamplay"), "1");
-			e.addValue(e, _("Always"), "2");
-			e.configureXonoticTextSliderValues(e);
-			setDependent(e, "hud_shownames", 1, 1);
-
-	me.TR(me);
-	//me.TR(me);
-		me.TDempty(me, 0.2);
-		me.TD(me, 1, 2.8, e = makeXonoticCheckBoxEx(25, 0, "hud_shownames_crosshairdistance", _("Only when near crosshair")));
-			setDependent(e, "hud_shownames", 1, 1);
-	me.TR(me);
-		me.TDempty(me, 0.2);
-		me.TD(me, 1, 2.8, e = makeXonoticCheckBox(0, "hud_shownames_status", _("Display health and armor")));
-			setDependent(e, "hud_shownames", 1, 1);
-
 	me.TR(me);
 	me.TR(me);
 		me.TD(me, 1, 1, e = makeXonoticTextLabel(0, _("Damage overlay:")));
