@@ -609,7 +609,6 @@ Gametype MapInfo_Type_FromString(string t)
 } MACRO_END
 	deprecate(nexball, nb);
 	deprecate(keepaway, ka);
-	deprecate(invasion, inv);
 	deprecate(race, rc);
 	FOREACH(Gametypes, it.mdl == t, return it);
 	return NULL;

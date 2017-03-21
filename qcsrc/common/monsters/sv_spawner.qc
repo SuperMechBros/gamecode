@@ -1,5 +1,7 @@
 #include "sv_spawn.qh"
 
+.string spawnmob;
+
 void spawner_use(entity this, entity actor, entity trigger)
 {
 	int moncount = 0;

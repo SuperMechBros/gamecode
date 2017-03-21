@@ -333,28 +333,6 @@ CLASS(Keepaway, Gametype)
 ENDCLASS(Keepaway)
 REGISTER_GAMETYPE(KEEPAWAY, NEW(Keepaway));
 
-CLASS(Invasion, Gametype)
-    INIT(Invasion)
-    {
-        this.gametype_init(this, _("Invasion"),"inv","g_invasion",false,"","pointlimit=50 teams=0",_("Survive against waves of monsters"));
-    }
-    METHOD(Invasion, m_parse_mapinfo, bool(string k, string v))
-    {
-        switch (k) {
-            case "teams":
-                cvar_set("g_invasion_teams", v);
-                return true;
-        }
-        return false;
-    }
-    METHOD(Invasion, m_generate_mapinfo, void(Gametype this, string v))
-    {
-        if(v == "invasion_spawnpoint")
-            MapInfo_Map_supportedGametypes |= this.m_flags;
-    }
-ENDCLASS(Invasion)
-REGISTER_GAMETYPE(INVASION, NEW(Invasion));
-
 const int MAPINFO_FEATURE_WEAPONS       = 1; // not defined for instagib-only maps
 const int MAPINFO_FEATURE_MONSTERS      = 8;
 

@@ -3,7 +3,6 @@
 #include <server/mutators/mutator/gamemode_ctf.qh>
 #include <server/mutators/mutator/gamemode_cts.qh>
 #include <server/mutators/mutator/gamemode_deathmatch.qh>
-#include <server/mutators/mutator/gamemode_invasion.qh>
 #include <server/mutators/mutator/gamemode_keepaway.qh>
 #include <server/mutators/mutator/gamemode_lms.qh>
 #include <server/mutators/mutator/gamemode_race.qh>
