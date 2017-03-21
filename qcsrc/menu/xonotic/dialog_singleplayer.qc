@@ -7,50 +7,10 @@
 #include "textlabel.qh"
 #include "campaign.qh"
 
-void InstantAction_LoadMap(entity btn, entity dummy)
-{
-	float pmin = 2, pmax = 16, pstep = 1;
-
-	cvar_set("timelimit_override", "10");
-
-	MapInfo_SwitchGameType(MAPINFO_TYPE_DEATHMATCH);
-	pmin = 2;
-	pmax = 8;
-	pstep = 1;
-
-	// find random map
-	MapInfo_FilterGametype(MapInfo_CurrentGametype(), MapInfo_CurrentFeatures(), MapInfo_RequiredFlags(), MapInfo_ForbiddenFlags(), 0);
-	string s;
-	do
-	{
-		float m;
-		m = floor(random() * MapInfo_count);
-		s = MapInfo_BSPName_ByID(m);
-	}
-	while(!fexists(sprintf("maps/%s.waypoints", s)));
-	MapInfo_LoadMap(s, 1);
-
-	// configure bots
-	float p;
-	pmin = pstep * ceil(pmin / pstep);
-	pmax = pstep * floor(pmax / pstep);
-	p = pmin + pstep * floor(random() * ((pmax - pmin) / pstep + 1));
-	cvar_set("bot_number", ftos(p - 1));
-
-	// make sure we go back to menu
-	cvar_set("lastlevel", "1");
-}
-
 void XonoticSingleplayerDialog_fill(entity me)
 {
 	entity e, btnPrev, btnNext, lblTitle;
 
-	me.TR(me);
-		me.TDempty(me, (me.columns - 3) / 2);
-		me.TD(me, 2, 3, e = makeXonoticBigButton(_("Instant action! (random map with bots)"), '0 0 0'));
-			e.onClick = InstantAction_LoadMap;
-			e.onClickEntity = NULL;
-	me.TR(me);
 	me.TR(me);
 	me.TR(me);
 		me.TD(me, 1, 1, btnPrev = makeXonoticButton("<<", '0 0 0'));
