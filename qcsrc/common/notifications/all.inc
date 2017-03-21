@@ -318,13 +318,6 @@
 
     MULTITEAM_INFO(DEATH_TEAMKILL, 4,                       N_CONSOLE,  3, 1, "s1 s2 s3loc spree_end", "s2 s1",     "notify_teamkill_%s",   _("^BG%s^K1 was betrayed by ^BG%s^K1%s%s"), "", NAME)
 
-    MSG_INFO_NOTIF(FREEZETAG_FREEZE,                        N_CONSOLE,  2, 0, "s1 s2", "",      "",     _("^BG%s^K1 was frozen by ^BG%s"), "")
-    MSG_INFO_NOTIF(FREEZETAG_REVIVED,                       N_CONSOLE,  2, 0, "s1 s2", "",      "",     _("^BG%s^K3 was revived by ^BG%s"), "")
-    MSG_INFO_NOTIF(FREEZETAG_REVIVED_FALL,                  N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^K3 was revived by falling"), "")
-    MSG_INFO_NOTIF(FREEZETAG_REVIVED_NADE,                  N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^K3 was revived by their Nade explosion"), "")
-    MSG_INFO_NOTIF(FREEZETAG_AUTO_REVIVED,                  N_CONSOLE,  1, 1, "s1 f1", "",      "",     _("^BG%s^K3 was automatically revived after %s second(s)"), "")
-    MSG_INFO_NOTIF(FREEZETAG_SELF,                          N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^K1 froze themself"), "")
-
     MULTITEAM_INFO(ROUND_TEAM_WIN, 4,                       N_CONSOLE,  0, 0, "", "",           "",     _("^TC^TT^BG team wins the round"), "", NAME)
     MSG_INFO_NOTIF(ROUND_PLAYER_WIN,                        N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^BG wins the round"), "")
     MSG_INFO_NOTIF(ROUND_TIED,                              N_CONSOLE,  0, 0, "", "",           "",     _("^BGRound tied"), "")
@@ -604,19 +597,11 @@
 
     MSG_CENTER_NOTIF(EXTRALIVES,                        N_ENABLE,    0, 0, "",               CPID_Null,              "0 0",  _("^F2You picked up some extra lives"), "")
 
-    MSG_CENTER_NOTIF(FREEZETAG_REVIVE,                  N_ENABLE,    1, 0, "s1",             CPID_Null,              "0 0",  _("^K3You revived ^BG%s"), "")
-    MSG_CENTER_NOTIF(FREEZETAG_REVIVE_SELF,             N_ENABLE,    0, 0, "",               CPID_Null,              "0 0",  _("^K3You revived yourself"), "")
-    MSG_CENTER_NOTIF(FREEZETAG_REVIVED,                 N_ENABLE,    1, 0, "s1",             CPID_Null,              "0 0",  _("^K3You were revived by ^BG%s"), "")
-    MSG_CENTER_NOTIF(FREEZETAG_AUTO_REVIVED,            N_ENABLE,    0, 1, "f1",             CPID_Null,              "0 0",  _("^K3You were automatically revived after %s second(s)"), "")
-
     MSG_CENTER_NOTIF(GENERATOR_UNDERATTACK,             N_ENABLE,    0, 0, "",               CPID_Null,              "0 0",  _("^BGThe generator is under attack!"), "")
 
     MULTITEAM_CENTER(ROUND_TEAM_LOSS, 4,                N_ENABLE,    0, 0, "",               CPID_ROUND,             "0 0",  _("^TC^TT^BG team loses the round"), "", NAME)
     MULTITEAM_CENTER(ROUND_TEAM_WIN, 4,                 N_ENABLE,    0, 0, "",               CPID_ROUND,             "0 0",  _("^TC^TT^BG team wins the round"), "", NAME)
     MSG_CENTER_NOTIF(ROUND_PLAYER_WIN,                  N_ENABLE,    1, 0, "s1",             CPID_ROUND,             "0 0",  _("^BG%s^BG wins the round"), "")
-
-    MSG_CENTER_NOTIF(FREEZETAG_SELF,                    N_ENABLE,    0, 0, "",               CPID_Null,              "0 0",  _("^K1You froze yourself"), "")
-    MSG_CENTER_NOTIF(FREEZETAG_SPAWN_LATE,              N_ENABLE,    0, 0, "",               CPID_Null,              "0 0",  _("^K1Round already started, you spawn as frozen"), "")
 
     MSG_CENTER_NOTIF(INVASION_SUPERMONSTER,             N_ENABLE,    1, 0, "s1",             CPID_Null,              "0 0",  _("^K1A %s has arrived!"), "")
 

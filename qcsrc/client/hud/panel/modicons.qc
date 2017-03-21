@@ -50,11 +50,7 @@ void HUD_Mod_CA(vector myPos, vector mySize)
 {
 	mod_active = 1; // required in each mod function that always shows something
 
-	int layout;
-	if(gametype == MAPINFO_TYPE_CA)
-		layout = autocvar_hud_panel_modicons_ca_layout;
-	else //if(gametype == MAPINFO_TYPE_FREEZETAG)
-		layout = autocvar_hud_panel_modicons_freezetag_layout;
+	int layout = autocvar_hud_panel_modicons_ca_layout;
 	int rows, columns;
 	float aspect_ratio;
 	aspect_ratio = (layout) ? 2 : 1;

@@ -434,7 +434,6 @@ string _MapInfo_GetDefault(Gametype t)
 		case MAPINFO_TYPE_ONSLAUGHT:       return "20 0";
 		case MAPINFO_TYPE_NEXBALL:         return "5 20 0";
 		case MAPINFO_TYPE_CTS:             return "20 0 0";
-		case MAPINFO_TYPE_FREEZETAG:       return "10 20 0";
 		// NOTE: DO NOT ADD ANY MORE GAME TYPES HERE
 		// THIS IS JUST LEGACY SUPPORT FOR NEXUIZ MAPS
 		// ONLY ADD NEW STUFF TO _MapInfo_GetDefaultEx
@@ -609,7 +608,6 @@ Gametype MapInfo_Type_FromString(string t)
 	} \
 } MACRO_END
 	deprecate(nexball, nb);
-	deprecate(freezetag, ft);
 	deprecate(keepaway, ka);
 	deprecate(invasion, inv);
 	deprecate(race, rc);

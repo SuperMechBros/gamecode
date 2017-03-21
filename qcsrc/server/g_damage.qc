@@ -690,8 +690,8 @@ void Damage (entity targ, entity inflictor, entity attacker, float damage, int d
 				Unfreeze(targ);
 				targ.health = autocvar_g_frozen_revive_falldamage_health;
 				Send_Effect(EFFECT_ICEORGLASS, targ.origin, '0 0 0', 3);
-				Send_Notification(NOTIF_ALL, NULL, MSG_INFO, INFO_FREEZETAG_REVIVED_FALL, targ.netname);
-				Send_Notification(NOTIF_ONE, targ, MSG_CENTER, CENTER_FREEZETAG_REVIVE_SELF);
+				//Send_Notification(NOTIF_ALL, NULL, MSG_INFO, INFO_FREEZETAG_REVIVED_FALL, targ.netname);
+				//Send_Notification(NOTIF_ONE, targ, MSG_CENTER, CENTER_FREEZETAG_REVIVE_SELF);
 			}
 
 			damage = 0;
