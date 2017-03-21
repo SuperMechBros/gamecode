@@ -105,18 +105,6 @@ CLASS(Deathmatch, Gametype)
 ENDCLASS(Deathmatch)
 REGISTER_GAMETYPE(DEATHMATCH, NEW(Deathmatch));
 
-CLASS(LastManStanding, Gametype)
-    INIT(LastManStanding)
-    {
-        this.gametype_init(this, _("Last Man Standing"),"lms","g_lms",false,"","timelimit=20 lives=9 leadlimit=0",_("Survive and kill until the enemies have no lives left"));
-    }
-    METHOD(LastManStanding, m_isAlwaysSupported, bool(Gametype this, int spawnpoints, float diameter))
-    {
-        return true;
-    }
-ENDCLASS(LastManStanding)
-REGISTER_GAMETYPE(LMS, NEW(LastManStanding));
-
 #ifdef CSQC
 void HUD_Mod_Race(vector pos, vector mySize);
 #endif

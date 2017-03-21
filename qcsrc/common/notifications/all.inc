@@ -338,9 +338,6 @@
     MSG_INFO_NOTIF(JOIN_PLAY,                               N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^F3 is now playing"), "")
     MULTITEAM_INFO(JOIN_PLAY_TEAM, 4,                       N_CHATCON,  1, 0, "s1", "",         "",     _("^BG%s^F3 is now playing on the ^TC^TT team"), "", NAME)
 
-    MSG_INFO_NOTIF(LMS_FORFEIT,                             N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^F3 forfeited"), "")
-    MSG_INFO_NOTIF(LMS_NOLIVES,                             N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^F3 has no more lives left"), "")
-
     MSG_INFO_NOTIF(MONSTERS_DISABLED,                       N_CONSOLE,  0, 0, "", "",           "",     _("^BGMonsters are currently disabled"), "")
 
     MULTITEAM_INFO(NEXBALL_RETURN_HELD, 4,                  N_CONSOLE,  0, 0, "", "",           "",     _("^BGThe ^TC^TT^BG team held the ball for too long"), "", NAME)
@@ -611,8 +608,6 @@
 
     MSG_CENTER_NOTIF(JOIN_NOSPAWNS,                     N_ENABLE,    0, 0, "",               CPID_PREVENT_JOIN,      "0 0",  _("^K1No spawnpoints available!\nHope your team can fix it..."), "")
     MSG_CENTER_NOTIF(JOIN_PREVENT,                      N_ENABLE,    0, 0, "",               CPID_PREVENT_JOIN,      "0 0",  _("^K1You may not join the game at this time.\nThe player limit reached maximum capacity."), "")
-
-    MSG_CENTER_NOTIF(LMS_NOLIVES,                       N_ENABLE,    0, 0, "",               CPID_LMS,               "0 0",  _("^BGYou have no lives left, you must wait until the next match"), "")
 
     MSG_CENTER_NOTIF(MISSING_TEAMS,                     N_ENABLE,    0, 1, "missing_teams",  CPID_MISSING_TEAMS,     "-1 0", _("^BGWaiting for players to join...\nNeed active players for: %s"), "")
     MSG_CENTER_NOTIF(MISSING_PLAYERS,                   N_ENABLE,    0, 1, "f1",             CPID_MISSING_PLAYERS,   "-1 0", _("^BGWaiting for %s player(s) to join..."), "")

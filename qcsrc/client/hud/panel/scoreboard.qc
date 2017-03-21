@@ -356,18 +356,15 @@ void Cmd_Scoreboard_Help()
 // e.g. -teams,rc,cts,lms/kills ?+rc/kills
 #define SCOREBOARD_DEFAULT_COLUMNS \
 "ping pl name |" \
-" -teams,rc,cts,inv,lms/kills +ft,tdm/kills ?+rc,inv/kills" \
-" -teams,lms/deaths +ft,tdm/deaths" \
-" -teams,lms,rc,cts,inv,ka/suicides +ft,tdm/suicides ?+rc,inv/suicides" \
-" -cts,dm,tdm,ka,ft/frags" /* tdm already has this in "score" */ \
+" -teams,rc,cts/kills +tdm/kills ?+rc/kills" \
+" +tdm/deaths" \
+" -teams,rc,cts/suicides +tdm/suicides ?+rc/suicides" \
+" -cts,dm,tdm/frags" /* tdm already has this in "score" */ \
 " -rc,cts,nb/dmg -rc,cts,nb/dmgtaken" \
 " +ctf/caps +ctf/pickups +ctf/fckills +ctf/returns +ons/caps +ons/takes" \
-" +lms/lives +lms/rank" \
-" +kh/caps +kh/pushes +kh/destroyed" \
 " ?+rc/laps ?+rc/time +rc,cts/fastest" \
-" +as/objectives +nb/faults +nb/goals" \
-" +ka/pickups +ka/bckills +ka/bctime +ft/revivals" \
-" -lms,rc,cts,inv,nb/score"
+" +nb/faults +nb/goals" \
+" -rc,cts,nb/score"
 
 void Cmd_Scoreboard_SetFields(int argc)
 {
@@ -1616,12 +1613,7 @@ void Scoreboard_Draw()
 	tl = STAT(TIMELIMIT);
 	fl = STAT(FRAGLIMIT);
 	ll = STAT(LEADLIMIT);
-	if(gametype == MAPINFO_TYPE_LMS)
-	{
-		if(tl > 0)
-			str = strcat(str, sprintf(_(" for up to ^1%1.0f minutes^7"), tl));
-	}
-	else
+
 	{
 		if(tl > 0)
 			str = strcat(str, sprintf(_(" for up to ^1%1.0f minutes^7"), tl));

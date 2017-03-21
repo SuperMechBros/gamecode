@@ -116,19 +116,7 @@ void HUD_InfoMessages()
 
 			MUTATOR_CALLHOOK(DrawInfoMessages, pos, mySize);
 
-			if(!warmup_stage && gametype == MAPINFO_TYPE_LMS)
-			{
-				entity sk;
-				sk = playerslots[player_localnum];
-				if(sk.(scores(ps_primary)) >= 666)
-					s = _("^1Match has already begun");
-				else if(sk.(scores(ps_primary)) > 0)
-					s = _("^1You have no more lives left");
-				else
-					s = sprintf(_("^1Press ^3%s^1 to join"), getcommandkey(_("jump"), "+jump"));
-			}
-			else
-				s = sprintf(_("^1Press ^3%s^1 to join"), getcommandkey(_("jump"), "+jump"));
+			s = sprintf(_("^1Press ^3%s^1 to join"), getcommandkey(_("jump"), "+jump"));
 			InfoMessage(s);
 		}
 

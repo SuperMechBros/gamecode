@@ -12,7 +12,6 @@ void InstantAction_LoadMap(entity btn, entity dummy)
 	float pmin = 2, pmax = 16, pstep = 1;
 
 	cvar_set("timelimit_override", "10");
-	cvar_set("g_lms_lives_override", "9");
 
 	if(random() < 0.4) // 40% are DM
 	{
@@ -37,26 +36,10 @@ void InstantAction_LoadMap(entity btn, entity dummy)
 	}
 	else // somehow distribute the remaining 5%
 	{
-		float r;
-		r = floor(random() * 2);
-		switch(r)
-		{
-			default:
-			case 0:
-				MapInfo_SwitchGameType(MAPINFO_TYPE_LMS);
-				pmin = 2;
-				pmax = 6;
-				pstep = 1;
-				cvar_set("timelimit_override", "-1");
-				break;
-			case 1:
-				MapInfo_SwitchGameType(MAPINFO_TYPE_ONSLAUGHT);
-				pmin = 6;
-				pmax = 16;
-				pstep = 2;
-				break;
-			// CA, Freezetag: bot AI does not work, add them once it does
-		}
+		MapInfo_SwitchGameType(MAPINFO_TYPE_ONSLAUGHT);
+		pmin = 6;
+		pmax = 16;
+		pstep = 2;
 	}
 
 	// find random map
