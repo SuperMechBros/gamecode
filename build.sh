@@ -7,7 +7,7 @@ declare base=qcsrc
 : ${PROGS_OUT:=$PWD}
 export PROGS_OUT
 
-: ${QCC:=$PWD/gmqcc/gmqcc}
+: ${QCC:=$PWD/../gmqcc/gmqcc}
 export QCC
 
 export QCCFLAGS_WATERMARK=SMB_Alpha
