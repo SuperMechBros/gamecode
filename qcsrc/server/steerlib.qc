@@ -1,9 +1,4 @@
 #include "steerlib.qh"
-#if defined(CSQC)
-#elif defined(MENUQC)
-#elif defined(SVQC)
-    #include "pathlib/utility.qh"
-#endif
 
 /**
     Uniform pull towards a point
@@ -339,6 +334,25 @@ vector steerlib_traceavoid_flat(entity this, float pitch, float length, vector v
     frontwish = v_forward * f_front;
 
     return normalize(leftwish + rightwish + frontwish);
+}
+
+bool location_isok(vector point, bool waterok, bool air_isok)
+{
+    if(trace_dphitq3surfaceflags & Q3SURFACEFLAG_SKY)
+        return false;
+
+    int pc = pointcontents(point);
+    int pc2 = pointcontents(point - '0 0 1');
+
+    if(pc == CONTENT_EMPTY && pc2 == CONTENT_SOLID)
+        return true;
+    if(pc == CONTENT_EMPTY && pc2 == CONTENT_WATER && waterok)
+        return true;
+    if(pc == CONTENT_EMPTY && pc2 == CONTENT_EMPTY && air_isok)
+        return true;
+    if(pc == CONTENT_WATER && waterok)
+        return true;
+    return false;
 }
 
 //#define BEAMSTEER_VISUAL

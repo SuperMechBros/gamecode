@@ -65,7 +65,6 @@
 #include <server/antilag.qh>
 #include <server/playerdemo.qh>
 #include <server/item_key.qh>
-#include <server/pathlib/pathlib.qh>
 
 #include <server/client.qh>
 #include <server/player.qh>
