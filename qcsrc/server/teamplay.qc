@@ -593,7 +593,6 @@ int JoinBestTeam(entity this, bool only_return_best, bool forcebestteam)
 	return smallest;
 }
 
-//void() ctf_playerchanged;
 void SV_ChangeTeam(entity this, float _color)
 {
 	float scolor, dcolor, steam, dteam; //, dbotcount, scount, dcount;

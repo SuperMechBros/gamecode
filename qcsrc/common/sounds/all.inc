@@ -121,56 +121,6 @@ Sound SND_CTF_CAPTURE(int teamid) {
     }
 }
 
-SOUND(CTF_DROPPED_NEUTRAL,  "ctf/neutral_dropped");
-SOUND(CTF_DROPPED_RED,      "ctf/red_dropped");
-SOUND(CTF_DROPPED_BLUE,     "ctf/blue_dropped");
-SOUND(CTF_DROPPED_YELLOW,   "ctf/yellow_dropped");
-SOUND(CTF_DROPPED_PINK,     "ctf/pink_dropped");
-Sound SND_CTF_DROPPED(int teamid) {
-    switch (teamid) {
-        case NUM_TEAM_1:    return SND_CTF_DROPPED_RED;
-        case NUM_TEAM_2:    return SND_CTF_DROPPED_BLUE;
-        case NUM_TEAM_3:    return SND_CTF_DROPPED_YELLOW;
-        case NUM_TEAM_4:    return SND_CTF_DROPPED_PINK;
-        default:            return SND_CTF_DROPPED_NEUTRAL;
-    }
-}
-
-SOUND(CTF_PASS, "ctf/pass");
-SOUND(CTF_RESPAWN, "ctf/flag_respawn");
-
-SOUND(CTF_RETURNED_NEUTRAL,  "ctf/return");
-SOUND(CTF_RETURNED_RED,      "ctf/red_returned");
-SOUND(CTF_RETURNED_BLUE,     "ctf/blue_returned");
-SOUND(CTF_RETURNED_YELLOW,   "ctf/yellow_returned");
-SOUND(CTF_RETURNED_PINK,     "ctf/pink_returned");
-Sound SND_CTF_RETURNED(int teamid) {
-    switch (teamid) {
-        case NUM_TEAM_1:    return SND_CTF_RETURNED_RED;
-        case NUM_TEAM_2:    return SND_CTF_RETURNED_BLUE;
-        case NUM_TEAM_3:    return SND_CTF_RETURNED_YELLOW;
-        case NUM_TEAM_4:    return SND_CTF_RETURNED_PINK;
-        default:            return SND_CTF_RETURNED_NEUTRAL;
-    }
-}
-
-SOUND(CTF_TAKEN_NEUTRAL,  "ctf/neutral_taken");
-SOUND(CTF_TAKEN_RED,      "ctf/red_taken");
-SOUND(CTF_TAKEN_BLUE,     "ctf/blue_taken");
-SOUND(CTF_TAKEN_YELLOW,   "ctf/yellow_taken");
-SOUND(CTF_TAKEN_PINK,     "ctf/pink_taken");
-Sound SND_CTF_TAKEN(int teamid) {
-    switch (teamid) {
-        case NUM_TEAM_1:    return SND_CTF_TAKEN_RED;
-        case NUM_TEAM_2:    return SND_CTF_TAKEN_BLUE;
-        case NUM_TEAM_3:    return SND_CTF_TAKEN_YELLOW;
-        case NUM_TEAM_4:    return SND_CTF_TAKEN_PINK;
-        default:            return SND_CTF_TAKEN_NEUTRAL;
-    }
-}
-
-SOUND(CTF_TOUCH, "ctf/touch");
-
 SOUND(KH_ALARM, "kh/alarm");
 
 SOUND(NB_BOUNCE, "nexball/bounce");

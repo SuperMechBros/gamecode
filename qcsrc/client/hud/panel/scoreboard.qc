@@ -56,7 +56,6 @@ float autocvar_hud_panel_scoreboard_namesize = 15;
 bool autocvar_hud_panel_scoreboard_accuracy = true;
 bool autocvar_hud_panel_scoreboard_accuracy_doublerows = false;
 bool autocvar_hud_panel_scoreboard_accuracy_nocolors = false;
-bool autocvar_hud_panel_scoreboard_ctf_leaderboard = true;
 
 bool autocvar_hud_panel_scoreboard_dynamichud = false;
 
@@ -343,7 +342,7 @@ void Cmd_Scoreboard_Help()
 	LOG_INFO(_("The special game type names 'teams' and 'noteams' can be used to\n"
 	        "include/exclude ALL teams/noteams game modes.\n\n"));
 
-	LOG_INFO(_("Example: scoreboard_columns_set name ping pl | +ctf/field3 -dm/field4\n"));
+	LOG_INFO(_("Example: scoreboard_columns_set name ping pl | -dm/field4\n"));
 	LOG_INFO(_("will display name, ping and pl aligned to the left, and the fields\n"
 	        "right of the vertical bar aligned to the right.\n"));
 	LOG_INFO(_("'field3' will only be shown in CTF, and 'field4' will be shown in all\n"
@@ -360,7 +359,7 @@ void Cmd_Scoreboard_Help()
 " -teams,rc,cts/suicides ?+rc/suicides" \
 " -cts,dm/frags" \
 " -rc,cts,nb/dmg -rc,cts,nb/dmgtaken" \
-" +ctf/caps +ctf/pickups +ctf/fckills +ctf/returns +ons/caps +ons/takes" \
+" +ons/caps +ons/takes" \
 " ?+rc/laps ?+rc/time +rc,cts/fastest" \
 " +nb/faults +nb/goals" \
 " -rc,cts,nb/score"
@@ -1346,7 +1345,7 @@ vector Scoreboard_Rankings_Draw(vector pos, entity pl, vector rgb, vector bg_siz
 	vector hl_rgb = rgb + '0.5 0.5 0.5';
 
 	pos.y += hud_fontsize.y;
-	drawstring(pos + eX * panel_bg_padding, ((gametype == MAPINFO_TYPE_CTF) ? _("Capture time rankings") : _("Rankings")), hud_fontsize, '1 1 1', panel_fg_alpha, DRAWFLAG_NORMAL);
+	drawstring(pos + eX * panel_bg_padding, _("Rankings"), hud_fontsize, '1 1 1', panel_fg_alpha, DRAWFLAG_NORMAL);
 	pos.y += 1.25 * hud_fontsize.y;
 	if(panel.current_panel_bg != "0")
 		pos.y += panel_bg_border;
@@ -1571,7 +1570,7 @@ void Scoreboard_Draw()
 	if (show_accuracy && autocvar_hud_panel_scoreboard_accuracy && !warmup_stage)
 		pos = Scoreboard_AccuracyStats_Draw(pos, panel_bg_color, bg_size);
 
-	if(gametype == MAPINFO_TYPE_CTS || gametype == MAPINFO_TYPE_RACE || (autocvar_hud_panel_scoreboard_ctf_leaderboard && gametype == MAPINFO_TYPE_CTF && STAT(CTF_SHOWLEADERBOARD))) {
+	if(gametype == MAPINFO_TYPE_CTS || gametype == MAPINFO_TYPE_RACE) {
 		if(race_speedaward) {
 			drawcolorcodedstring(pos, sprintf(_("Speed award: %d%s ^7(%s^7)"), race_speedaward, race_speedaward_unit, ColorTranslateRGB(race_speedaward_holder)), hud_fontsize, panel_fg_alpha, DRAWFLAG_NORMAL);
 			pos.y += 1.25 * hud_fontsize.y;

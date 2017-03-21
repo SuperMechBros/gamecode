@@ -20,13 +20,6 @@ void InstantAction_LoadMap(entity btn, entity dummy)
 		pmax = 8;
 		pstep = 1;
 	}
-	else if(random() < 0.5) // half of the remaining 60%, i.e. 30%, are CTF
-	{
-		MapInfo_SwitchGameType(MAPINFO_TYPE_CTF);
-		pmin = 4;
-		pmax = 12;
-		pstep = 2;
-	}
 	else // somehow distribute the remaining 5%
 	{
 		MapInfo_SwitchGameType(MAPINFO_TYPE_ONSLAUGHT);

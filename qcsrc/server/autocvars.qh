@@ -8,8 +8,6 @@ bool autocvar__sv_init;
 float autocvar_bot_ai_strategyinterval;
 #define autocvar_bot_number cvar("bot_number")
 int autocvar_bot_vs_human;
-int autocvar_captureleadlimit_override;
-#define autocvar_capturelimit_override cvar("capturelimit_override")
 float autocvar_ekg;
 #define autocvar_fraglimit cvar("fraglimit")
 #define autocvar_fraglimit_override cvar("fraglimit_override")

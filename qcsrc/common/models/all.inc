@@ -3,10 +3,6 @@
 
 string W_Model(string w_mdl);
 
-MODEL(CTF_SHIELD,                       "models/ctf/shield.md3");
-MODEL(CTF_CAPTURE,                      "models/ctf/shockwavetransring.md3");
-MODEL(CTF_FLAG,                         "models/ctf/flags.md3");
-
 MODEL(ICE,                              "models/ice/ice.md3");
 
 MODEL(OK_HMG,                           W_Model("g_ok_hmg.md3"));

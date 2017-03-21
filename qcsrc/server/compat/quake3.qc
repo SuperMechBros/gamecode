@@ -169,8 +169,6 @@ spawnfunc(target_give)
 //spawnfunc(item_invis)        /* handled by buffs mutator */
 //spawnfunc(item_regen)        /* handled by buffs mutator */
 
-// CTF spawnfuncs handled in mutators/gamemode_ctf.qc now
-
 .float notteam;
 .float notsingle;
 .float notfree;
@@ -182,11 +180,11 @@ bool DoesQ3ARemoveThisEntity(entity this)
 	// Q3 style filters (DO NOT USE, THIS IS COMPAT ONLY)
 
 	if(this.notq3a)
-		if(!teamplay || g_ctf)
+		if(!teamplay)
 			return true;
 
 	if(this.notta)
-		if (!(!teamplay || g_ctf))
+		if (teamplay)
 			return true;
 
 	if(this.notsingle)
@@ -208,8 +206,6 @@ bool DoesQ3ARemoveThisEntity(entity this)
 		gametypename = "ffa";
 		if(teamplay)
 			gametypename = "team";
-		if(g_ctf)
-			gametypename = "ctf";
 		if(maxclients == 1)
 			gametypename = "single";
 		// we do not have the other types (oneflag, obelisk, harvester, teamtournament)

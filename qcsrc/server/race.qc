@@ -29,14 +29,14 @@ void W_Porto_Fail(entity this, float failhard);
 
 float race_readTime(string map, float pos)
 {
-	string rr = ((g_cts) ? CTS_RECORD : ((g_ctf) ? CTF_RECORD : RACE_RECORD));
+	string rr = ((g_cts) ? CTS_RECORD : RACE_RECORD);
 
 	return stof(db_get(ServerProgsDB, strcat(map, rr, "time", ftos(pos))));
 }
 
 string race_readUID(string map, float pos)
 {
-	string rr = ((g_cts) ? CTS_RECORD : ((g_ctf) ? CTF_RECORD : RACE_RECORD));
+	string rr = ((g_cts) ? CTS_RECORD : RACE_RECORD);
 
 	return db_get(ServerProgsDB, strcat(map, rr, "crypto_idfp", ftos(pos)));
 }
@@ -55,7 +55,7 @@ float race_readPos(string map, float t)
 
 void race_writeTime(string map, float t, string myuid)
 {
-	string rr = ((g_cts) ? CTS_RECORD : ((g_ctf) ? CTF_RECORD : RACE_RECORD));
+	string rr = ((g_cts) ? CTS_RECORD : RACE_RECORD);
 
 	float newpos;
 	newpos = race_readPos(map, t);
@@ -92,7 +92,7 @@ void race_writeTime(string map, float t, string myuid)
 
 string race_readName(string map, float pos)
 {
-	string rr = ((g_cts) ? CTS_RECORD : ((g_ctf) ? CTF_RECORD : RACE_RECORD));
+	string rr = ((g_cts) ? CTS_RECORD : RACE_RECORD);
 
 	return uid2name(db_get(ServerProgsDB, strcat(map, rr, "crypto_idfp", ftos(pos))));
 }
@@ -340,7 +340,7 @@ void race_setTime(string map, float t, string myuid, string mynetname, entity e,
 
 void race_deleteTime(string map, float pos)
 {
-	string rr = ((g_cts) ? CTS_RECORD : ((g_ctf) ? CTF_RECORD : RACE_RECORD));
+	string rr = ((g_cts) ? CTS_RECORD : RACE_RECORD);
 
 	for(int i = pos; i <= RANKINGS_CNT; ++i)
 	{

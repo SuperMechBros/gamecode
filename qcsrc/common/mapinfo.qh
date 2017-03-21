@@ -167,36 +167,6 @@ REGISTER_GAMETYPE(CTS, NEW(RaceCTS));
 #define g_cts IS_GAMETYPE(CTS)
 
 #ifdef CSQC
-void HUD_Mod_CTF(vector pos, vector mySize);
-void HUD_Mod_CTF_Reset();
-#endif
-CLASS(CaptureTheFlag, Gametype)
-    INIT(CaptureTheFlag)
-    {
-        this.gametype_init(this, _("Capture the Flag"),"ctf","g_ctf",true,"","timelimit=20 caplimit=10 leadlimit=6",_("Find and bring the enemy flag to your base to capture it, defend your base from the other team"));
-    }
-    METHOD(CaptureTheFlag, m_generate_mapinfo, void(Gametype this, string v))
-    {
-        if(v == "item_flag_team2" || v == "team_CTF_blueflag")
-            MapInfo_Map_supportedGametypes |= this.m_flags;
-    }
-    METHOD(CaptureTheFlag, m_isTwoBaseMode, bool())
-    {
-        return true;
-    }
-    METHOD(CaptureTheFlag, m_setTeams, void(string sa))
-    {
-        cvar_set("fraglimit", sa);
-    }
-#ifdef CSQC
-    ATTRIB(CaptureTheFlag, m_modicons, void(vector pos, vector mySize), HUD_Mod_CTF);
-    ATTRIB(CaptureTheFlag, m_modicons_reset, void(), HUD_Mod_CTF_Reset);
-#endif
-ENDCLASS(CaptureTheFlag)
-REGISTER_GAMETYPE(CTF, NEW(CaptureTheFlag));
-#define g_ctf IS_GAMETYPE(CTF)
-
-#ifdef CSQC
 void HUD_Mod_CA(vector pos, vector mySize);
 #endif
 CLASS(ClanArena, Gametype)

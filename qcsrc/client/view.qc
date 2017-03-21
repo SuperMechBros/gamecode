@@ -2188,11 +2188,6 @@ void CSQC_UpdateView(entity this, float w, float h)
 	else if(cvar("r_glsl_postprocess") == 2)
 		cvar_set("r_glsl_postprocess", "0");
 
-	/*if(gametype == MAPINFO_TYPE_CTF)
-	  {
-	  ctf_view();
-	  } else */
-
 	// draw 2D entities
 	IL_EACH(g_drawables_2d, it.draw2d, it.draw2d(it));
 	Draw_ShowNames_All();

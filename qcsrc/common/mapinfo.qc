@@ -426,7 +426,6 @@ string _MapInfo_GetDefault(Gametype t)
 	switch(t)
 	{
 		case MAPINFO_TYPE_DEATHMATCH:      return "30 20 0";
-		case MAPINFO_TYPE_CTF:             return "300 20 10 0";
 		case MAPINFO_TYPE_CA:              return "10 20 0";
 		case MAPINFO_TYPE_RACE:            return "20 5 7 15 0";
 		case MAPINFO_TYPE_ONSLAUGHT:       return "20 0";
