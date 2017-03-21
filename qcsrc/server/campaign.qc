@@ -18,9 +18,9 @@ string campaign_index_var;
 
 float CampaignBailout(string s)
 {
-	cvar = cvar_normal;
-	cvar_string = cvar_string_normal;
-	cvar_set = cvar_set_normal;
+	//cvar = cvar_normal;
+	//cvar_string = cvar_string_normal;
+	//cvar_set = cvar_set_normal;
 	cvar_set("g_campaign", "0");
 	LOG_INFO("^4campaign initialization failed: ", s, "\n");
 	if(autocvar__campaign_testrun)
@@ -102,14 +102,14 @@ void CampaignPreInit()
 
 	cvar_campaignwrapper_list = strzone(strcat("; ", campaign_mutators[0], "; "));
 
-	cvar = cvar_campaignwrapper;
-	cvar_string = cvar_string_campaignwrapper;
-	cvar_set = cvar_set_campaignwrapper;
+	//cvar = cvar_campaignwrapper;
+	//cvar_string = cvar_string_campaignwrapper;
+	//cvar_set = cvar_settemp;
 
-	cvar_set("g_campaign", "1");
-	cvar_set("g_dm", "0");
-	cvar_set("skill", ftos(baseskill));
-	cvar_set("bot_number", ftos(campaign_bots[0]));
+	cvar_settemp("g_campaign", "1");
+	cvar_settemp("g_dm", "0");
+	cvar_settemp("skill", ftos(baseskill));
+	cvar_settemp("bot_number", ftos(campaign_bots[0]));
 	MapInfo_SwitchGameType(MapInfo_Type_FromString(campaign_gametype[0]));
 
 	// copy sv_gravity cvar, as the engine needs it too (sorry, this will mess

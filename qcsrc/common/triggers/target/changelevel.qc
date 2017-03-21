@@ -22,13 +22,21 @@ void target_changelevel_use(entity this, entity actor, entity trigger)
 		});
 		if(plnum < ceil(realplnum * min(1, this.count))) // 70% of players
 			return;
+
+		FOREACH_CLIENT(IS_PLAYER(it),
+		{
+			if(it.chlevel_targ == this)
+				it.winning = 1;
+		});
 	}
+	else if(IS_PLAYER(actor))
+		actor.winning = 1;
 
 	if(this.gametype != "")
 		MapInfo_SwitchGameType(MapInfo_Type_FromString(this.gametype));
 
-	if (this.chmap == "")
-		localcmd("endmatch\n");
+	if (this.chmap == "" || autocvar_g_campaign)
+		NextLevel();
 	else
 		localcmd(strcat("changelevel ", this.chmap, "\n"));
 }

@@ -708,9 +708,9 @@ void _MapInfo_Parse_Settemp(string pFilename, string acl, float type, string s, 
 		if(type == 0) // server set
 		{
 			LOG_TRACE("Applying temporary setting ", t, " := ", s);
-			if(cvar("g_campaign"))
-				cvar_set(t, s); // this is a wrapper and is always temporary anyway; no need to backup old values then
-			else
+			//if(cvar("g_campaign"))
+				//cvar_set(t, s); // this is a wrapper and is always temporary anyway; no need to backup old values then
+			//else
 				cvar_settemp(t, s);
 		}
 		else
