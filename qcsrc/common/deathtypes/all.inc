@@ -31,4 +31,5 @@ REGISTER_DEATHTYPE(SWAMP,                   DEATH_SELF_SWAMP,               DEAT
 REGISTER_DEATHTYPE(TEAMCHANGE,              DEATH_SELF_TEAMCHANGE,          NULL,                           "")
 REGISTER_DEATHTYPE(TELEFRAG,                NULL,                           DEATH_MURDER_TELEFRAG,          "")
 REGISTER_DEATHTYPE(TOUCHEXPLODE,            DEATH_SELF_TOUCHEXPLODE,        DEATH_MURDER_TOUCHEXPLODE,      "")
+REGISTER_DEATHTYPE(CRUSH,                   DEATH_SELF_CRUSH,               DEATH_MURDER_CRUSH,             "")
 REGISTER_DEATHTYPE(WEAPON,                  NULL,                           NULL,                           "")

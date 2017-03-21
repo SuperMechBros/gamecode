@@ -254,6 +254,7 @@
     MSG_INFO_NOTIF(DEATH_MURDER_SWAMP,                      N_CONSOLE,  3, 2, "spree_inf s1 s2 s3loc spree_end", "s2 s1",               "notify_slime",         _("^BG%s%s^K1 was preserved by ^BG%s^K1%s%s"), "")
     MSG_INFO_NOTIF(DEATH_MURDER_TELEFRAG,                   N_CONSOLE,  3, 2, "spree_inf s1 s2 s3loc spree_end", "s2 s1",               "notify_telefrag",      _("^BG%s%s^K1 was telefragged by ^BG%s^K1%s%s"), _("^BG%s%s^K1 tried to occupy ^BG%s^K1's teleport destination space%s%s"))
     MSG_INFO_NOTIF(DEATH_MURDER_TOUCHEXPLODE,               N_CONSOLE,  3, 2, "spree_inf s1 s2 s3loc spree_end", "s2 s1",               "notify_death",         _("^BG%s%s^K1 died in an accident with ^BG%s^K1%s%s"), "")
+    MSG_INFO_NOTIF(DEATH_MURDER_CRUSH,                      N_CONSOLE,  3, 2, "spree_inf s1 s2 s3loc spree_end", "s2 s1",               "notify_death",         _("^BG%s%s^K1 was crushed by ^BG%s^K1%s%s"), "")
     MSG_INFO_NOTIF(DEATH_MURDER_VOID,                       N_CONSOLE,  3, 2, "spree_inf s1 s2 s3loc spree_end", "s2 s1",               "notify_void",          _("^BG%s%s^K1 was thrown into a world of hurt by ^BG%s^K1%s%s"), "")
 
     MSG_INFO_NOTIF(DEATH_SELF_AUTOTEAMCHANGE,               N_CONSOLE,  2, 1, "s1 s2loc death_team", "",        "",                     _("^BG%s^K1 was moved into the %s%s"), "")
@@ -287,6 +288,7 @@
     MSG_INFO_NOTIF(DEATH_SELF_SWAMP,                        N_CONSOLE,  2, 1, "s1 s2loc spree_lost", "s1",      "notify_slime",         _("^BG%s^K1 is now preserved for centuries to come%s%s"), "")
     MSG_INFO_NOTIF(DEATH_SELF_TEAMCHANGE,                   N_CONSOLE,  2, 1, "s1 s2loc death_team", "",        "",                     _("^BG%s^K1 switched to the %s%s"), "")
     MSG_INFO_NOTIF(DEATH_SELF_TOUCHEXPLODE,                 N_CONSOLE,  2, 1, "s1 s2loc spree_lost", "s1",      "notify_death",         _("^BG%s^K1 died in an accident%s%s"), "")
+    MSG_INFO_NOTIF(DEATH_SELF_CRUSH,                        N_CONSOLE,  2, 1, "s1 s2loc spree_lost", "s1",      "notify_death",         _("^BG%s^K1 was crushed%s%s"), "")
     MSG_INFO_NOTIF(DEATH_SELF_VOID,                         N_CONSOLE,  3, 1, "s1 s2 s2loc spree_lost", "s1",   "notify_void",            "^BG%s^K1 %s^K1%s%s", "")
 
     MULTITEAM_INFO(DEATH_TEAMKILL, 4,                       N_CONSOLE,  3, 1, "s1 s2 s3loc spree_end", "s2 s1",     "notify_teamkill_%s",   _("^BG%s^K1 was betrayed by ^BG%s^K1%s%s"), "", NAME)
@@ -511,6 +513,7 @@
     MSG_CENTER_NOTIF(DEATH_SELF_SWAMP,                  N_ENABLE,    0, 0, "",               CPID_Null,              "0 0",  _("^K1You got stuck in a swamp!"), "")
     MSG_CENTER_NOTIF(DEATH_SELF_TEAMCHANGE,             N_ENABLE,    0, 1, "death_team",     CPID_Null,              "0 0",  _("^BGYou are now on: %s"), "")
     MSG_CENTER_NOTIF(DEATH_SELF_TOUCHEXPLODE,           N_ENABLE,    0, 0, "",               CPID_Null,              "0 0",  _("^K1You died in an accident!"), "")
+    MSG_CENTER_NOTIF(DEATH_SELF_CRUSH,                  N_ENABLE,    0, 0, "",               CPID_Null,              "0 0",  _("^K1You were crushed!"), "")
     MSG_CENTER_NOTIF(DEATH_SELF_VOID,                   N_ENABLE,    0, 0, "",               CPID_Null,              "0 0",  _("^K1Watch your step!"), "")
 
     MSG_CENTER_NOTIF(DEATH_TEAMKILL_FRAG,               N_ENABLE,    1, 0, "s1",             CPID_Null,              "0 0",  _("^K1Moron! You fragged ^BG%s^K1, a team mate!"), _("^K1Moron! You went against ^BG%s^K1, a team mate!"))
@@ -630,6 +633,7 @@
     MSG_MULTI_NOTIF(DEATH_MURDER_SWAMP,                 N_ENABLE,  NULL,           INFO_DEATH_MURDER_SWAMP,                NULL)
     MSG_MULTI_NOTIF(DEATH_MURDER_TELEFRAG,              N_ENABLE,  NULL,           INFO_DEATH_MURDER_TELEFRAG,             NULL)
     MSG_MULTI_NOTIF(DEATH_MURDER_TOUCHEXPLODE,          N_ENABLE,  NULL,           INFO_DEATH_MURDER_TOUCHEXPLODE,         NULL)
+    MSG_MULTI_NOTIF(DEATH_MURDER_CRUSH,                 N_ENABLE,  NULL,           INFO_DEATH_MURDER_CRUSH,                NULL)
     MSG_MULTI_NOTIF(DEATH_MURDER_VOID,                  N_ENABLE,  NULL,           INFO_DEATH_MURDER_VOID,                 NULL)
 
     MSG_MULTI_NOTIF(DEATH_SELF_AUTOTEAMCHANGE,          N_ENABLE,  NULL,           INFO_DEATH_SELF_AUTOTEAMCHANGE,         CENTER_DEATH_SELF_AUTOTEAMCHANGE)
@@ -663,6 +667,7 @@
     MSG_MULTI_NOTIF(DEATH_SELF_SWAMP,                   N_ENABLE,  NULL,           INFO_DEATH_SELF_SWAMP,                  CENTER_DEATH_SELF_SWAMP)
     MSG_MULTI_NOTIF(DEATH_SELF_TEAMCHANGE,              N_ENABLE,  NULL,           INFO_DEATH_SELF_TEAMCHANGE,             CENTER_DEATH_SELF_TEAMCHANGE)
     MSG_MULTI_NOTIF(DEATH_SELF_TOUCHEXPLODE,            N_ENABLE,  NULL,           INFO_DEATH_SELF_TOUCHEXPLODE,           CENTER_DEATH_SELF_TOUCHEXPLODE)
+    MSG_MULTI_NOTIF(DEATH_SELF_CRUSH,                   N_ENABLE,  NULL,           INFO_DEATH_SELF_CRUSH,                  CENTER_DEATH_SELF_CRUSH)
     MSG_MULTI_NOTIF(DEATH_SELF_VOID,                    N_ENABLE,  NULL,           INFO_DEATH_SELF_VOID,                   CENTER_DEATH_SELF_VOID)
 
     MSG_MULTI_NOTIF(ITEM_WEAPON_DONTHAVE,               N_ENABLE,  NULL,           INFO_ITEM_WEAPON_DONTHAVE,              CENTER_ITEM_WEAPON_DONTHAVE)

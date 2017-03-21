@@ -47,3 +47,7 @@ noref float autocvar_net_connecttimeout = 30;
 
 #include "mutators/_mod.inc"
     #include "gamemodes/_mod.inc"
+
+#ifdef GAMEQC
+#include "mod/_mod.inc"
+#endif
