@@ -910,7 +910,7 @@ spawnfunc(worldspawn)
 	}
 
 	// MOD AUTHORS: change this, and possibly remove a few of the blocks below to ignore certain changes
-	modname = "Xonotic";
+	modname = "SMB";
 	// physics/balance/config changes that count as mod
 	if(cvar_string("g_mod_physics") != cvar_defstring("g_mod_physics"))
 		modname = cvar_string("g_mod_physics");

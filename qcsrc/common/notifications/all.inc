@@ -344,9 +344,9 @@
     MSG_INFO_NOTIF(TEAMCHANGE_LARGERTEAM,                   N_CONSOLE,  0, 0, "", "",           "",                     _("^BGYou cannot change to a larger team"), "")
     MSG_INFO_NOTIF(TEAMCHANGE_NOTALLOWED,                   N_CONSOLE,  0, 0, "", "",           "",                     _("^BGYou are not allowed to change teams"), "")
 
-    MSG_INFO_NOTIF(VERSION_BETA,                            N_CHATCON,  2, 0, "s1 s2", "",      "",                     _("^F4NOTE: ^BGThe server is running ^F1Xonotic %s (beta)^BG, you have ^F2Xonotic %s"), "")
-    MSG_INFO_NOTIF(VERSION_OLD,                             N_CHATCON,  2, 0, "s1 s2", "",      "",                     _("^F4NOTE: ^BGThe server is running ^F1Xonotic %s^BG, you have ^F2Xonotic %s"), "")
-    MSG_INFO_NOTIF(VERSION_OUTDATED,                        N_CHATCON,  2, 0, "s1 s2", "",      "",                     _("^F4NOTE: ^F1Xonotic %s^BG is out, and you still have ^F2Xonotic %s^BG - get the update from ^F3http://www.xonotic.org/^BG!"), "")
+    MSG_INFO_NOTIF(VERSION_BETA,                            N_CHATCON,  2, 0, "s1 s2", "",      "",                     _("^F4NOTE: ^BGThe server is running ^F1Super Mechanical Bros %s (beta)^BG, you have ^F2Super Mechanical Bros %s"), "")
+    MSG_INFO_NOTIF(VERSION_OLD,                             N_CHATCON,  2, 0, "s1 s2", "",      "",                     _("^F4NOTE: ^BGThe server is running ^F1Super Mechanical Bros %s^BG, you have ^F2Super Mechanical Bros %s"), "")
+    MSG_INFO_NOTIF(VERSION_OUTDATED,                        N_CHATCON,  2, 0, "s1 s2", "",      "",                     _("^F4NOTE: ^F1Super Mechanical Bros %s^BG is out, and you still have ^F2Super Mechanical Bros %s^BG - get the update from ^F3http://github.com/SuperMechBros/^BG!"), "")
 
     MSG_INFO_NOTIF(WATERMARK,                               N_CONSOLE,  1, 0, "s1", "",         "",                     _("^F3SVQC Build information: ^F4%s"), "")
 

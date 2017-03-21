@@ -89,14 +89,14 @@ string GetClientVersionMessage(entity this)
 {
 	if (this.version_mismatch) {
 		if(this.version < autocvar_gameversion) {
-			return strcat("This is Xonotic ", autocvar_g_xonoticversion,
+			return strcat("This is Super Mechanical Bros ", autocvar_g_xonoticversion,
 				"\n^3Your client version is outdated.\n\n\n### YOU WON'T BE ABLE TO PLAY ON THIS SERVER ###\n\n\nPlease update!!!^8");
 		} else {
-			return strcat("This is Xonotic ", autocvar_g_xonoticversion,
-				"\n^3This server is using an outdated Xonotic version.\n\n\n ### THIS SERVER IS INCOMPATIBLE AND THUS YOU CANNOT JOIN ###.^8");
+			return strcat("This is Super Mechanical Bros ", autocvar_g_xonoticversion,
+				"\n^3This server is using an outdated Super Mechanical Bros version.\n\n\n ### THIS SERVER IS INCOMPATIBLE AND THUS YOU CANNOT JOIN ###.^8");
 		}
 	} else {
-		return strcat("Welcome to Xonotic ", autocvar_g_xonoticversion);
+		return strcat("Welcome to Super Mechanical Bros ", autocvar_g_xonoticversion);
 	}
 }
 
