@@ -177,10 +177,6 @@ SOUND(KA_RESPAWN, "keepaway/respawn");
 SOUND(KA_TOUCH, "keepaway/touch");
 
 SOUND(KH_ALARM, "kh/alarm");
-SOUND(KH_CAPTURE, "kh/capture");
-SOUND(KH_COLLECT, "kh/collect");
-SOUND(KH_DESTROY, "kh/destroy");
-SOUND(KH_DROP, "kh/drop");
 
 SOUND(NB_BOUNCE, "nexball/bounce");
 SOUND(NB_DROP, "nexball/drop");

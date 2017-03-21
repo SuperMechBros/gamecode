@@ -348,13 +348,6 @@
     MSG_INFO_NOTIF(KEEPAWAY_DROPPED,                        N_CONSOLE,  1, 0, "s1", "s1",       "notify_balldropped",       _("^BG%s^BG has dropped the ball!"), "")
     MSG_INFO_NOTIF(KEEPAWAY_PICKUP,                         N_CONSOLE,  1, 0, "s1", "s1",       "notify_ballpickedup",      _("^BG%s^BG has picked up the ball!"), "")
 
-    MULTITEAM_INFO(KEYHUNT_CAPTURE, 4,                      N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^BG captured the keys for the ^TC^TT team"), "", NAME)
-    MULTITEAM_INFO(KEYHUNT_DROP, 4,                         N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^BG dropped the ^TC^TT Key"), "", KEY)
-    MULTITEAM_INFO(KEYHUNT_LOST, 4,                         N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^BG lost the ^TC^TT Key"), "", KEY)
-    MULTITEAM_INFO(KEYHUNT_PUSHED, 4,                       N_CONSOLE,  2, 0, "s1 s2", "",      "",     _("^BG%s^BG pushed %s^BG causing the ^TC^TT Key ^BGdestruction"), "", KEY)
-    MULTITEAM_INFO(KEYHUNT_DESTROYED, 4,                    N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^BG destroyed the ^TC^TT Key"), "", KEY)
-    MULTITEAM_INFO(KEYHUNT_PICKUP, 4,                       N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^BG picked up the ^TC^TT Key"), "", KEY)
-
     MSG_INFO_NOTIF(LMS_FORFEIT,                             N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^F3 forfeited"), "")
     MSG_INFO_NOTIF(LMS_NOLIVES,                             N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^F3 has no more lives left"), "")
 
@@ -643,13 +636,6 @@
     MSG_CENTER_NOTIF(KEEPAWAY_PICKUP,                   N_ENABLE,    1, 0, "s1",             CPID_KEEPAWAY,          "0 0",  _("^BG%s^BG has picked up the ball!"), "")
     MSG_CENTER_NOTIF(KEEPAWAY_PICKUP_SELF,              N_ENABLE,    0, 0, "",               CPID_KEEPAWAY,          "0 0",  _("^BGYou picked up the ball"), "")
     MSG_CENTER_NOTIF(KEEPAWAY_WARN,                     N_ENABLE,    0, 0, "",               CPID_KEEPAWAY_WARN,     "0 0",  _("^BGKilling people while you don't have the ball gives no points!"), "")
-
-    MSG_CENTER_NOTIF(KEYHUNT_HELP,                      N_ENABLE,    0, 0, "",               CPID_KEYHUNT,           "0 0",  _("^BGAll keys are in your team's hands!\nHelp the key carriers to meet!"), "")
-    MULTITEAM_CENTER(KEYHUNT_INTERFERE, 4,              N_ENABLE,    0, 0, "",               CPID_KEYHUNT,           "0 0",  _("^BGAll keys are in ^TC^TT team^BG's hands!\nInterfere ^F4NOW^BG!"), "", NAME)
-    MSG_CENTER_NOTIF(KEYHUNT_MEET,                      N_ENABLE,    0, 0, "",               CPID_KEYHUNT,           "0 0",  _("^BGAll keys are in your team's hands!\nMeet the other key carriers ^F4NOW^BG!"), "")
-    MSG_CENTER_NOTIF(KEYHUNT_ROUNDSTART,                N_ENABLE,    0, 1, "",               CPID_KEYHUNT_OTHER,     "1 f1", _("^F4Round will start in ^COUNT"), "")
-    MSG_CENTER_NOTIF(KEYHUNT_SCAN,                      N_ENABLE,    0, 1, "",               CPID_KEYHUNT_OTHER,     "f1 0", _("^BGScanning frequency range..."), "")
-    MULTITEAM_CENTER(KEYHUNT_START, 4,                  N_ENABLE,    0, 0, "",               CPID_KEYHUNT,           "0 0",  _("^BGYou are starting with the ^TC^TT Key"), "", KEY)
 
     MSG_CENTER_NOTIF(LMS_NOLIVES,                       N_ENABLE,    0, 0, "",               CPID_LMS,               "0 0",  _("^BGYou have no lives left, you must wait until the next match"), "")
 

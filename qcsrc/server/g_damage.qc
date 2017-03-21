@@ -64,8 +64,6 @@ void GiveFrags (entity attacker, entity targ, float f, int deathtype)
 		UpdateFrags(attacker, f);
 }
 
-.entity kh_next;
-
 string AppendItemcodes(string s, entity player)
 {
 	for(int slot = 0; slot < MAX_WEAPONSLOTS; ++slot)
@@ -85,8 +83,6 @@ string AppendItemcodes(string s, entity player)
 		s = strcat(s, "F");
 	if(PHYS_INPUT_BUTTON_CHAT(player))
 		s = strcat(s, "T");
-	if(player.kh_next)
-		s = strcat(s, "K");
 	return s;
 }
 

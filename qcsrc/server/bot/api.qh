@@ -11,9 +11,6 @@ const int WAYPOINTFLAG_PROTECTED = BIT(18);  // Useless WP detection never kills
 const int WAYPOINTFLAG_USEFUL = BIT(17);  // Useless WP detection temporary flag.
 const int WAYPOINTFLAG_DEAD_END = BIT(16);  // Useless WP detection temporary flag.
 
-entity kh_worldkeylist;
-.entity kh_worldkeynext;
-
 float bot_custom_weapon;
 float bot_weapons_close[Weapons_MAX];
 float bot_weapons_far[Weapons_MAX];

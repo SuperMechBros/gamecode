@@ -53,8 +53,6 @@ REGISTER_STAT(PL_CROUCH_MIN, vector)
 REGISTER_STAT(PL_MAX, vector)
 REGISTER_STAT(PL_CROUCH_MAX, vector)
 
-REGISTER_STAT(KH_KEYS, int)
-
 #ifdef SVQC
 float W_WeaponRateFactor(entity this);
 float game_stopped;

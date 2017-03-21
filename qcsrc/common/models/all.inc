@@ -9,11 +9,6 @@ MODEL(CTF_FLAG,                         "models/ctf/flags.md3");
 
 MODEL(ICE,                              "models/ice/ice.md3");
 
-MODEL(KH_KEY,                           "models/keyhunt/key.md3");
-#ifdef KH_PLAYER_USE_CARRIEDMODEL
-MODEL(KH_KEY_CARRIED,                   "models/keyhunt/key-carried.md3");
-#endif
-
 MODEL(OK_HMG,                           W_Model("g_ok_hmg.md3"));
 
 MODEL(OK_RPC,                           W_Model("g_ok_rl.md3"));

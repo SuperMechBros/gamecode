@@ -35,14 +35,6 @@ void InstantAction_LoadMap(entity btn, entity dummy)
 		pmax = 8;
 		pstep = 2;
 	}
-	else if(random() < 0.666) // 2/3 of the remaining 15%, i.e. 10%, are KH
-	{
-		MapInfo_SwitchGameType(MAPINFO_TYPE_KEYHUNT);
-		pmin = 6;
-		pmax = 6;
-		pstep = 6; // works both for 2 and 3 teams
-		// TODO find team count of map, set pstep=2 or 3, and use 2v2(v2) games at least
-	}
 	else // somehow distribute the remaining 5%
 	{
 		float r;
