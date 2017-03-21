@@ -146,9 +146,6 @@ void HUD_Panel_ExportCfg(string cfgname)
 				case HUD_PANEL_VOTE:
 					HUD_Write_PanelCvar("_alreadyvoted_alpha");
 					break;
-				case HUD_PANEL_MODICONS:
-					HUD_Write_PanelCvar("_ca_layout");
-					break;
 				case HUD_PANEL_PRESSEDKEYS:
 					HUD_Write_PanelCvar("_aspect");
 					HUD_Write_PanelCvar("_attack");

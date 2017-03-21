@@ -238,9 +238,6 @@
 
     MSG_INFO_NOTIF(JETPACK_NOFUEL,                          N_CONSOLE,  0, 0, "", "",       "",     _("^BGYou don't have any fuel for the ^F1Jetpack"), "")
 
-    MSG_INFO_NOTIF(CA_JOIN_LATE,                            N_CONSOLE,  0, 0, "", "",       "",     _("^F1Round already started, you will join the game in the next round"), "")
-    MSG_INFO_NOTIF(CA_LEAVE,                                N_CONSOLE,  0, 0, "", "",       "",     _("^F2You will spectate in the next round"), "")
-
     MSG_INFO_NOTIF(DEATH_MURDER_CHEAT,                      N_CONSOLE,  3, 2, "spree_inf s1 s2 s3loc spree_end", "s2 s1",               "notify_death",         _("^BG%s%s^K1 was unfairly eliminated by ^BG%s^K1%s%s"), "")
     MSG_INFO_NOTIF(DEATH_MURDER_DROWN,                      N_CONSOLE,  3, 2, "spree_inf s1 s2 s3loc spree_end", "s2 s1",               "notify_water",         _("^BG%s%s^K1 was drowned by ^BG%s^K1%s%s"), "")
     MSG_INFO_NOTIF(DEATH_MURDER_FALL,                       N_CONSOLE,  3, 2, "spree_inf s1 s2 s3loc spree_end", "s2 s1",               "notify_fall",          _("^BG%s%s^K1 was grounded by ^BG%s^K1%s%s"), "")

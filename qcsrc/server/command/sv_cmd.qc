@@ -194,7 +194,6 @@ void GameCommand_allspec(float request, float argc)
 			string reason = argv(1);
 			int n = 0;
 			FOREACH_CLIENT(IS_PLAYER(it) && IS_REAL_CLIENT(it), LAMBDA(
-				if (it.caplayer) it.caplayer = 0;
 				PutObserverInServer(it);
 				++n;
 			));
@@ -1044,7 +1043,6 @@ void GameCommand_moveplayer(float request, float argc)
 					{
 						if (!IS_SPEC(client) && !IS_OBSERVER(client))
 						{
-							if (client.caplayer) client.caplayer = 0;
 							PutObserverInServer(client);
 
 							successful = strcat(successful, (successful ? ", " : ""), playername(client, false));
@@ -1149,12 +1147,9 @@ void GameCommand_nospectators(float request)
 		{
 			blockSpectators = 1;
 			// give every spectator <g_maxplayers_spectator_blocktime> seconds time to become a player
-			FOREACH_CLIENT(IS_REAL_CLIENT(it) && (IS_SPEC(it) || IS_OBSERVER(it)) && !it.caplayer, LAMBDA(
-				if(!it.caplayer)
-				{
-					it.spectatortime = time;
-					Send_Notification(NOTIF_ONE_ONLY, it, MSG_INFO, INFO_SPECTATE_WARNING, autocvar_g_maxplayers_spectator_blocktime);
-				}
+			FOREACH_CLIENT(IS_REAL_CLIENT(it) && (IS_SPEC(it) || IS_OBSERVER(it)), LAMBDA(
+				it.spectatortime = time;
+				Send_Notification(NOTIF_ONE_ONLY, it, MSG_INFO, INFO_SPECTATE_WARNING, autocvar_g_maxplayers_spectator_blocktime);
 			));
 			bprint(strcat("^7All spectators will be automatically kicked when not joining the game after ", ftos(autocvar_g_maxplayers_spectator_blocktime), " seconds!\n"));
 			return;
@@ -1353,7 +1348,7 @@ void GameCommand_shuffleteams(float request)
 				return;
 			}
 
-			FOREACH_CLIENT(IS_PLAYER(it) || it.caplayer, LAMBDA(
+			FOREACH_CLIENT(IS_PLAYER(it), LAMBDA(
 				if (it.team_forced) {
 					// we could theoretically assign forced players to their teams
 					// and shuffle the rest to fill the empty spots but in practise
@@ -1371,7 +1366,7 @@ void GameCommand_shuffleteams(float request)
 			if (c4 >= 0) number_of_teams = max(4, number_of_teams);
 
 			int team_index = 0;
-			FOREACH_CLIENT_RANDOM(IS_PLAYER(it) || it.caplayer, LAMBDA(
+			FOREACH_CLIENT_RANDOM(IS_PLAYER(it), LAMBDA(
 				int target_team_number = Team_NumberToTeam(team_index + 1);
 				if (it.team != target_team_number) MoveToTeam(it, target_team_number, 6);
 				team_index = (team_index + 1) % number_of_teams;

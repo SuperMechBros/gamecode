@@ -160,12 +160,6 @@ REGISTER_STAT(WALLJUMP_DELAY, float, autocvar_g_walljump_delay)
 REGISTER_STAT(WALLJUMP_FORCE, float, autocvar_g_walljump_force)
 REGISTER_STAT(LASTWJ, float)
 
-// freeze tag, clan arena
-REGISTER_STAT(REDALIVE, int)
-REGISTER_STAT(BLUEALIVE, int)
-REGISTER_STAT(YELLOWALIVE, int)
-REGISTER_STAT(PINKALIVE, int)
-
 REGISTER_STAT(TELEPORT_MAXSPEED, float, autocvar_g_teleport_maxspeed)
 REGISTER_STAT(TELEPORT_TELEFRAG_AVOID, int, autocvar_g_telefrags_avoid)
 

@@ -1913,7 +1913,7 @@ int nJoinAllowed(entity this, entity ignore)
 		if(it != ignore)
 			++totalClients;
 		if(IS_REAL_CLIENT(it))
-		if(IS_PLAYER(it) || it.caplayer)
+		if(IS_PLAYER(it))
 			++currentlyPlaying;
 	));
 
@@ -1940,7 +1940,6 @@ int nJoinAllowed(entity this, entity ignore)
 void checkSpectatorBlock(entity this)
 {
 	if(IS_SPEC(this) || IS_OBSERVER(this))
-	if(!this.caplayer)
 	if(IS_REAL_CLIENT(this))
 	{
 		if( time > (this.spectatortime + autocvar_g_maxplayers_spectator_blocktime) ) {

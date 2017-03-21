@@ -327,7 +327,7 @@ void GetTeamCounts(entity ignore)
 
 	FOREACH_CLIENT(true, LAMBDA(
 		float t;
-		if(IS_PLAYER(it) || it.caplayer)
+		if(IS_PLAYER(it))
 			t = it.team;
 		else if(it.team_forced > 0)
 			t = it.team_forced; // reserve the spot

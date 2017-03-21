@@ -9,7 +9,7 @@
     #include <common/monsters/_mod.qh>
 #endif
 
-bool autocvar_g_mapinfo_ignore_warnings;
+bool autocvar_g_mapinfo_ignore_warnings = true;
 
 // generic string stuff
 
@@ -426,7 +426,6 @@ string _MapInfo_GetDefault(Gametype t)
 	switch(t)
 	{
 		case MAPINFO_TYPE_DEATHMATCH:      return "30 20 0";
-		case MAPINFO_TYPE_CA:              return "10 20 0";
 		case MAPINFO_TYPE_RACE:            return "20 5 7 15 0";
 		case MAPINFO_TYPE_NEXBALL:         return "5 20 0";
 		case MAPINFO_TYPE_CTS:             return "20 0 0";
