@@ -279,38 +279,6 @@ REGISTER_GAMETYPE(CA, NEW(ClanArena));
 #define g_ca IS_GAMETYPE(CA)
 
 #ifdef CSQC
-void HUD_Mod_Dom(vector pos, vector mySize);
-#endif
-CLASS(Domination, Gametype)
-    INIT(Domination)
-    {
-        this.gametype_init(this, _("Domination"),"dom","g_domination",true,"","timelimit=20 pointlimit=200 teams=2 leadlimit=0",_("Capture and defend all the control points to win"));
-    }
-    METHOD(Domination, m_parse_mapinfo, bool(string k, string v))
-    {
-        if (!k) {
-            cvar_set("g_domination_default_teams", cvar_defstring("g_domination_default_teams"));
-            return true;
-        }
-        switch (k) {
-            case "teams":
-                cvar_set("g_domination_default_teams", v);
-                return true;
-        }
-        return false;
-    }
-    METHOD(Domination, m_generate_mapinfo, void(Gametype this, string v))
-    {
-        if(v == "dom_controlpoint")
-            MapInfo_Map_supportedGametypes |= this.m_flags;
-    }
-#ifdef CSQC
-    ATTRIB(Domination, m_modicons, void(vector pos, vector mySize), HUD_Mod_Dom);
-#endif
-ENDCLASS(Domination)
-REGISTER_GAMETYPE(DOMINATION, NEW(Domination));
-
-#ifdef CSQC
 void HUD_Mod_KH(vector pos, vector mySize);
 #endif
 CLASS(KeyHunt, Gametype)

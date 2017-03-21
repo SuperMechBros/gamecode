@@ -28,12 +28,6 @@ REGISTER_WAYPOINT(FlagBaseYellow, _("Yellow base"), '0.8 0.8 0', 1);
 REGISTER_WAYPOINT(FlagBasePink, _("Pink base"), '0.8 0.8 0', 1);
 REGISTER_WAYPOINT(FlagReturn, _("Return flag here"), '0 0.8 0.8', 1);
 
-REGISTER_WAYPOINT(DomNeut, _("Control point"), '0 1 1', 1);
-REGISTER_WAYPOINT(DomRed, _("Control point"), '0 1 1', 1);
-REGISTER_WAYPOINT(DomBlue, _("Control point"), '0 1 1', 1);
-REGISTER_WAYPOINT(DomYellow, _("Control point"), '0 1 1', 1);
-REGISTER_WAYPOINT(DomPink, _("Control point"), '0 1 1', 1);
-
 REGISTER_WAYPOINT(KeyDropped, _("Dropped key"), '0 1 1', 1);
 REGISTER_WAYPOINT(KeyCarrierFriend, _("Key carrier"), '0 1 0', 1);
 REGISTER_WAYPOINT(KeyCarrierFinish, _("Run here"), '0 1 1', 1);

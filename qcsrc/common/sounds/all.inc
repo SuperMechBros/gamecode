@@ -171,8 +171,6 @@ Sound SND_CTF_TAKEN(int teamid) {
 
 SOUND(CTF_TOUCH, "ctf/touch");
 
-SOUND(DOM_CLAIM, "domination/claim");
-
 SOUND(KA_DROPPED, "keepaway/dropped");
 SOUND(KA_PICKEDUP, "keepaway/pickedup");
 SOUND(KA_RESPAWN, "keepaway/respawn");

@@ -46,7 +46,7 @@ void InstantAction_LoadMap(entity btn, entity dummy)
 	else // somehow distribute the remaining 5%
 	{
 		float r;
-		r = floor(random() * 4);
+		r = floor(random() * 3);
 		switch(r)
 		{
 			default:
@@ -58,18 +58,12 @@ void InstantAction_LoadMap(entity btn, entity dummy)
 				cvar_set("timelimit_override", "-1");
 				break;
 			case 1:
-				MapInfo_SwitchGameType(MAPINFO_TYPE_DOMINATION);
-				pmin = 2;
-				pmax = 8;
-				pstep = 2;
-				break;
-			case 2:
 				MapInfo_SwitchGameType(MAPINFO_TYPE_ONSLAUGHT);
 				pmin = 6;
 				pmax = 16;
 				pstep = 2;
 				break;
-			case 3:
+			case 2:
 				MapInfo_SwitchGameType(MAPINFO_TYPE_ASSAULT);
 				pmin = 4;
 				pmax = 16;

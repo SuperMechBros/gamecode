@@ -7,12 +7,6 @@ MODEL(CTF_SHIELD,                       "models/ctf/shield.md3");
 MODEL(CTF_CAPTURE,                      "models/ctf/shockwavetransring.md3");
 MODEL(CTF_FLAG,                         "models/ctf/flags.md3");
 
-MODEL(DOM_NEUTRAL,                      "models/domination/dom_unclaimed.md3");
-MODEL(DOM_RED,                          "models/domination/dom_red.md3");
-MODEL(DOM_BLUE,                         "models/domination/dom_blue.md3");
-MODEL(DOM_YELLOW,                       "models/domination/dom_yellow.md3");
-MODEL(DOM_PINK,                         "models/domination/dom_pink.md3");
-
 MODEL(ICE,                              "models/ice/ice.md3");
 
 MODEL(KH_KEY,                           "models/keyhunt/key.md3");

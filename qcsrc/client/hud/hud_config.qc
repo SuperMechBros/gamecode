@@ -148,7 +148,6 @@ void HUD_Panel_ExportCfg(string cfgname)
 					break;
 				case HUD_PANEL_MODICONS:
 					HUD_Write_PanelCvar("_ca_layout");
-					HUD_Write_PanelCvar("_dom_layout");
 					HUD_Write_PanelCvar("_freezetag_layout");
 					break;
 				case HUD_PANEL_PRESSEDKEYS:

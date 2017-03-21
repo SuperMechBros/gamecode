@@ -318,8 +318,6 @@
 
     MULTITEAM_INFO(DEATH_TEAMKILL, 4,                       N_CONSOLE,  3, 1, "s1 s2 s3loc spree_end", "s2 s1",     "notify_teamkill_%s",   _("^BG%s^K1 was betrayed by ^BG%s^K1%s%s"), "", NAME)
 
-    MSG_INFO_NOTIF(DOMINATION_CAPTURE_TIME,                 N_CONSOLE,  2, 2, "s1 s2 f1 f1points f2", "",       "",     _("^BG%s^BG%s^BG (%s %s every %s seconds)"), "")
-
     MSG_INFO_NOTIF(FREEZETAG_FREEZE,                        N_CONSOLE,  2, 0, "s1 s2", "",      "",     _("^BG%s^K1 was frozen by ^BG%s"), "")
     MSG_INFO_NOTIF(FREEZETAG_REVIVED,                       N_CONSOLE,  2, 0, "s1 s2", "",      "",     _("^BG%s^K3 was revived by ^BG%s"), "")
     MSG_INFO_NOTIF(FREEZETAG_REVIVED_FALL,                  N_CONSOLE,  1, 0, "s1", "",         "",     _("^BG%s^K3 was revived by falling"), "")

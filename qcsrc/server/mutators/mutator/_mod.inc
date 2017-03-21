@@ -4,7 +4,6 @@
 #include <server/mutators/mutator/gamemode_ctf.qc>
 #include <server/mutators/mutator/gamemode_cts.qc>
 #include <server/mutators/mutator/gamemode_deathmatch.qc>
-#include <server/mutators/mutator/gamemode_domination.qc>
 #include <server/mutators/mutator/gamemode_freezetag.qc>
 #include <server/mutators/mutator/gamemode_invasion.qc>
 #include <server/mutators/mutator/gamemode_keepaway.qc>
