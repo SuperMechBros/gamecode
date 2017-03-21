@@ -31,7 +31,7 @@
 
 void Drop_Special_Items(entity player)
 {
-	// called when the player has become stuck or frozen
+	// called when the player has become stuck
 	// so objective items aren't stuck with the player
 
 	MUTATOR_CALLHOOK(DropSpecialItems, player);
@@ -156,8 +156,6 @@ void player_anim(entity this)
 		deadbits = 0;
 	}
 	int animbits = deadbits;
-	if(STAT(FROZEN, this))
-		animbits |= ANIMSTATE_FROZEN;
 	if(this.move_movetype == MOVETYPE_FOLLOW)
 		animbits |= ANIMSTATE_FOLLOW;
 	if(this.crouch)
@@ -572,14 +570,10 @@ void PlayerDamage(entity this, entity inflictor, entity attacker, float damage, 
 			ClientKill_Now_TeamChange(this); // can turn player into spectator
 
 		// player could have been miraculously resuscitated ;)
-		// e.g. players in freezetag get frozen, they don't really die
 		if(this.health >= 1 || !(IS_PLAYER(this) || this.classname == "body"))
 			return;
 
 		// when we get here, player actually dies
-
-		Unfreeze(this); // remove any icy remains
-		this.health = 0; // Unfreeze resets health, so we need to set it back
 
 		// clear waypoints
 		WaypointSprite_PlayerDead(this);

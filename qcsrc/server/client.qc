@@ -254,7 +254,6 @@ void PutObserverInServer(entity this)
 
     RemoveGrapplingHooks(this);
 	Portal_ClearAll(this);
-	Unfreeze(this);
 	SetSpectatee(this, NULL);
 
 	if (this.alivetime)
@@ -327,8 +326,6 @@ void PutObserverInServer(entity this)
 	this.nextthink = 0;
 	this.deadflag = DEAD_NO;
 	this.crouch = false;
-	this.revive_progress = 0;
-	this.revival_time = 0;
 
 	this.items = 0;
 	this.weapons = '0 0 0';
@@ -602,8 +599,6 @@ void PutClientInServer(entity this)
 		this.strength_finished = 0;
 		this.invincible_finished = 0;
 		this.fire_endtime = -1;
-		this.revive_progress = 0;
-		this.revival_time = 0;
 		this.air_finished = time + 12;
 
 		entity spawnevent = new_pure(spawnevent);
@@ -683,8 +678,6 @@ void PutClientInServer(entity this)
 			SUB_UseTargets(spot, this, NULL);
 			spot.target = s;
 		}
-
-		Unfreeze(this);
 
 		MUTATOR_CALLHOOK(PlayerSpawn, this, spot);
 
@@ -998,7 +991,6 @@ void ClientKill (entity this)
 {
 	if(game_stopped) return;
 	if(this.player_blocked) return;
-	if(STAT(FROZEN, this)) return;
 
 	ClientKill_TeamChange(this, 0);
 }
@@ -1246,8 +1238,6 @@ void ClientDisconnect(entity this)
 	ClientState_detach(this);
 
 	Portal_ClearAll(this);
-
-	Unfreeze(this);
 
 	RemoveGrapplingHooks(this);
 
@@ -1557,7 +1547,6 @@ void player_regen(entity this)
 
 
 	if(!mutator_returnvalue)
-	if(!STAT(FROZEN, this))
 	{
 		float mina, maxa, limith, limita;
 		maxa = autocvar_g_balance_armor_rotstable;
@@ -1669,8 +1658,6 @@ void SpectateCopy(entity this, entity spectatee)
 	this.dmg_inflictor = spectatee.dmg_inflictor;
 	this.v_angle = spectatee.v_angle;
 	this.angles = spectatee.v_angle;
-	STAT(FROZEN, this) = STAT(FROZEN, spectatee);
-	this.revive_progress = spectatee.revive_progress;
 	this.viewloc = spectatee.viewloc;
 	if(!PHYS_INPUT_BUTTON_USE(this) && STAT(CAMERA_SPECTATOR, this) != 2)
 		this.fixangle = true;
@@ -2182,29 +2169,6 @@ void PlayerPreThink (entity this)
 		this.max_armorvalue = 0;
 	}
 
-	if (STAT(FROZEN, this) == 2)
-	{
-		this.revive_progress = bound(0, this.revive_progress + frametime * this.revive_speed, 1);
-		this.health = max(1, this.revive_progress * start_health);
-		this.iceblock.alpha = bound(0.2, 1 - this.revive_progress, 1);
-
-		if (this.revive_progress >= 1)
-			Unfreeze(this);
-	}
-	else if (STAT(FROZEN, this) == 3)
-	{
-		this.revive_progress = bound(0, this.revive_progress - frametime * this.revive_speed, 1);
-		this.health = max(0, autocvar_g_nades_ice_health + (start_health-autocvar_g_nades_ice_health) * this.revive_progress );
-
-		if (this.health < 1)
-		{
-			if(this.event_damage)
-				this.event_damage(this, this, this.frozen_by, 1, DEATH_ROT.m_id, this.origin, '0 0 0');
-		}
-		else if (this.revive_progress <= 0)
-			Unfreeze(this);
-	}
-
 	MUTATOR_CALLHOOK(PlayerPreThink, this);
 
 	if(!this.cvar_cl_newusekeysupported) // FIXME remove this - it was a stupid idea to begin with, we can JUST use the button
@@ -2322,8 +2286,6 @@ void PlayerPreThink (entity this)
 		if (have_hook) {
 			do_crouch = false;
 		} else if (this.waterlevel >= WATERLEVEL_SWIMMING) {
-			do_crouch = false;
-		} else if (STAT(FROZEN, this)) {
 			do_crouch = false;
         }
 

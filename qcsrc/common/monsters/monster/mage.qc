@@ -91,8 +91,6 @@ bool M_Mage_Defend_Heal_Check(entity this, entity targ)
 		return false;
 	if(DIFF_TEAM(targ, this) && targ != this.monster_follow)
 		return false;
-	if(STAT(FROZEN, targ))
-		return false;
 	if(!IS_PLAYER(targ))
 		return (IS_MONSTER(targ) && targ.health < targ.max_health);
 	if(targ.items & ITEM_Shield.m_itemid)

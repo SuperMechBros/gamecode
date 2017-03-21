@@ -109,8 +109,6 @@ void PM_ClientMovement_UpdateStatus(entity this)
 		do_crouch = false;
 	if(hud != HUD_NORMAL)
 		do_crouch = false;
-	if(STAT(FROZEN, this))
-		do_crouch = false;
 
 	if (do_crouch)
 	{
@@ -282,9 +280,6 @@ returns true if handled
 */
 bool PlayerJump(entity this)
 {
-	if (PHYS_FROZEN(this))
-		return true; // no jumping in freezetag when frozen
-
 #ifdef SVQC
 	if (this.player_blocked)
 		return true; // no jumping while blocked
@@ -456,7 +451,7 @@ void CheckPlayerJump(entity this)
 			this.jetpack_stopped = true;
 			ITEMS_STAT(this) &= ~IT_USING_JETPACK;
 		}
-		else if (activate && !PHYS_FROZEN(this))
+		else if (activate)
 			ITEMS_STAT(this) |= IT_USING_JETPACK;
 	}
 	else
@@ -579,23 +574,6 @@ void PM_check_punch(entity this, float dt)
 			this.punchvector = '0 0 0';
 	}
 #endif
-}
-
-// predict frozen movement, as frozen players CAN move in some cases
-void PM_check_frozen(entity this)
-{
-	if (!PHYS_FROZEN(this))
-		return;
-	this.movement = '0 0 0';
-
-	vector midpoint = ((this.absmin + this.absmax) * 0.5);
-	if (pointcontents(midpoint) == CONTENT_WATER)
-	{
-		this.velocity = this.velocity * 0.5;
-
-		if (pointcontents(midpoint + '0 0 16') == CONTENT_WATER)
-			this.velocity_z = 200;
-	}
 }
 
 void PM_check_hitground(entity this)

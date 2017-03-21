@@ -76,12 +76,6 @@ float Obituary_WeaponDeath(
 
 void Obituary(entity attacker, entity inflictor, entity targ, int deathtype);
 
-void Ice_Think(entity this);
-
-void Freeze (entity targ, float freeze_time, float frozen_type, float show_waypoint);
-
-void Unfreeze (entity targ);
-
 // these are updated by each Damage call for use in button triggering and such
 entity damage_targ;
 entity damage_inflictor;

@@ -458,103 +458,6 @@ void Obituary(entity attacker, entity inflictor, entity targ, int deathtype)
 	if(targ.killcount) { targ.killcount = 0; }
 }
 
-void Ice_Think(entity this)
-{
-	if(!STAT(FROZEN, this.owner) || this.owner.iceblock != this)
-	{
-		delete(this);
-		return;
-	}
-	setorigin(this, this.owner.origin - '0 0 16');
-	this.nextthink = time;
-}
-
-void Freeze (entity targ, float freeze_time, float frozen_type, float show_waypoint)
-{
-	if(!IS_PLAYER(targ) && !IS_MONSTER(targ)) // only specified entities can be freezed
-		return;
-
-	if(STAT(FROZEN, targ))
-		return;
-
-	float targ_maxhealth = ((IS_MONSTER(targ)) ? targ.max_health : start_health);
-
-	STAT(FROZEN, targ) = frozen_type;
-	targ.revive_progress = ((frozen_type == 3) ? 1 : 0);
-	targ.health = ((frozen_type == 3) ? targ_maxhealth : 1);
-	targ.revive_speed = freeze_time;
-	if(targ.bot_attack)
-		IL_REMOVE(g_bot_targets, targ);
-	targ.bot_attack = false;
-
-	entity ice = new(ice);
-	ice.owner = targ;
-	ice.scale = targ.scale;
-	setthink(ice, Ice_Think);
-	ice.nextthink = time;
-	ice.frame = floor(random() * 21); // ice model has 20 different looking frames
-	setmodel(ice, MDL_ICE);
-	ice.alpha = 1;
-	ice.colormod = Team_ColorRGB(targ.team);
-	ice.glowmod = ice.colormod;
-	targ.iceblock = ice;
-	targ.revival_time = 0;
-
-	Ice_Think(ice);
-
-	RemoveGrapplingHooks(targ);
-
-	FOREACH_CLIENT(IS_PLAYER(it),
-	{
-		for(int slot = 0; slot < MAX_WEAPONSLOTS; ++slot)
-	    {
-	    	.entity weaponentity = weaponentities[slot];
-	    	if(it.(weaponentity).hook.aiment == targ)
-	    		RemoveHook(it.(weaponentity).hook);
-	    }
-	});
-
-	// add waypoint
-	if(show_waypoint)
-		WaypointSprite_Spawn(WP_Frozen, 0, 0, targ, '0 0 64', NULL, targ.team, targ, waypointsprite_attached, true, RADARICON_WAYPOINT);
-}
-
-void Unfreeze (entity targ)
-{
-	if(!STAT(FROZEN, targ))
-		return;
-
-	if(STAT(FROZEN, targ) && STAT(FROZEN, targ) != 3) // only reset health if target was frozen
-	{
-		targ.health = ((IS_PLAYER(targ)) ? start_health : targ.max_health);
-		targ.pauseregen_finished = time + autocvar_g_balance_pause_health_regen;
-	}
-
-	STAT(FROZEN, targ) = 0;
-	targ.revive_progress = 0;
-	targ.revival_time = time;
-	if(!targ.bot_attack)
-		IL_PUSH(g_bot_targets, targ);
-	targ.bot_attack = true;
-
-	WaypointSprite_Kill(targ.waypointsprite_attached);
-
-	FOREACH_CLIENT(IS_PLAYER(it),
-	{
-		for(int slot = 0; slot < MAX_WEAPONSLOTS; ++slot)
-	    {
-	    	.entity weaponentity = weaponentities[slot];
-	    	if(it.(weaponentity).hook.aiment == targ)
-	    		RemoveHook(it.(weaponentity).hook);
-	    }
-	});
-
-	// remove the ice block
-	if(targ.iceblock)
-		delete(targ.iceblock);
-	targ.iceblock = NULL;
-}
-
 void Damage (entity targ, entity inflictor, entity attacker, float damage, int deathtype, vector hitloc, vector force)
 {
 	float mirrordamage;
@@ -680,58 +583,6 @@ void Damage (entity targ, entity inflictor, entity attacker, float damage, int d
 		    }
 		}
 
-		if(STAT(FROZEN, targ))
-		if(deathtype != DEATH_HURTTRIGGER.m_id && deathtype != DEATH_TEAMCHANGE.m_id && deathtype != DEATH_AUTOTEAMCHANGE.m_id)
-		{
-			if(autocvar_g_frozen_revive_falldamage > 0)
-			if(deathtype == DEATH_FALL.m_id)
-			if(damage >= autocvar_g_frozen_revive_falldamage)
-			{
-				Unfreeze(targ);
-				targ.health = autocvar_g_frozen_revive_falldamage_health;
-				Send_Effect(EFFECT_ICEORGLASS, targ.origin, '0 0 0', 3);
-				//Send_Notification(NOTIF_ALL, NULL, MSG_INFO, INFO_FREEZETAG_REVIVED_FALL, targ.netname);
-				//Send_Notification(NOTIF_ONE, targ, MSG_CENTER, CENTER_FREEZETAG_REVIVE_SELF);
-			}
-
-			damage = 0;
-			force *= autocvar_g_frozen_force;
-		}
-
-		if(STAT(FROZEN, targ) && deathtype == DEATH_HURTTRIGGER.m_id && !autocvar_g_frozen_damage_trigger)
-		{
-			Send_Effect(EFFECT_TELEPORT, targ.origin, '0 0 0', 1);
-
-			entity spot = SelectSpawnPoint (targ, false);
-
-			if(spot)
-			{
-				damage = 0;
-				targ.deadflag = DEAD_NO;
-
-				targ.angles = spot.angles;
-
-				targ.effects = 0;
-				targ.effects |= EF_TELEPORT_BIT;
-
-				targ.angles_z = 0; // never spawn tilted even if the spot says to
-				targ.fixangle = true; // turn this way immediately
-				targ.velocity = '0 0 0';
-				targ.avelocity = '0 0 0';
-				targ.punchangle = '0 0 0';
-				targ.punchvector = '0 0 0';
-				targ.oldvelocity = targ.velocity;
-
-				targ.spawnorigin = spot.origin;
-				setorigin(targ, spot.origin + '0 0 1' * (1 - targ.mins.z - 24));
-				// don't reset back to last position, even if new position is stuck in solid
-				targ.oldorigin = targ.origin;
-				targ.prevorigin = targ.origin;
-
-				Send_Effect(EFFECT_TELEPORT, targ.origin, '0 0 0', 1);
-			}
-		}
-
 		{
 			// apply strength multiplier
 			if (attacker.items & ITEM_Strength.m_itemid)
@@ -766,7 +617,7 @@ void Damage (entity targ, entity inflictor, entity attacker, float damage, int d
 
 			if(IS_PLAYER(victim) || IS_MONSTER(victim) || MUTATOR_CALLHOOK(PlayHitsound, victim, attacker))
 			{
-				if(DIFF_TEAM(victim, attacker) && !STAT(FROZEN, victim))
+				if(DIFF_TEAM(victim, attacker))
 				{
 					if(damage > 0)
 					{
@@ -1183,10 +1034,6 @@ void Fire_ApplyDamage(entity e)
 	if(e.watertype != CONTENT_LAVA)
 		e.fire_endtime = 0;
 
-	// ice stops fire
-	if(STAT(FROZEN, e))
-		e.fire_endtime = 0;
-
 	t = min(frametime, e.fire_endtime - time);
 	d = e.fire_damagepersec * t;
 
@@ -1201,7 +1048,6 @@ void Fire_ApplyDamage(entity e)
 	e.fire_hitsound = true;
 
 	if(!IS_INDEPENDENT_PLAYER(e))
-	if(!STAT(FROZEN, e))
 		FOREACH_CLIENT(IS_PLAYER(it) && it != e, LAMBDA(
 			if(!IS_DEAD(it))
 			if(!IS_INDEPENDENT_PLAYER(it))

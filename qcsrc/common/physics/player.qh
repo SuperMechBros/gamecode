@@ -56,8 +56,6 @@ bool IsFlying(entity a);
 #define PHYS_FRICTION_ONLAND(s)             STAT(MOVEVARS_FRICTION_ONLAND, s)
 #define PHYS_FRICTION_SLICK(s)              STAT(MOVEVARS_FRICTION_SLICK, s)
 
-#define PHYS_FROZEN(s)                      STAT(FROZEN, s)
-
 #define PHYS_HIGHSPEED(s)                   STAT(MOVEVARS_HIGHSPEED, s)
 
 #define PHYS_JETPACK_ACCEL_SIDE(s)          STAT(JETPACK_ACCEL_SIDE, s)

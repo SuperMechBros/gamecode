@@ -212,8 +212,6 @@ void GrapplingHookThink(entity this)
 		// while hanging on the rope, this friction component will help you a
 		// bit to control the rope
 
-		bool frozen_pulling = (autocvar_g_grappling_hook_tarzan >= 2 && autocvar_g_balance_grapplehook_pull_frozen);
-
 		dir = this.origin - myorg;
 		dist = vlen(dir);
 		dir = normalize(dir);
@@ -260,13 +258,10 @@ void GrapplingHookThink(entity this)
 					{
 						entity aim_ent = this.aiment;
 						v = v - dv * 0.5;
-						if((frozen_pulling && STAT(FROZEN, this.aiment)) || !frozen_pulling)
-						{
-							this.aiment.velocity = this.aiment.velocity - dv * 0.5;
-							UNSET_ONGROUND(this.aiment);
-							if(this.aiment.flags & FL_PROJECTILE)
-								UpdateCSQCProjectile(this.aiment);
-						}
+						this.aiment.velocity = this.aiment.velocity - dv * 0.5;
+						UNSET_ONGROUND(this.aiment);
+						if(this.aiment.flags & FL_PROJECTILE)
+							UpdateCSQCProjectile(this.aiment);
 						if(this.aiment.classname == "nade")
 							this.aiment.nextthink = time + autocvar_g_balance_grapplehook_nade_time; // set time after letting go?
 						aim_ent.pusher = this.realowner;
@@ -278,14 +273,8 @@ void GrapplingHookThink(entity this)
 				UNSET_ONGROUND(pull_entity);
 			}
 
-			if(!frozen_pulling && !(this.aiment.flags & FL_PROJECTILE))
+			if(!(this.aiment.flags & FL_PROJECTILE))
 				pull_entity.velocity = WarpZone_RefSys_TransformVelocity(this, pull_entity, v * velocity_multiplier);
-
-			if(frozen_pulling && autocvar_g_balance_grapplehook_pull_frozen == 2 && !STAT(FROZEN, this.aiment))
-			{
-				RemoveHook(this);
-				return;
-			}
 		}
 		else
 		{

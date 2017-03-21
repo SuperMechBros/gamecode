@@ -420,7 +420,6 @@ bool forbidWeaponUse(entity player)
 	if (time < game_starttime && !autocvar_sv_ready_restart_after_countdown) return true;
 	if (player.player_blocked) return true;
 	if (game_stopped) return true;
-	if (STAT(FROZEN, player)) return true;
 	if (MUTATOR_CALLHOOK(ForbidWeaponUse, player)) return true;
 	return false;
 }

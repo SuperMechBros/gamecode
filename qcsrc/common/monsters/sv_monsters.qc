@@ -86,7 +86,6 @@ bool Monster_ValidTarget(entity this, entity targ)
 	|| (targ.flags & FL_NOTARGET)
 	|| (!autocvar_g_monsters_typefrag && PHYS_INPUT_BUTTON_CHAT(targ))
 	|| (SAME_TEAM(targ, this))
-	|| (STAT(FROZEN, targ))
 	|| (targ.alpha != 0 && targ.alpha < 0.5)
 	|| (MUTATOR_CALLHOOK(MonsterValidTarget, this, targ))
 	)
@@ -553,7 +552,6 @@ vector Monster_Move_Target(entity this, entity targ)
 		// cases where the enemy may have changed their state (don't need to check everything here)
 		if((!this.enemy)
 			|| (IS_DEAD(this.enemy) || this.enemy.health < 1)
-			|| (STAT(FROZEN, this.enemy))
 			|| (this.enemy.flags & FL_NOTARGET)
 			|| (this.enemy.alpha < 0.5 && this.enemy.alpha != 0)
 			|| (this.enemy.takedamage == DAMAGE_NO)
@@ -692,54 +690,6 @@ void Monster_Move(entity this, float runspeed, float walkspeed, float stpspeed)
 	// update goal entity if lost
 	if(this.target2 && this.target2 != "" && this.goalentity.targetname != this.target2)
 		this.goalentity = find(NULL, targetname, this.target2);
-
-	if(STAT(FROZEN, this) == 2)
-	{
-		this.revive_progress = bound(0, this.revive_progress + this.ticrate * this.revive_speed, 1);
-		this.health = max(1, this.revive_progress * this.max_health);
-		this.iceblock.alpha = bound(0.2, 1 - this.revive_progress, 1);
-
-		if(!(this.spawnflags & MONSTERFLAG_INVINCIBLE) && this.sprite)
-			WaypointSprite_UpdateHealth(this.sprite, this.health);
-
-		movelib_brake_simple(this, stpspeed);
-		setanim(this, this.anim_idle, true, false, false);
-
-		this.enemy = NULL;
-		this.nextthink = time + this.ticrate;
-
-		if(this.revive_progress >= 1)
-			Unfreeze(this);
-
-		return;
-	}
-	else if(STAT(FROZEN, this) == 3)
-	{
-		this.revive_progress = bound(0, this.revive_progress - this.ticrate * this.revive_speed, 1);
-		this.health = max(0, autocvar_g_nades_ice_health + (this.max_health-autocvar_g_nades_ice_health) * this.revive_progress );
-
-		if(!(this.spawnflags & MONSTERFLAG_INVINCIBLE) && this.sprite)
-			WaypointSprite_UpdateHealth(this.sprite, this.health);
-
-		movelib_brake_simple(this, stpspeed);
-		setanim(this, this.anim_idle, true, false, false);
-
-		this.enemy = NULL;
-		this.nextthink = time + this.ticrate;
-
-		if(this.health < 1)
-		{
-			Unfreeze(this);
-			this.health = 0;
-			if(this.event_damage)
-				this.event_damage(this, this, this.frozen_by, 1, DEATH_KILL.m_id, this.origin, '0 0 0');
-		}
-
-		else if ( this.revive_progress <= 0 )
-			Unfreeze(this);
-
-		return;
-	}
 
 	if(this.flags & FL_SWIM)
 	{
@@ -905,7 +855,6 @@ void Monster_Remove(entity this)
 		if(this.(weaponentity))
 			delete(this.(weaponentity));
 	}
-	if(this.iceblock) { delete(this.iceblock); }
 	WaypointSprite_Kill(this.sprite);
 	delete(this);
 }
@@ -947,8 +896,6 @@ void Monster_Reset(entity this)
 	setorigin(this, this.pos1);
 	this.angles = this.pos2;
 
-	Unfreeze(this); // remove any icy remains
-
 	this.health = this.max_health;
 	this.velocity = '0 0 0';
 	this.enemy = NULL;
@@ -981,12 +928,6 @@ void Monster_Dead(entity this, entity attacker, float gibbed)
 	setthink(this, Monster_Dead_Think);
 	this.nextthink = time;
 	this.monster_lifetime = time + 5;
-
-	if(STAT(FROZEN, this))
-	{
-		Unfreeze(this); // remove any icy remains
-		this.health = 0; // reset by Unfreeze
-	}
 
 	monster_dropitem(this, attacker);
 
@@ -1039,9 +980,6 @@ void Monster_Dead(entity this, entity attacker, float gibbed)
 void Monster_Damage(entity this, entity inflictor, entity attacker, float damage, int deathtype, vector hitloc, vector force)
 {
 	if((this.spawnflags & MONSTERFLAG_INVINCIBLE) && deathtype != DEATH_KILL.m_id && !ITEM_DAMAGE_NEEDKILL(deathtype))
-		return;
-
-	if(STAT(FROZEN, this) && deathtype != DEATH_KILL.m_id)
 		return;
 
 	//if(time < this.pain_finished && deathtype != DEATH_KILL.m_id)
@@ -1179,8 +1117,6 @@ void Monster_Anim(entity this)
 		deadbits = 0;
 	}
 	int animbits = deadbits;
-	if(STAT(FROZEN, this))
-		animbits |= ANIMSTATE_FROZEN;
 	if(this.crouch)
 		animbits |= ANIMSTATE_DUCK; // not that monsters can crouch currently...
 	animdecide_setstate(this, animbits, false);
