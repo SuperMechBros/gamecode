@@ -1,5 +1,4 @@
 // generated file; do not modify
-#include <server/mutators/mutator/gamemode_assault.qh>
 #include <server/mutators/mutator/gamemode_ca.qh>
 #include <server/mutators/mutator/gamemode_ctf.qh>
 #include <server/mutators/mutator/gamemode_cts.qh>

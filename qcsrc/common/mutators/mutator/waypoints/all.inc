@@ -14,10 +14,6 @@ REGISTER_WAYPOINT(RaceFinish, _("Finish"), '1 0.5 0', 1);
 REGISTER_WAYPOINT(RaceStart, _("Start"), '1 0.5 0', 1);
 REGISTER_WAYPOINT(RaceStartFinish, _("Start"), '1 0.5 0', 1);
 
-REGISTER_WAYPOINT(AssaultDefend, _("Defend"), '1 0.5 0', 1);
-REGISTER_WAYPOINT(AssaultDestroy, _("Destroy"), '1 0.5 0', 1);
-REGISTER_WAYPOINT(AssaultPush, _("Push"), '1 0.5 0', 1);
-
 REGISTER_WAYPOINT(FlagCarrier, _("Flag carrier"), '0.8 0.8 0', 1);
 REGISTER_WAYPOINT(FlagCarrierEnemy, _("Enemy carrier"), '1 1 1', 1);
 REGISTER_WAYPOINT(FlagDropped, _("Dropped flag"), '1 1 1', 1);
