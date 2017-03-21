@@ -318,11 +318,6 @@
 
     MULTITEAM_INFO(NEXBALL_RETURN_HELD, 4,                  N_CONSOLE,  0, 0, "", "",           "",     _("^BGThe ^TC^TT^BG team held the ball for too long"), "", NAME)
 
-    MSG_INFO_NOTIF(ONSLAUGHT_CAPTURE,                       N_CONSOLE,  2, 0, "s1 s2", "",      "",     _("^BG%s^BG captured %s^BG control point"), "")
-    MULTITEAM_INFO(ONSLAUGHT_CPDESTROYED, 4,                N_CONSOLE,  2, 0, "s1 s2", "",      "",     _("^TC^TT^BG team %s^BG control point has been destroyed by %s"), "", NAME)
-    MULTITEAM_INFO(ONSLAUGHT_GENDESTROYED, 4,               N_CONSOLE,  0, 0, "", "",           "",     _("^TC^TT^BG generator has been destroyed"), "", GENERATOR)
-    MULTITEAM_INFO(ONSLAUGHT_GENDESTROYED_OVERTIME, 4,      N_CONSOLE,  0, 0, "", "",           "",     _("^TC^TT^BG generator spontaneously combusted due to overtime!"), "", GENERATOR)
-
     MSG_INFO_NOTIF(POWERUP_INVISIBILITY,                    N_CONSOLE,  1, 0, "s1", "s1",       "strength",     _("^BG%s^K1 picked up Invisibility"), "")
     MSG_INFO_NOTIF(POWERUP_SHIELD,                          N_CONSOLE,  1, 0, "s1", "s1",       "shield",       _("^BG%s^K1 picked up Shield"), "")
     MSG_INFO_NOTIF(POWERUP_SPEED,                           N_CONSOLE,  1, 0, "s1", "s1",       "shield",       _("^BG%s^K1 picked up Speed"), "")
@@ -560,17 +555,7 @@
     MSG_CENTER_NOTIF(NIX_COUNTDOWN,                     N_ENABLE,    0, 2, "item_wepname",   CPID_NIX,               "1 f2", _("^F2^COUNT^BG until weapon change...\nNext weapon: ^F1%s"), "")
     MSG_CENTER_NOTIF(NIX_NEWWEAPON,                     N_ENABLE,    0, 1, "item_wepname",   CPID_NIX,               "0 0",  _("^F2Active weapon: ^F1%s"), "")
 
-    MSG_CENTER_NOTIF(ONS_CAPTURE,                       N_ENABLE,    1, 0, "s1",             CPID_ONSLAUGHT,         "0 0",  _("^BGYou captured %s^BG control point"), "")
-    MULTITEAM_CENTER(ONS_CAPTURE_TEAM, 4,               N_ENABLE,    1, 0, "s1",             CPID_ONSLAUGHT,         "0 0",  _("^TC^TT^BG team captured %s^BG control point"), "", NAME)
-    MSG_CENTER_NOTIF(ONS_CONTROLPOINT_SHIELDED,         N_ENABLE,    0, 0, "",               CPID_ONS_CAPSHIELD,     "0 0",  _("^BGThis control point currently cannot be captured"), "")
-    MSG_CENTER_NOTIF(ONS_GENERATOR_SHIELDED,            N_ENABLE,    0, 0, "",               CPID_ONS_CAPSHIELD,     "0 0",  _("^BGThe enemy generator cannot be destroyed yet\n^F2Capture some control points to unshield it"), "")
-    MULTITEAM_CENTER(ONS_NOTSHIELDED, 4,                N_ENABLE,    0, 0, "",               CPID_ONSLAUGHT,         "0 0",  _("^BGThe ^TCenemy^BG generator is no longer shielded!"), "", NAME)
-    MSG_CENTER_NOTIF(ONS_NOTSHIELDED_TEAM,              N_ENABLE,    0, 0, "",               CPID_ONSLAUGHT,         "0 0",  _("^K1Your generator is NOT shielded!\n^BGRe-capture control points to shield it!"), "")
-    MSG_CENTER_NOTIF(ONS_TELEPORT,                      N_ENABLE,    0, 0, "pass_key",       CPID_ONSLAUGHT,         "0 0",  _("^BGPress ^F2%s^BG to teleport"), "")
-    MSG_CENTER_NOTIF(ONS_TELEPORT_ANTISPAM,             N_ENABLE,    0, 1, "f1secs",         CPID_ONSLAUGHT,         "0 0",  _("^BGTeleporting disabled for %s"), "")
-
     MSG_CENTER_NOTIF(OVERTIME_FRAG,                     N_ENABLE,    0, 0, "",               CPID_OVERTIME,          "0 0",  _("^F2Now playing ^F4OVERTIME^F2!\nKeep fragging until we have a winner!"), _("^F2Now playing ^F4OVERTIME^F2!\nKeep scoring until we have a winner!"))
-    MSG_CENTER_NOTIF(OVERTIME_CONTROLPOINT,             N_ENABLE,    0, 0, "",               CPID_OVERTIME,          "5 0",  _("^F2Now playing ^F4OVERTIME^F2!\n\nGenerators are now decaying.\nThe more control points your team holds,\nthe faster the enemy generator decays"), "")
     MSG_CENTER_NOTIF(OVERTIME_TIME,                     N_ENABLE,    0, 1, "f1time",         CPID_OVERTIME,          "0 0",  _("^F2Now playing ^F4OVERTIME^F2!\n^BGAdded ^F4%s^BG to the game!"), "")
 
     MSG_CENTER_NOTIF(PORTO_CREATED_IN,                  N_ENABLE,    0, 0, "",               CPID_Null,              "0 0",  _("^K1In^BG-portal created"), "")

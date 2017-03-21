@@ -187,12 +187,6 @@ entity EFFECT_CAP(int teamid)
 EFFECT(0, ITEM_PICKUP,              "item_pickup")
 EFFECT(0, ITEM_RESPAWN,             "item_respawn")
 
-EFFECT(0, ONS_GENERATOR_DAMAGED,    "torch_small")
-EFFECT(0, ONS_GENERATOR_GIB,        "onslaught_generator_gib_explode")
-EFFECT(0, ONS_GENERATOR_EXPLODE,    "onslaught_generator_smallexplosion")
-EFFECT(0, ONS_GENERATOR_EXPLODE2,   "onslaught_generator_finalexplosion")
-
-
 
 EFFECT(0, LASER_DEADLY,             "laser_deadly")
 EFFECT(1, FLAC_TRAIL,               "TR_SEEKER")

@@ -129,19 +129,6 @@ SOUND(NB_SHOOT1, "nexball/shoot1");
 SOUND(NB_SHOOT2, "nexball/shoot2");
 SOUND(NB_STEAL, "nexball/steal");
 
-SOUND(ONS_CONTROLPOINT_BUILD, "onslaught/controlpoint_build");
-SOUND(ONS_CONTROLPOINT_BUILT, "onslaught/controlpoint_built");
-SOUND(ONS_CONTROLPOINT_UNDERATTACK, "onslaught/controlpoint_underattack");
-SOUND(ONS_DAMAGEBLOCKEDBYSHIELD, "onslaught/damageblockedbyshield");
-SOUND(ONS_ELECTRICITY_EXPLODE, "onslaught/electricity_explode");
-SOUND(ONS_GENERATOR_DECAY, "onslaught/generator_decay");
-SOUND(ONS_GENERATOR_UNDERATTACK, "onslaught/generator_underattack");
-SOUND(ONS_HIT1, "onslaught/ons_hit1");
-SOUND(ONS_HIT2, "onslaught/ons_hit2");
-SOUND(ONS_SPARK1, "onslaught/ons_spark1");
-SOUND(ONS_SPARK2, "onslaught/ons_spark2");
-SOUND(ONS_SHOCKWAVE, "onslaught/shockwave");
-
 SOUND(PORTO_BOUNCE, "porto/bounce");
 SOUND(PORTO_CREATE, "porto/create");
 SOUND(PORTO_EXPIRE, "porto/expire");

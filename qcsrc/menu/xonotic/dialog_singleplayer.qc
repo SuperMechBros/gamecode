@@ -13,20 +13,10 @@ void InstantAction_LoadMap(entity btn, entity dummy)
 
 	cvar_set("timelimit_override", "10");
 
-	if(random() < 0.4) // 40% are DM
-	{
-		MapInfo_SwitchGameType(MAPINFO_TYPE_DEATHMATCH);
-		pmin = 2;
-		pmax = 8;
-		pstep = 1;
-	}
-	else // somehow distribute the remaining 5%
-	{
-		MapInfo_SwitchGameType(MAPINFO_TYPE_ONSLAUGHT);
-		pmin = 6;
-		pmax = 16;
-		pstep = 2;
-	}
+	MapInfo_SwitchGameType(MAPINFO_TYPE_DEATHMATCH);
+	pmin = 2;
+	pmax = 8;
+	pstep = 1;
 
 	// find random map
 	MapInfo_FilterGametype(MapInfo_CurrentGametype(), MapInfo_CurrentFeatures(), MapInfo_RequiredFlags(), MapInfo_ForbiddenFlags(), 0);

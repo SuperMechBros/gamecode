@@ -21,33 +21,6 @@ MODEL(OK_SNIPER_VIEW,                   W_Model("h_ok_sniper.iqm"));
 MODEL(OK_SNIPER_WORLD,                  W_Model("v_ok_sniper.md3"));
 MODEL(OK_SNIPER_ITEM,                   W_Model("g_ok_sniper.md3"));
 
-MODEL(ONS_CP,                           "models/onslaught/controlpoint_icon.md3");
-MODEL(ONS_CP_SHIELD,                    "models/onslaught/controlpoint_shield.md3");
-MODEL(ONS_CP_PAD1,                      "models/onslaught/controlpoint_pad.md3");
-MODEL(ONS_CP_PAD2,                      "models/onslaught/controlpoint_pad2.md3");
-MODEL(ONS_CP1,                          "models/onslaught/controlpoint_icon_dmg1.md3");
-MODEL(ONS_CP1_GIB,                      "models/onslaught/controlpoint_icon_gib1.md3");
-MODEL(ONS_CP2,                          "models/onslaught/controlpoint_icon_dmg2.md3");
-MODEL(ONS_CP2_GIB,                      "models/onslaught/controlpoint_icon_gib2.md3");
-MODEL(ONS_CP3,                          "models/onslaught/controlpoint_icon_dmg3.md3");
-MODEL(ONS_CP3_GIB,                      "models/onslaught/controlpoint_icon_gib4.md3");
-MODEL(ONS_RAY,                          "models/onslaught/ons_ray.md3");
-MODEL(ONS_GEN,                          "models/onslaught/generator.md3");
-MODEL(ONS_GEN_SHIELD,                   "models/onslaught/generator_shield.md3");
-MODEL(ONS_GEN_GIB1,                     "models/onslaught/gen_gib1.md3");
-MODEL(ONS_GEN_GIB2,                     "models/onslaught/gen_gib2.md3");
-MODEL(ONS_GEN_GIB3,                     "models/onslaught/gen_gib3.md3");
-MODEL(ONS_GEN1,                         "models/onslaught/generator_dmg1.md3");
-MODEL(ONS_GEN2,                         "models/onslaught/generator_dmg2.md3");
-MODEL(ONS_GEN3,                         "models/onslaught/generator_dmg3.md3");
-MODEL(ONS_GEN4,                         "models/onslaught/generator_dmg4.md3");
-MODEL(ONS_GEN5,                         "models/onslaught/generator_dmg5.md3");
-MODEL(ONS_GEN6,                         "models/onslaught/generator_dmg6.md3");
-MODEL(ONS_GEN7,                         "models/onslaught/generator_dmg7.md3");
-MODEL(ONS_GEN8,                         "models/onslaught/generator_dmg8.md3");
-MODEL(ONS_GEN9,                         "models/onslaught/generator_dmg9.md3");
-MODEL(ONS_GEN_DEAD,                     "models/onslaught/generator_dead.md3");
-
 MODEL(PROJECTILE_ELECTRO,               "models/ebomb.mdl");
 MODEL(PROJECTILE_ELECTRO_BEAM,          "models/elaser.mdl");
 

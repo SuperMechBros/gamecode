@@ -428,7 +428,6 @@ string _MapInfo_GetDefault(Gametype t)
 		case MAPINFO_TYPE_DEATHMATCH:      return "30 20 0";
 		case MAPINFO_TYPE_CA:              return "10 20 0";
 		case MAPINFO_TYPE_RACE:            return "20 5 7 15 0";
-		case MAPINFO_TYPE_ONSLAUGHT:       return "20 0";
 		case MAPINFO_TYPE_NEXBALL:         return "5 20 0";
 		case MAPINFO_TYPE_CTS:             return "20 0 0";
 		// NOTE: DO NOT ADD ANY MORE GAME TYPES HERE
@@ -449,7 +448,7 @@ void _MapInfo_Map_ApplyGametype(string s, Gametype pWantedType, Gametype pThisTy
 	if(load_default)
 		_MapInfo_Map_ApplyGametype(_MapInfo_GetDefault(pThisType), pWantedType, pThisType, false);
 
-	if(pWantedType == MAPINFO_TYPE_ONSLAUGHT || pWantedType == MAPINFO_TYPE_RACE || pWantedType == MAPINFO_TYPE_CTS) // these modes don't use fraglimit
+	if(pWantedType == MAPINFO_TYPE_RACE || pWantedType == MAPINFO_TYPE_CTS) // these modes don't use fraglimit
 	{
 		cvar_set("fraglimit", "0");
 	}
@@ -494,7 +493,7 @@ void _MapInfo_Map_ApplyGametype(string s, Gametype pWantedType, Gametype pThisTy
 		s = cdr(s);
 	}
 
-	if(pWantedType == MAPINFO_TYPE_ONSLAUGHT || pWantedType == MAPINFO_TYPE_CTS) // these modes don't use fraglimit
+	if(pWantedType == MAPINFO_TYPE_CTS) // these modes don't use fraglimit
 	{
 		cvar_set("leadlimit", "0");
 	}
