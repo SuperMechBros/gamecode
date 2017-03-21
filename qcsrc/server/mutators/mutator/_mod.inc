@@ -4,4 +4,3 @@
 #include <server/mutators/mutator/gamemode_cts.qc>
 #include <server/mutators/mutator/gamemode_deathmatch.qc>
 #include <server/mutators/mutator/gamemode_race.qc>
-#include <server/mutators/mutator/gamemode_tdm.qc>

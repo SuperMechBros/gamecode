@@ -182,11 +182,11 @@ bool DoesQ3ARemoveThisEntity(entity this)
 	// Q3 style filters (DO NOT USE, THIS IS COMPAT ONLY)
 
 	if(this.notq3a)
-		if(!teamplay || g_tdm || g_ctf)
+		if(!teamplay || g_ctf)
 			return true;
 
 	if(this.notta)
-		if (!(!teamplay || g_tdm || g_ctf))
+		if (!(!teamplay || g_ctf))
 			return true;
 
 	if(this.notsingle)

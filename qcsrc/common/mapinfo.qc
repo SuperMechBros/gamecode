@@ -426,7 +426,6 @@ string _MapInfo_GetDefault(Gametype t)
 	switch(t)
 	{
 		case MAPINFO_TYPE_DEATHMATCH:      return "30 20 0";
-		case MAPINFO_TYPE_TEAM_DEATHMATCH: return "50 20 2 0";
 		case MAPINFO_TYPE_CTF:             return "300 20 10 0";
 		case MAPINFO_TYPE_CA:              return "10 20 0";
 		case MAPINFO_TYPE_RACE:            return "20 5 7 15 0";
@@ -1042,14 +1041,6 @@ float MapInfo_Get_ByName_NoFallbacks(string pFilename, int pAllowGenerate, Gamet
 int MapInfo_Get_ByName(string pFilename, float pAllowGenerate, Gametype pGametypeToSet)
 {
 	int r = MapInfo_Get_ByName_NoFallbacks(pFilename, pAllowGenerate, pGametypeToSet);
-
-	if(cvar("g_tdm_on_dm_maps"))
-	{
-		// if this is set, all DM maps support TDM too
-		if (!(MapInfo_Map_supportedGametypes & MAPINFO_TYPE_TEAM_DEATHMATCH.m_flags))
-			if(MapInfo_Map_supportedGametypes & MAPINFO_TYPE_DEATHMATCH.m_flags)
-				_MapInfo_Map_ApplyGametypeEx ("", pGametypeToSet, MAPINFO_TYPE_TEAM_DEATHMATCH);
-	}
 
 	if(pGametypeToSet)
 	{

@@ -27,13 +27,6 @@ void InstantAction_LoadMap(entity btn, entity dummy)
 		pmax = 12;
 		pstep = 2;
 	}
-	else if(random() < 0.5) // half of the remaining 30%, i.e. 15%, are TDM
-	{
-		MapInfo_SwitchGameType(MAPINFO_TYPE_TEAM_DEATHMATCH);
-		pmin = 4;
-		pmax = 8;
-		pstep = 2;
-	}
 	else // somehow distribute the remaining 5%
 	{
 		MapInfo_SwitchGameType(MAPINFO_TYPE_ONSLAUGHT);

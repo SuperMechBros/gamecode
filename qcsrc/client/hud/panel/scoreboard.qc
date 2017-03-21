@@ -356,10 +356,9 @@ void Cmd_Scoreboard_Help()
 // e.g. -teams,rc,cts,lms/kills ?+rc/kills
 #define SCOREBOARD_DEFAULT_COLUMNS \
 "ping pl name |" \
-" -teams,rc,cts/kills +tdm/kills ?+rc/kills" \
-" +tdm/deaths" \
-" -teams,rc,cts/suicides +tdm/suicides ?+rc/suicides" \
-" -cts,dm,tdm/frags" /* tdm already has this in "score" */ \
+" -teams,rc,cts/kills ?+rc/kills" \
+" -teams,rc,cts/suicides ?+rc/suicides" \
+" -cts,dm/frags" \
 " -rc,cts,nb/dmg -rc,cts,nb/dmgtaken" \
 " +ctf/caps +ctf/pickups +ctf/fckills +ctf/returns +ons/caps +ons/takes" \
 " ?+rc/laps ?+rc/time +rc,cts/fastest" \
