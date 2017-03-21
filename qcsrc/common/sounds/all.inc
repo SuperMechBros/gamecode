@@ -106,23 +106,6 @@ SOUND(UZI_FIRE, W_Sound("uzi_fire"));
 SOUND(WEAPONPICKUP, W_Sound("weaponpickup"));
 SOUND(WEAPON_SWITCH, W_Sound("weapon_switch"));
 
-SOUND(CTF_CAPTURE_NEUTRAL, "ctf/capture");
-SOUND(CTF_CAPTURE_RED, "ctf/red_capture");
-SOUND(CTF_CAPTURE_BLUE, "ctf/blue_capture");
-SOUND(CTF_CAPTURE_YELLOW, "ctf/yellow_capture");
-SOUND(CTF_CAPTURE_PINK, "ctf/pink_capture");
-Sound SND_CTF_CAPTURE(int teamid) {
-    switch (teamid) {
-        case NUM_TEAM_1:    return SND_CTF_CAPTURE_RED;
-        case NUM_TEAM_2:    return SND_CTF_CAPTURE_BLUE;
-        case NUM_TEAM_3:    return SND_CTF_CAPTURE_YELLOW;
-        case NUM_TEAM_4:    return SND_CTF_CAPTURE_PINK;
-        default:            return SND_CTF_CAPTURE_NEUTRAL;
-    }
-}
-
-SOUND(KH_ALARM, "kh/alarm");
-
 SOUND(PORTO_BOUNCE, "porto/bounce");
 SOUND(PORTO_CREATE, "porto/create");
 SOUND(PORTO_EXPIRE, "porto/expire");
