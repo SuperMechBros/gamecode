@@ -171,11 +171,6 @@ Sound SND_CTF_TAKEN(int teamid) {
 
 SOUND(CTF_TOUCH, "ctf/touch");
 
-SOUND(KA_DROPPED, "keepaway/dropped");
-SOUND(KA_PICKEDUP, "keepaway/pickedup");
-SOUND(KA_RESPAWN, "keepaway/respawn");
-SOUND(KA_TOUCH, "keepaway/touch");
-
 SOUND(KH_ALARM, "kh/alarm");
 
 SOUND(NB_BOUNCE, "nexball/bounce");

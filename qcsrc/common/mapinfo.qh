@@ -315,24 +315,6 @@ ENDCLASS(NexBall)
 REGISTER_GAMETYPE(NEXBALL, NEW(NexBall));
 #define g_nexball IS_GAMETYPE(NEXBALL)
 
-#ifdef CSQC
-void HUD_Mod_Keepaway(vector pos, vector mySize);
-#endif
-CLASS(Keepaway, Gametype)
-    INIT(Keepaway)
-    {
-        this.gametype_init(this, _("Keepaway"),"ka","g_keepaway",false,"","timelimit=20 pointlimit=30",_("Hold the ball to get points for kills"));
-    }
-    METHOD(Keepaway, m_isAlwaysSupported, bool(Gametype this, int spawnpoints, float diameter))
-    {
-        return true;
-    }
-#ifdef CSQC
-    ATTRIB(Keepaway, m_modicons, void(vector pos, vector mySize), HUD_Mod_Keepaway);
-#endif
-ENDCLASS(Keepaway)
-REGISTER_GAMETYPE(KEEPAWAY, NEW(Keepaway));
-
 const int MAPINFO_FEATURE_WEAPONS       = 1; // not defined for instagib-only maps
 const int MAPINFO_FEATURE_MONSTERS      = 8;
 
