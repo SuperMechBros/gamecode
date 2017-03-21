@@ -736,7 +736,6 @@ void ClientInit_misc(entity this)
 {
 	int channel = MSG_ONE;
 	WriteHeader(channel, ENT_CLIENT_INIT);
-	WriteByte(channel, g_nexball_meter_period * 32);
 	WriteInt24_t(channel, compressShotOrigin(hook_shotorigin[0]));
 	WriteInt24_t(channel, compressShotOrigin(hook_shotorigin[1]));
 	WriteInt24_t(channel, compressShotOrigin(hook_shotorigin[2]));

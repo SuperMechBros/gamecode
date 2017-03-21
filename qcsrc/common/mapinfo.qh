@@ -166,30 +166,6 @@ ENDCLASS(RaceCTS)
 REGISTER_GAMETYPE(CTS, NEW(RaceCTS));
 #define g_cts IS_GAMETYPE(CTS)
 
-#ifdef CSQC
-void HUD_Mod_NexBall(vector pos, vector mySize);
-#endif
-CLASS(NexBall, Gametype)
-    INIT(NexBall)
-    {
-        this.gametype_init(this, _("Nexball"),"nb","g_nexball",true,"","timelimit=20 pointlimit=5 leadlimit=0",_("Shoot and kick the ball into the enemies goal, keep your goal clean"));
-    }
-    METHOD(NexBall, m_generate_mapinfo, void(Gametype this, string v))
-    {
-        if(substring(v, 0, 8) == "nexball_" || substring(v, 0, 4) == "ball")
-            MapInfo_Map_supportedGametypes |= this.m_flags;
-    }
-    METHOD(NexBall, m_isTwoBaseMode, bool())
-    {
-        return true;
-    }
-#ifdef CSQC
-    ATTRIB(NexBall, m_modicons, void(vector pos, vector mySize), HUD_Mod_NexBall);
-#endif
-ENDCLASS(NexBall)
-REGISTER_GAMETYPE(NEXBALL, NEW(NexBall));
-#define g_nexball IS_GAMETYPE(NEXBALL)
-
 const int MAPINFO_FEATURE_WEAPONS       = 1; // not defined for instagib-only maps
 const int MAPINFO_FEATURE_MONSTERS      = 8;
 

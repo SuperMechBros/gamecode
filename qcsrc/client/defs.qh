@@ -68,9 +68,6 @@ float race_status;
 string race_status_name;
 float race_myrank;
 
-// Nexball
-float nb_pb_period;
-
 // Spectating
 float spectatee_status;
 

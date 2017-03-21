@@ -647,7 +647,6 @@ float TrueAimCheck(entity wepent)
 	{
 		case WEP_TUBA: // no aim
 		case WEP_PORTO: // shoots from eye
-		case WEP_NEXBALL: // shoots from eye
 		case WEP_HOOK: // no trueaim
 		case WEP_MORTAR: // toss curve
 			return SHOTTYPE_HITWORLD;

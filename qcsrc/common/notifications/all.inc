@@ -313,8 +313,6 @@
 
     MSG_INFO_NOTIF(MONSTERS_DISABLED,                       N_CONSOLE,  0, 0, "", "",           "",     _("^BGMonsters are currently disabled"), "")
 
-    MULTITEAM_INFO(NEXBALL_RETURN_HELD, 4,                  N_CONSOLE,  0, 0, "", "",           "",     _("^BGThe ^TC^TT^BG team held the ball for too long"), "", NAME)
-
     MSG_INFO_NOTIF(POWERUP_INVISIBILITY,                    N_CONSOLE,  1, 0, "s1", "s1",       "strength",     _("^BG%s^K1 picked up Invisibility"), "")
     MSG_INFO_NOTIF(POWERUP_SHIELD,                          N_CONSOLE,  1, 0, "s1", "s1",       "shield",       _("^BG%s^K1 picked up Shield"), "")
     MSG_INFO_NOTIF(POWERUP_SPEED,                           N_CONSOLE,  1, 0, "s1", "s1",       "shield",       _("^BG%s^K1 picked up Speed"), "")

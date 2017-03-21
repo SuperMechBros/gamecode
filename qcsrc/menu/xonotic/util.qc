@@ -682,7 +682,6 @@ float updateCompression()
 // note: include only those that should be in the menu!
 #define GAMETYPES \
 	GAMETYPE(MAPINFO_TYPE_DEATHMATCH) \
-	GAMETYPE(MAPINFO_TYPE_NEXBALL) \
 	/**/
 
 // hidden gametypes come last so indexing always works correctly

@@ -427,7 +427,6 @@ string _MapInfo_GetDefault(Gametype t)
 	{
 		case MAPINFO_TYPE_DEATHMATCH:      return "30 20 0";
 		case MAPINFO_TYPE_RACE:            return "20 5 7 15 0";
-		case MAPINFO_TYPE_NEXBALL:         return "5 20 0";
 		case MAPINFO_TYPE_CTS:             return "20 0 0";
 		// NOTE: DO NOT ADD ANY MORE GAME TYPES HERE
 		// THIS IS JUST LEGACY SUPPORT FOR NEXUIZ MAPS
@@ -602,7 +601,6 @@ Gametype MapInfo_Type_FromString(string t)
 		t = replacement; \
 	} \
 } MACRO_END
-	deprecate(nexball, nb);
 	deprecate(race, rc);
 	FOREACH(Gametypes, it.mdl == t, return it);
 	return NULL;
@@ -1109,7 +1107,7 @@ string MapInfo_FixName(string s)
 int MapInfo_CurrentFeatures()
 {
 	int req = 0;
-	if(!(cvar("g_weaponarena") || !cvar("g_pickup_items") || cvar("g_race") || cvar("g_cts") || cvar("g_nexball")))
+	if(!(cvar("g_weaponarena") || !cvar("g_pickup_items") || cvar("g_race") || cvar("g_cts")))
 		req |= MAPINFO_FEATURE_WEAPONS;
 	return req;
 }

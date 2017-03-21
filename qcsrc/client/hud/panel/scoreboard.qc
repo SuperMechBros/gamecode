@@ -1565,7 +1565,7 @@ void Scoreboard_Draw()
 		pos = Scoreboard_MakeTable(pos, tm, panel_bg_color, bg_size);
 	}
 
-	bool show_accuracy = (gametype != MAPINFO_TYPE_CTS && gametype != MAPINFO_TYPE_RACE && gametype != MAPINFO_TYPE_NEXBALL);
+	bool show_accuracy = (gametype != MAPINFO_TYPE_CTS && gametype != MAPINFO_TYPE_RACE);
 
 	if (show_accuracy && autocvar_hud_panel_scoreboard_accuracy && !warmup_stage)
 		pos = Scoreboard_AccuracyStats_Draw(pos, panel_bg_color, bg_size);

@@ -68,7 +68,6 @@ REGISTER_STAT(PRESSED_KEYS, int)
 /** this stat could later contain some other bits of info, like, more server-side particle config */
 REGISTER_STAT(ALLOW_OLDVORTEXBEAM, bool)
 REGISTER_STAT(FUEL, int)
-REGISTER_STAT(NB_METERSTART, float)
 /** compressShotOrigin */
 REGISTER_STAT(SHOTORG, int)
 REGISTER_STAT(LEADLIMIT, float)

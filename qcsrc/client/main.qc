@@ -955,8 +955,6 @@ NET_HANDLE(ENT_CLIENT_SCORES_INFO, bool isnew)
 
 NET_HANDLE(ENT_CLIENT_INIT, bool isnew)
 {
-	nb_pb_period = ReadByte() / 32; //Accuracy of 1/32th
-
 	hook_shotorigin[0] = decompressShotOrigin(ReadInt24_t());
 	hook_shotorigin[1] = decompressShotOrigin(ReadInt24_t());
 	hook_shotorigin[2] = decompressShotOrigin(ReadInt24_t());

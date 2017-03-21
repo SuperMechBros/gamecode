@@ -273,10 +273,6 @@ void W_Porto_Remove (entity p);
 // may be useful to all weapons
 .float bulletcounter;
 
-// Nexball
-.entity ballcarried; // Also used for keepaway
-float g_nexball_meter_period;
-
 void SUB_DontUseTargets(entity this, entity actor, entity trigger);
 void SUB_UseTargets(entity this, entity actor, entity trigger);
 

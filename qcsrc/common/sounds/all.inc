@@ -123,12 +123,6 @@ Sound SND_CTF_CAPTURE(int teamid) {
 
 SOUND(KH_ALARM, "kh/alarm");
 
-SOUND(NB_BOUNCE, "nexball/bounce");
-SOUND(NB_DROP, "nexball/drop");
-SOUND(NB_SHOOT1, "nexball/shoot1");
-SOUND(NB_SHOOT2, "nexball/shoot2");
-SOUND(NB_STEAL, "nexball/steal");
-
 SOUND(PORTO_BOUNCE, "porto/bounce");
 SOUND(PORTO_CREATE, "porto/create");
 SOUND(PORTO_EXPIRE, "porto/expire");
